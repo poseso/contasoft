@@ -1,8 +1,7 @@
 {
-    "/js/manifest.js": "/js/manifest.js?id=d91051ea7d0c9bd1981e",
-    "/js/manifest.js.map": "/js/manifest.js.map?id=a07956f82042cc418451",
-    "/js/scripts.bundle.js": "/js/scripts.bundle.js?id=64505810d6e018aff573",
-    "/css/style.bundle.css": "/css/style.bundle.css?id=11b22c28197190d10a12",
+    "/js/manifest.js": "/js/manifest.js?id=7db827d654313dce4250",
+    "/js/app.bundle.js": "/js/app.bundle.js?id=9012b87a8b93cf8c07c8",
+    "/css/style.bundle.css": "/css/style.bundle.css?id=f7148bf7a2f18f8a9c54",
     "/css/skins/aside/dark.css": "/css/skins/aside/dark.css?id=7124229a5d29b4bd91b0",
     "/css/skins/aside/light.css": "/css/skins/aside/light.css?id=64379e4c44f6eb9aa354",
     "/css/skins/brand/dark.css": "/css/skins/brand/dark.css?id=2b0752c1387017cf7452",
@@ -11,7 +10,7 @@
     "/css/skins/header/base/light.css": "/css/skins/header/base/light.css?id=632ed315fe5c24b5c312",
     "/css/skins/header/menu/dark.css": "/css/skins/header/menu/dark.css?id=e57b98d27ada7817c2a0",
     "/css/skins/header/menu/light.css": "/css/skins/header/menu/light.css?id=c9fccf2628e92a7cbc9f",
-    "/js/scripts.bundle.js.map": "/js/scripts.bundle.js.map?id=f379a2496ef81e13015e",
-    "/js/vendor.js": "/js/vendor.js?id=4e83fdf66a41dea51117",
-    "/js/vendor.js.map": "/js/vendor.js.map?id=4b05f4a8acbd2a07669c"
+    "/js/custom.bundle.js": "/js/custom.bundle.js?id=877d5f61c5237187bc36",
+    "/js/vendor.js": "/js/vendor.js?id=d324df8aa1c3ce7c64b2",
+    "/css/style.bundle.min.css": "/css/style.bundle.min.css?id=f7148bf7a2f18f8a9c54"
 }

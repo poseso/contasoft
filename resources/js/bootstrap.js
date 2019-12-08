@@ -1,4 +1,23 @@
-window._ = require('lodash');
+/**
+ * This bootstrap file is used for both frontend and backend
+ */
+
+import _ from 'lodash'
+import axios from 'axios'
+import Swal from 'sweetalert2';
+import $ from 'jquery';
+import 'popper.js'; // Required for BS4
+import 'bootstrap';
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+window.$ = window.jQuery = $;
+window.Swal = Swal;
+window._ = _; // Lodash
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -24,5 +43,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
+//     encrypted: true
 // });

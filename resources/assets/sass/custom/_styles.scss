@@ -3939,3 +3939,13 @@ table.dataTable tbody tr.selected a, table.dataTable tbody th.selected a, table.
 .select2-container .select2-selection--single .select2-selection__rendered {
     display: inline !important;
 }
+
+@media only screen and (min-width: 768px) {
+    .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+    }
+}

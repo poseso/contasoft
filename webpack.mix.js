@@ -16,42 +16,19 @@ mix.setPublicPath('public')
     // .options({
     //     processCssUrls: false,
     // })
+    // Extract packages from node_modules to vendor.js
+    .extract()
     .js([
-        'resources/assets/js/global/components/base/util.js',
-        'resources/assets/js/global/components/base/app.js',
-        'resources/assets/js/global/components/base/avatar.js',
-        'resources/assets/js/global/components/base/dialog.js',
-        'resources/assets/js/global/components/base/header.js',
-        'resources/assets/js/global/components/base/menu.js',
-        'resources/assets/js/global/components/base/offcanvas.js',
-        'resources/assets/js/global/components/base/portlet.js',
-        'resources/assets/js/global/components/base/scrolltop.js',
-        'resources/assets/js/global/components/base/toggle.js',
-        'resources/assets/js/global/components/base/wizard.js',
-        'resources/assets/js/global/components/base/datatable/core.datatable.js',
-        'resources/assets/js/global/components/base/datatable/datatable.checkbox.js',
-        'resources/assets/js/global/components/base/datatable/datatable.rtl.js',
-        'resources/assets/js/global/layout/layout.js',
-        'resources/assets/js/global/layout/demo-panel.js',
-        'resources/assets/js/global/layout/offcanvas-panel.js',
-        'resources/assets/js/global/layout/quick-panel.js',
-        'resources/assets/js/global/layout/quick-search.js',
-    ], 'public/js/scripts.bundle.js')
-    .extract([
-        // Extract packages from node_modules to vendor.js
-        'jquery',
-        'bootstrap',
-        'popper.js',
-        'axios',
-        'sweetalert2',
-        'lodash'
-    ])
-    .sourceMaps()
+        'resources/js/app.js',
+    ], 'public/js/app.bundle.js')
+    .js([
+        'resources/js/custom.js',
+    ], 'public/js/custom.bundle.js')
     // Copy the media and specific pages JS to there directory's.
     .copyDirectory('resources/assets/media', 'public/media')
     .copyDirectory('resources/assets/js/pages', 'public/js/pages')
     // Merge the default SASS files
-    .sass('resources/assets/sass/style.scss', 'public/css/style.bundle.css')
+    .sass('resources/sass/app.scss', 'public/css/style.bundle.css')
     .sass('resources/assets/sass/global/layout/aside/skins/dark.scss', 'public/css/skins/aside/dark.css')
     .sass('resources/assets/sass/global/layout/aside/skins/light.scss', 'public/css/skins/aside/light.css')
     .sass('resources/assets/sass/global/layout/brand/skins/dark.scss', 'public/css/skins/brand/dark.css')
