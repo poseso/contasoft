@@ -28,6 +28,14 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void
