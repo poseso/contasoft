@@ -1,6 +1,6 @@
 {
     "/js/manifest.js": "/js/manifest.js?id=7db827d654313dce4250",
-    "/js/app.bundle.js": "/js/app.bundle.js?id=9012b87a8b93cf8c07c8",
+    "/js/app.bundle.js": "/js/app.bundle.js?id=77887517bc716b5936c8",
     "/css/style.bundle.css": "/css/style.bundle.css?id=f7148bf7a2f18f8a9c54",
     "/css/skins/aside/dark.css": "/css/skins/aside/dark.css?id=7124229a5d29b4bd91b0",
     "/css/skins/aside/light.css": "/css/skins/aside/light.css?id=64379e4c44f6eb9aa354",
@@ -11,6 +11,5 @@
     "/css/skins/header/menu/dark.css": "/css/skins/header/menu/dark.css?id=e57b98d27ada7817c2a0",
     "/css/skins/header/menu/light.css": "/css/skins/header/menu/light.css?id=c9fccf2628e92a7cbc9f",
     "/js/custom.bundle.js": "/js/custom.bundle.js?id=877d5f61c5237187bc36",
-    "/js/vendor.js": "/js/vendor.js?id=d324df8aa1c3ce7c64b2",
-    "/css/style.bundle.min.css": "/css/style.bundle.min.css?id=f7148bf7a2f18f8a9c54"
+    "/js/vendor.js": "/js/vendor.js?id=d324df8aa1c3ce7c64b2"
 }
