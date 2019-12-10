@@ -12,6 +12,8 @@ Breadcrumbs::for('admin.dashboard.colores', function ($trail) {
     $trail->push(__('Paleta de Colores'), route('admin.dashboard.colores'));
 });
 
-require __DIR__.'/auth.php';
+require __DIR__.'/user.php';
+require __DIR__.'/role.php';
+require __DIR__.'/log.php';
 require __DIR__.'/log-viewer.php';
 require __DIR__.'/backup.php';
