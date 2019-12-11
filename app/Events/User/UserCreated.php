@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Events\Frontend\Auth;
+namespace App\Events\User;
 
-use App\Models\Auth\User;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class UserLoggedOut.
+ * Class UserCreated.
  */
-class UserLoggedOut
+class UserCreated
 {
     use SerializesModels;
 
@@ -20,7 +19,7 @@ class UserLoggedOut
     /**
      * @param $user
      */
-    public function __construct(User $user)
+    public function __construct($user)
     {
         $this->user = $user;
     }

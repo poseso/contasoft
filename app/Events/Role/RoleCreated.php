@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Events\Backend\Auth\Role;
+namespace App\Events\Role;
 
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class RoleDeleted.
+ * Class RoleCreated.
  */
-class RoleDeleted
+class RoleCreated
 {
     use SerializesModels;
 

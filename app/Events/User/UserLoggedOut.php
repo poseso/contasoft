@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Events\Frontend\Auth;
+namespace App\Events\User;
 
 use App\Models\Auth\User;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class UserProviderRegistered.
+ * Class UserLoggedOut.
  */
-class UserProviderRegistered
+class UserLoggedOut
 {
     use SerializesModels;
 

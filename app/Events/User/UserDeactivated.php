@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Events\Frontend\Auth;
+namespace App\Events\User;
 
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class UserConfirmed.
+ * Class UserDeactivated.
  */
-class UserConfirmed
+class UserDeactivated
 {
     use SerializesModels;
 
