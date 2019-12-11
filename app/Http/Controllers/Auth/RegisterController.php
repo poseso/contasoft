@@ -1,72 +1,85 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\Repositories\Frontend\Auth\UserRepository;
+use App\Http\Requests\Frontend\Auth\RegisterRequest;
 
+/**
+ * Class RegisterController.
+ */
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
+     * @var UserRepository
      */
-    protected $redirectTo = '/home';
+    protected $userRepository;
 
     /**
-     * Create a new controller instance.
+     * RegisterController constructor.
      *
-     * @return void
+     * @param UserRepository $userRepository
      */
-    public function __construct()
+    public function __construct(UserRepository $userRepository)
     {
-        $this->middleware('guest');
+        $this->userRepository = $userRepository;
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Where to redirect users after login.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return string
      */
-    protected function validator(array $data)
+    public function redirectPath()
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return route(home_route());
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Show the application registration form.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
+    public function showRegistrationForm()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        abort_unless(config('access.registration'), 404);
+
+        return view('frontend.auth.register');
+    }
+
+    /**
+     * @param RegisterRequest $request
+     *
+     * @throws \Throwable
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function register(RegisterRequest $request)
+    {
+        abort_unless(config('access.registration'), 404);
+
+        $user = $this->userRepository->create($request->only('first_name', 'last_name', 'username', 'email', 'password'));
+
+        // If the user must confirm their email or their account requires approval,
+        // create the account but don't log them in.
+        if (config('access.users.confirm_email') || config('access.users.requires_approval')) {
+            event(new UserRegistered($user));
+
+            return redirect($this->redirectPath())->withFlashSuccess(
+                config('access.users.requires_approval') ?
+                    __('Su cuenta fue creada con éxito y está pendiente de aprobación. Se enviará un correo electrónico cuando su cuenta sea aprobada.') :
+                    __('Su cuenta ha sido creada. Le hemos enviado un correo electrónico con un enlace de verificación.')
+            );
+        }
+
+        auth()->login($user);
+
+        event(new UserRegistered($user));
+
+        return redirect($this->redirectPath());
     }
 }
