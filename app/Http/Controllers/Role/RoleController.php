@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Auth\Role;
+namespace App\Http\Controllers\Role;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
 use App\Http\Controllers\Controller;
-use App\Events\Backend\Auth\Role\RoleDeleted;
-use App\Repositories\Backend\Auth\RoleRepository;
-use App\Repositories\Backend\Auth\PermissionRepository;
-use App\Http\Requests\Backend\Auth\Role\StoreRoleRequest;
-use App\Http\Requests\Backend\Auth\Role\ManageRoleRequest;
-use App\Http\Requests\Backend\Auth\Role\UpdateRoleRequest;
+use App\Events\Role\RoleDeleted;
+use App\Repositories\Auth\RoleRepository;
+use App\Repositories\Auth\PermissionRepository;
+use App\Http\Requests\Role\StoreRoleRequest;
+use App\Http\Requests\Role\ManageRoleRequest;
+use App\Http\Requests\Role\UpdateRoleRequest;
 
 /**
  * Class RoleController.

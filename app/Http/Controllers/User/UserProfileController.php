@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Frontend\Auth\UserRepository;
-use App\Http\Requests\Frontend\User\UpdateProfileRequest;
+use App\Repositories\UserRepository;
+use App\Http\Requests\User\UpdateProfileRequest;
 
 /**
  * Class ProfileController.

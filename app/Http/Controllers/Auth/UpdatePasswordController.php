@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Auth;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Frontend\Auth\UserRepository;
-use App\Http\Requests\Frontend\User\UpdatePasswordRequest;
+use App\Repositories\Auth\UserRepository;
+use App\Http\Requests\User\UpdatePasswordRequest;
 
 /**
  * Class UpdatePasswordController.

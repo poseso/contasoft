@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Backup;
+namespace App\Http\Controllers\Backup;
 
 use Exception;
 use Illuminate\Http\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Auth\User;
+namespace App\Http\Controllers\User;
 
 use App\Models\Auth\UserLog;
 use App\Http\Controllers\Controller;

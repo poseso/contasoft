@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Auth;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Helpers\Auth\SocialiteHelper;
 use Laravel\Socialite\Facades\Socialite;
-use App\Events\Frontend\Auth\UserLoggedIn;
-use App\Repositories\Frontend\Auth\UserRepository;
+use App\Events\Auth\UserLoggedIn;
+use App\Repositories\Auth\UserRepository;
 
 /**
  * Class SocialLoginController.

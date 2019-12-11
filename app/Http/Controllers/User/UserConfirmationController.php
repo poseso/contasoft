@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Auth\User;
+namespace App\Http\Controllers\User;
 
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Auth\UserRepository;
-use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Repositories\Auth\UserRepository;
+use App\Http\Requests\Auth\User\ManageUserRequest;
+use App\Notifications\Auth\UserNeedsConfirmation;
 
 /**
  * Class UserConfirmationController.
