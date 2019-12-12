@@ -3,7 +3,7 @@
 namespace App\Http\Composers;
 
 use Illuminate\View\View;
-use App\Repositories\Auth\UserRepository;
+use App\Repositories\Backend\Auth\UserRepository;
 
 /**
  * Class SidebarComposer.
