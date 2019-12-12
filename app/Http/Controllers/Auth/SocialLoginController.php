@@ -7,7 +7,7 @@ use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Helpers\Auth\SocialiteHelper;
 use Laravel\Socialite\Facades\Socialite;
-use App\Events\Auth\UserLoggedIn;
+use App\Events\User\UserLoggedIn;
 use App\Repositories\Auth\UserRepository;
 
 /**

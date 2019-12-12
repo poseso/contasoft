@@ -7,9 +7,9 @@ use DataTables;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Events\User\UserDeleted;
-use App\Repositories\RoleRepository;
-use App\Repositories\UserRepository;
-use App\Repositories\PermissionRepository;
+use App\Repositories\Auth\RoleRepository;
+use App\Repositories\Auth\UserRepository;
+use App\Repositories\Auth\PermissionRepository;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\ManageUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
@@ -37,9 +37,10 @@ class UserController extends Controller
     /**
      * Show the DataTables resource.
      *
-     * @param UserRequest $request
-     * @throws \Exception
+     * @param ManageUserRequest $request
+     *
      * @return mixed
+     * @throws \Exception
      */
     public function getDataTables(ManageUserRequest $request)
     {

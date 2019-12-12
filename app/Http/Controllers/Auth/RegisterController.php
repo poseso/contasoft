@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Events\Auth\UserRegistered;
+use App\Events\User\UserRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Repositories\Auth\UserRepository;
-use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\User\RegisterRequest;
 
 /**
  * Class RegisterController.

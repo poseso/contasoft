@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
+use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\UpdateProfileRequest;
 
 /**
@@ -29,8 +29,10 @@ class UserProfileController extends Controller
     /**
      * @param UpdateProfileRequest $request
      *
-     * @throws \App\Exceptions\GeneralException
      * @return mixed
+     * @throws \App\Exceptions\GeneralException
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function update(UpdateProfileRequest $request)
     {

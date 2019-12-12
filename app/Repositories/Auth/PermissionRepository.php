@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Backend\Auth;
+namespace App\Repositories\Auth;
 
 use App\Models\Auth\Permission;
 use App\Repositories\BaseRepository;

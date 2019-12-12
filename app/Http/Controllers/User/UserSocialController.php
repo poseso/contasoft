@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Auth\User;
 use App\Models\Auth\SocialAccount;
 use App\Http\Controllers\Controller;
-use App\Repositories\SocialRepository;
+use App\Repositories\Auth\SocialRepository;
 use App\Http\Requests\User\ManageUserRequest;
 
 /**

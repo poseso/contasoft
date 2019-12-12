@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
+use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\ManageUserRequest;
 use App\Http\Requests\User\UpdateUserPasswordRequest;
 

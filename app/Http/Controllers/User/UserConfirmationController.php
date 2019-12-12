@@ -5,8 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
-use App\Http\Requests\Auth\User\ManageUserRequest;
-use App\Notifications\Auth\UserNeedsConfirmation;
+use App\Http\Requests\User\ManageUserRequest;
+use App\Notifications\UserNeedsConfirmation;
 
 /**
  * Class UserConfirmationController.

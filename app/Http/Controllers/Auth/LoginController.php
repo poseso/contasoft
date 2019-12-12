@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\User\UserLoggedIn;
+use App\Events\User\UserLoggedOut;
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -10,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
 class LoginController extends Controller
 {

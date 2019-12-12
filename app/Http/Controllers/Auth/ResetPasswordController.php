@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use App\Repositories\Auth\UserRepository;
-use App\Http\Requests\Auth\ResetPasswordRequest;
+use App\Http\Requests\User\ResetPasswordRequest;
 
 /**
  * Class ResetPasswordController.

@@ -79,6 +79,10 @@ class BackupController extends Controller
 
     /**
      * Downloads a backup zip file.
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function download(Request $request)
     {
@@ -100,6 +104,11 @@ class BackupController extends Controller
 
     /**
      * Deletes a backup file.
+     *
+     * @param $file_name
+     * @param Request $request
+     *
+     * @return string
      */
     public function delete($file_name, Request $request)
     {
