@@ -36,6 +36,7 @@ mix.setPublicPath('public')
     .sass('resources/assets/sass/global/layout/header/skins/base/light.scss', 'public/css/skins/header/base/light.css')
     .sass('resources/assets/sass/global/layout/header/skins/menu/dark.scss', 'public/css/skins/header/menu/dark.css')
     .sass('resources/assets/sass/global/layout/header/skins/menu/light.scss', 'public/css/skins/header/menu/light.css')
+    .sass('resources/assets/sass/pages/login/login-5.scss', 'public/css/login-5.css')
     // Add some custom webpack configuration.
     .webpackConfig({
         resolve: {

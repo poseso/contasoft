@@ -3,78 +3,76 @@
 @section('title', app_name() . ' | ' . __('Iniciar Sesión'))
 
 @section('content')
-    <div class="row">
-        <div class="centered">
-            <div class="form">
-                <div class="form-toggle"></div>
-                <div class="form-panel one">
-                    <div class="form-header">
-                        <h1>INICIAR SESIÓN</h1>
-                    </div>
-
-                    <div class="form-content">
-                        <form>
-                            <div class="form-group">
-                                <label for="username">Usuario</label>
-                                <input type="text" id="username" name="username" />
+    <div class="kt-grid kt-grid--ver kt-grid--root">
+        <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v5 kt-login--signin" id="kt_login">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile" style="background-image: url(media/bg/bg-3.jpg);">
+                <div class="kt-login__left">
+                    <div class="kt-login__wrapper">
+                        <div class="kt-login__content">
+                            <a class="kt-login__logo" href="#">
+                                <img src="media/logos/contasoft-black.svg">
+                            </a>
+                            <h3 class="kt-login__title">JOIN OUR GREAT COMMUNITY</h3>
+                            <span class="kt-login__desc">
+									The ultimate Bootstrap & Angular 6 admin theme framework for next generation web apps.
+								</span>
+                            <div class="kt-login__actions">
+                                <button type="button" id="kt_login_signup" class="btn btn-outline-brand btn-pill">Get An Account</button>
                             </div>
-
-                            <div class="form-group">
-                                <label for="password">Contraseña</label>
-                                <input type="password" id="password" name="password" />
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-6">
-                                    <label class="kt-checkbox kt-checkbox--bold kt-checkbox--info">
-                                        <input type="checkbox"> Recordarme
-                                        <span></span>
-                                    </label>
-                                </div>
-
-                                <div class="col-6 text-right">
-                                    <a class="form-recovery" href="#">Olvidó su contraseña?</a>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit">Iniciar Sesión</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-
-                <div class="form-panel two">
-                    <div class="form-header">
-                        <h1>Registrar Cuenta</h1>
-                    </div>
-
-                    <div class="form-content">
-                        <form>
-                            <div class="form-group">
-                                <label for="username">Usuario</label>
-                                <input type="text" name="username" />
+                <div class="kt-login__divider">
+                    <div></div>
+                </div>
+                <div class="kt-login__right">
+                    <div class="kt-login__wrapper">
+                        <div class="kt-login__signin">
+                            <div class="kt-login__head">
+                                <h3 class="kt-login__title">Login To Your Account</h3>
                             </div>
-
-                            <div class="form-group">
-                                <label for="password">Contraseña</label>
-                                <input type="password" name="password" />
+                            <div class="kt-login__form">
+                                <form class="kt-form" action="">
+                                    <div class="form-group" >
+                                        <input style="background:none;" class="form-control" type="text" placeholder="Username" name="email" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <input style="background:none;" class="form-control form-control-last" type="Password" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="row kt-login__extra">
+                                        <div class="col kt-align-left">
+                                            <label class="kt-checkbox">
+                                                <input type="checkbox" name="remember"> Remember me
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                        <div class="col kt-align-right">
+                                            <a href="javascript:;" id="kt_login_forgot" class="kt-link">Forget Password ?</a>
+                                        </div>
+                                    </div>
+                                    <div class="kt-login__actions">
+                                        <button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Sign In</button>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div class="form-group">
-                                <label for="cpassword">Confirmar Contraseña</label>
-                                <input type="password" name="cpassword" />
+                        </div>
+                        <div class="kt-login__forgot">
+                            <div class="kt-login__head">
+                                <h3 class="kt-login__title">Forgotten Password ?</h3>
+                                <div class="kt-login__desc">Enter your email to reset your password:</div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="email">Dirección de Correo</label>
-                                <input type="email" name="email" />
+                            <div class="kt-login__form">
+                                <form class="kt-form" action="">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
+                                    </div>
+                                    <div class="kt-login__actions">
+                                        <button id="kt_login_forgot_submit" class="btn btn-brand btn-pill btn-elevate">Request</button>
+                                        <button id="kt_login_forgot_cancel" class="btn btn-outline-brand btn-pill">Cancel</button>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div class="form-group">
-                                <button type="submit">Registrarse</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

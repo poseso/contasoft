@@ -3,6 +3,7 @@
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use App\Models\Auth\Permission;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 /**
@@ -25,6 +26,7 @@ class PermissionRoleTableSeeder extends Seeder
             'last_name' => 'Admin',
             'username' => 'superadmin',
             'email' => 'superadmin@admin.com',
+            'email_verified_at' => Carbon::now(),
             'password' => 'secret',
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed' => true,
@@ -35,6 +37,7 @@ class PermissionRoleTableSeeder extends Seeder
             'last_name' => 'Istrator',
             'username' => 'admin',
             'email' => 'admin@admin.com',
+            'email_verified_at' => Carbon::now(),
             'password' => 'secret',
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed' => true,
@@ -45,6 +48,7 @@ class PermissionRoleTableSeeder extends Seeder
             'last_name' => 'Predeterminado',
             'username' => 'defaultuser',
             'email' => 'user@user.com',
+            'email_verified_at' => Carbon::now(),
             'password' => 'secret',
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed' => true,

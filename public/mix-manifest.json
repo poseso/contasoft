@@ -1,7 +1,7 @@
 {
     "/js/manifest.js": "/js/manifest.js?id=7db827d654313dce4250",
-    "/js/app.bundle.js": "/js/app.bundle.js?id=69886706c37b0addc17f",
-    "/css/style.bundle.css": "/css/style.bundle.css?id=7bc7e4e08d3fd7e451ef",
+    "/js/app.bundle.js": "/js/app.bundle.js?id=623ae2ebb4ec4f74da5e",
+    "/css/style.bundle.css": "/css/style.bundle.css?id=ed0567e62a846e77761f",
     "/css/skins/aside/dark.css": "/css/skins/aside/dark.css?id=7124229a5d29b4bd91b0",
     "/css/skins/aside/light.css": "/css/skins/aside/light.css?id=64379e4c44f6eb9aa354",
     "/css/skins/brand/dark.css": "/css/skins/brand/dark.css?id=2b0752c1387017cf7452",
@@ -10,6 +10,7 @@
     "/css/skins/header/base/light.css": "/css/skins/header/base/light.css?id=632ed315fe5c24b5c312",
     "/css/skins/header/menu/dark.css": "/css/skins/header/menu/dark.css?id=e57b98d27ada7817c2a0",
     "/css/skins/header/menu/light.css": "/css/skins/header/menu/light.css?id=c9fccf2628e92a7cbc9f",
-    "/js/custom.bundle.js": "/js/custom.bundle.js?id=877d5f61c5237187bc36",
+    "/css/login-5.css": "/css/login-5.css?id=1c44b10e34e1378f871d",
+    "/js/custom.bundle.js": "/js/custom.bundle.js?id=c8bbcba0a5b8203b6180",
     "/js/vendor.js": "/js/vendor.js?id=58a3efb663072fa216fb"
 }

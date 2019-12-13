@@ -86,10 +86,12 @@ Contacto: carlos@modocreativo.net
 
 {{-- See https://laravel.com/docs/6.x/blade#stacks for usage --}}
 @stack('before-styles')
+<!--begin::Login Layout -->
+{{ style(mix('css/login-5.css')) }}
+<!--end::Login Layout -->
     <!--begin::Global Theme Styles(used by all pages) -->
     {{ style(mix('css/style.bundle.css')) }}
     <!--end::Global Theme Styles -->
-
 @stack('after-styles')
     <!--begin::Layout Skins(used by all pages) -->
     <link href="css/skins/header/base/dark.css" rel="stylesheet" type="text/css" />
@@ -97,10 +99,12 @@ Contacto: carlos@modocreativo.net
     <link href="css/skins/brand/dark.css" rel="stylesheet" type="text/css" />
     <link href="css/skins/aside/dark.css" rel="stylesheet" type="text/css" />
     <!--end::Layout Skins -->
+
+
 </head>
 
 <!-- begin::Body -->
-<body>
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
 <!-- begin:: Page -->
 @yield('content')
@@ -118,6 +122,7 @@ Contacto: carlos@modocreativo.net
 
 @stack('after-scripts')
 {!! script(mix('js/custom.bundle.js')) !!}
+{!! script('js/pages/custom/login/login-general.js') !!}
 <script>
     $(document).ready(function () {
         $('div.alert').not('.alert-solid-danger, .alert-solid-warning, .alert-solid-info, .alert-danger, .alert-info, .alert-warning').delay(6000).slideUp(500);
