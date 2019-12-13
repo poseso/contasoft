@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\User\UserAccountController;
 use App\Http\Controllers\User\UserProfileController;
+use App\Http\Controllers\Settings\SettingsController;
 
 /*
  * Frontend Controllers
@@ -33,4 +33,3 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
         Route::patch('profile/update/settings', [SettingsController::class, 'updateUserSettings'])->name('profile.update.settings')->middleware('permission:settings.update');
     });
 });
-

@@ -1,15 +1,11 @@
 <?php
 
-/*
- * Frontend Routes
- */
+// Frontend Routes
 Route::name('frontend.')->group(function () {
     include_route_files(__DIR__.'/frontend/');
 });
 
-/*
- * Backend Routes
- */
+// Backend Routes
 Route::middleware(['admin'])->name('admin.')->group(function () {
     /*
      * These routes need dashboard.read permission

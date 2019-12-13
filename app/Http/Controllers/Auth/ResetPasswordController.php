@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
+use App\Repositories\Auth\UserRepository;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\ResetPasswordRequest;
 
 /**

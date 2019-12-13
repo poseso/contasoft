@@ -1,9 +1,9 @@
 <?php
 
+use Carbon\Carbon;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use App\Models\Auth\Permission;
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 /**

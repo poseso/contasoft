@@ -29,6 +29,7 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         $user = \Auth::id();
+
         return [
             'first_name' => ['required'],
             'last_name' => ['required'],

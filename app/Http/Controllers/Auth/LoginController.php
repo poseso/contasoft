@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Events\User\UserLoggedIn;
 use App\Events\User\UserLoggedOut;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
 class LoginController extends Controller
@@ -59,7 +59,7 @@ class LoginController extends Controller
 
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         request()->merge([
-            $field => $login
+            $field => $login,
         ]);
 
         return $field;
@@ -69,8 +69,6 @@ class LoginController extends Controller
      * Validate the user login request.
      *
      * @param Request $request
-     * @return void
-     *
      */
     protected function validateLogin(Request $request): void
     {
@@ -143,7 +141,7 @@ class LoginController extends Controller
                     pulse aquí
                 </a> 
                     para re-enviar el correo de verificación.', [
-                'url' => route('frontend.auth.account.confirm.resend', e($user->{$user->getUuidName()}))
+                'url' => route('frontend.auth.account.confirm.resend', e($user->{$user->getUuidName()})),
             ]));
         }
 

@@ -5,18 +5,18 @@ namespace App\Listeners\User;
 use App\Events\User\UserCreated;
 use App\Events\User\UserDeleted;
 use App\Events\User\UserUpdated;
-use App\Events\User\UserRestored;
 use App\Events\User\UserLoggedIn;
-use App\Events\User\UserLoggedOut;
+use App\Events\User\UserRestored;
 use App\Events\User\UserConfirmed;
+use App\Events\User\UserLoggedOut;
 use App\Events\User\UserRegistered;
 use App\Events\User\UserDeactivated;
 use App\Events\User\UserReactivated;
 use App\Events\User\UserUnconfirmed;
 use App\Events\User\UserSocialDeleted;
 use App\Events\User\UserPasswordChanged;
-use App\Events\User\UserProviderRegistered;
 use App\Events\User\UserPermanentlyDeleted;
+use App\Events\User\UserProviderRegistered;
 
 /**
  * Class UserEventListener.

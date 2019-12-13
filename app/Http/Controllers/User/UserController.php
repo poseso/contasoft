@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\Auth\Permission;
 use DataTables;
 use App\Models\Auth\User;
-use App\Http\Controllers\Controller;
+use App\Models\Auth\Permission;
 use App\Events\User\UserDeleted;
+use App\Http\Controllers\Controller;
 use App\Repositories\Auth\RoleRepository;
 use App\Repositories\Auth\UserRepository;
-use App\Repositories\Auth\PermissionRepository;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\ManageUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
+use App\Repositories\Auth\PermissionRepository;
 
 /**
  * Class UserController.
@@ -39,8 +39,8 @@ class UserController extends Controller
      *
      * @param ManageUserRequest $request
      *
-     * @return mixed
      * @throws \Exception
+     * @return mixed
      */
     public function getDataTables(ManageUserRequest $request)
     {

@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Auth\ConfirmAccountController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SocialLoginController;
-use App\Http\Controllers\Auth\PasswordExpiredController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ConfirmAccountController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\UpdatePasswordController;
+use App\Http\Controllers\Auth\PasswordExpiredController;
 
 // All route names are prefixed with 'frontend.auth.'.
 Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {

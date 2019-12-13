@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Role;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
-use App\Http\Controllers\Controller;
 use App\Events\Role\RoleDeleted;
+use App\Http\Controllers\Controller;
 use App\Repositories\Auth\RoleRepository;
-use App\Repositories\Auth\PermissionRepository;
 use App\Http\Requests\Role\StoreRoleRequest;
 use App\Http\Requests\Role\ManageRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
+use App\Repositories\Auth\PermissionRepository;
 
 /**
  * Class RoleController.

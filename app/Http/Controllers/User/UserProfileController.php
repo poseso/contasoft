@@ -29,10 +29,10 @@ class UserProfileController extends Controller
     /**
      * @param UpdateProfileRequest $request
      *
-     * @return mixed
      * @throws \App\Exceptions\GeneralException
      * @throws \Exception
      * @throws \Throwable
+     * @return mixed
      */
     public function update(UpdateProfileRequest $request)
     {

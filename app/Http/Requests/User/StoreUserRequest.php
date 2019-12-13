@@ -41,7 +41,8 @@ class StoreUserRequest extends FormRequest
     /**
      * @return array
      */
-    public function messages() {
+    public function messages()
+    {
         return [
             'first_name.required' => __('El campo Nombre es obligatorio.'),
             'last_name.required' => __('El campo Apellidos es obligatorio.'),

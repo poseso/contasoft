@@ -3,11 +3,11 @@
 namespace App\Repositories\Auth;
 
 use App\Models\Auth\Role;
+use App\Events\Role\RoleCreated;
+use App\Events\Role\RoleUpdated;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
-use App\Events\Role\RoleCreated;
-use App\Events\Role\RoleUpdated;
 
 /**
  * Class RoleRepository.
