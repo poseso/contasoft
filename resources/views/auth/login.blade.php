@@ -29,7 +29,7 @@
                     <div class="kt-login__wrapper">
                         <div class="kt-login__signin">
                             <div class="kt-login__head">
-                                <h3 class="kt-login__title">Login To Your Account</h3>
+                                <h3 class="kt-login__title">{{ __('Iniciar Sesión') }}</h3>
                             </div>
                             <div class="kt-login__form">
                                 <form class="kt-form" action="">
@@ -42,20 +42,26 @@
                                     <div class="row kt-login__extra">
                                         <div class="col kt-align-left">
                                             <label class="kt-checkbox">
-                                                <input type="checkbox" name="remember"> Remember me
+                                                <input type="checkbox" name="remember">
+                                                {{ __('Recordarme') }}
                                                 <span></span>
                                             </label>
                                         </div>
                                         <div class="col kt-align-right">
-                                            <a href="javascript:;" id="kt_login_forgot" class="kt-link">Forget Password ?</a>
+                                            <a href="javascript:;" id="kt_login_forgot" class="kt-link">
+                                                {{ __('¿Has olvidado tu contraseña?') }}
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="kt-login__actions">
-                                        <button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Sign In</button>
+                                        <button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">
+                                            {{ __('Ingresar') }}
+                                        </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
+
                         <div class="kt-login__forgot">
                             <div class="kt-login__head">
                                 <h3 class="kt-login__title">Forgotten Password ?</h3>
