@@ -24,7 +24,7 @@
 
                             @if(config('access.registration'))
                                 <div class="kt-login__actions">
-                                    <a href="{{ route('frontend.auth.register') }}" class="btn btn-outline-brand btn-pill">
+                                    <a href="{{ route('frontend.auth.register') }}" class="btn btn-outline-dark btn-outline-inverse">
                                         {{ __('Regístrate') }}
                                     </a>
                                 </div>
@@ -32,15 +32,15 @@
 
                             <div class="row d-flex justify-content-center">
                                 <div class="">
-                                    <a href="javascript:" class="kt-link">
+                                    <a href="javascript:" class="kt-link blue-700">
                                         {{ __('Términos de Uso') }}
                                     </a>
                                     &nbsp; | &nbsp;
-                                    <a href="javascript:" class="kt-link">
+                                    <a href="javascript:" class="kt-link blue-700">
                                         {{ __('Política de Privacidad') }}
                                     </a>
                                     &nbsp; | &nbsp;
-                                    <a href="{{ route('frontend.contact') }}" class="kt-link">
+                                    <a href="{{ route('frontend.contact') }}" class="kt-link blue-700">
                                         {{ __('Contactenos') }}
                                     </a>
                                 </div>
@@ -95,7 +95,7 @@
                                 @endif
 
                                 <div class="kt-login__actions">
-                                    <button class="btn btn-brand btn-pill btn-elevate">
+                                    <button class="btn btn-outline-dark btn-outline-inverse">
                                         {{ __('Acceder') }}
                                     </button>
                                 </div>
@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col text-center">
                                 <div class="kt-login__head mb-4">
                                     <h3 class="kt-login__title">
                                         {{ __('O iniciar sesión con') }}:
