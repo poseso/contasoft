@@ -105,7 +105,9 @@ Contacto: carlos@modocreativo.net
 
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
-
+@include('includes.partials.read-only')
+@include('includes.partials.logged-in-as')
+@include('includes.partials.messages')
 <!-- begin:: Page -->
 @yield('content')
 <!-- end:: Page -->
@@ -123,6 +125,7 @@ Contacto: carlos@modocreativo.net
 @stack('after-scripts')
 {!! script(mix('js/custom.bundle.js')) !!}
 {!! script('js/pages/custom/login/login-general.js') !!}
+@include('includes.partials.ga')
 <script>
     $(document).ready(function () {
         $('div.alert').not('.alert-solid-danger, .alert-solid-warning, .alert-solid-info, .alert-danger, .alert-info, .alert-warning').delay(6000).slideUp(500);
