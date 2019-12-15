@@ -9,57 +9,56 @@ use App\Http\Controllers\User\UserSessionController;
 use App\Http\Controllers\User\UserPasswordController;
 use App\Http\Controllers\User\UserConfirmationController;
 
-// All route names are prefixed with 'admin.auth'.
+// All route names are prefixed with 'admin.user.'.
 Route::group([
-    'prefix' => 'user',
     'as' => 'user.',
     'middleware' => ['role:'.config('access.users.super_admin_role').'|'.config('access.users.admin_role')],
 ], function () {
     // User Management
     Route::group(['namespace' => 'User'], function () {
         // For DataTables
-        Route::get('user/get', [UserController::class, 'getDataTables'])->name('user.get');
+        Route::get('user/get', [UserController::class, 'getDataTables'])->name('get');
 
         // User Status'
         Route::get('user/deactivated', [UserStatusController::class, 'getDeactivated'])->name('user.deactivated');
-        Route::get('user/deleted', [UserStatusController::class, 'getDeleted'])->name('user.deleted');
+        Route::get('user/deleted', [UserStatusController::class, 'getDeleted'])->name('deleted');
 
         // User CRUD
-        Route::get('user', [UserController::class, 'index'])->name('user.index');
-        Route::get('user/create', [UserController::class, 'create'])->name('user.create');
-        Route::post('user', [UserController::class, 'store'])->name('user.store');
+        Route::get('user', [UserController::class, 'index'])->name('index');
+        Route::get('user/create', [UserController::class, 'create'])->name('create');
+        Route::post('user', [UserController::class, 'store'])->name('store');
 
         // Specific User
         Route::group(['prefix' => 'user/{user}'], function () {
             // User
-            Route::get('/', [UserController::class, 'show'])->name('user.show');
-            Route::get('edit', [UserController::class, 'edit'])->name('user.edit');
-            Route::patch('/', [UserController::class, 'update'])->name('user.update');
-            Route::delete('/', [UserController::class, 'destroy'])->name('user.destroy');
+            Route::get('/', [UserController::class, 'show'])->name('show');
+            Route::get('edit', [UserController::class, 'edit'])->name('edit');
+            Route::patch('/', [UserController::class, 'update'])->name('update');
+            Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
 
             // Account
             Route::get('account/confirm/resend', [UserConfirmationController::class, 'sendConfirmationEmail'])->name('user.account.confirm.resend');
 
             // Status
-            Route::get('mark/{status}', [UserStatusController::class, 'mark'])->name('user.mark')->where(['status' => '[0,1]']);
+            Route::get('mark/{status}', [UserStatusController::class, 'mark'])->name('mark')->where(['status' => '[0,1]']);
 
             // Social
-            Route::delete('social/{social}/unlink', [UserSocialController::class, 'unlink'])->name('user.social.unlink');
+            Route::delete('social/{social}/unlink', [UserSocialController::class, 'unlink'])->name('social.unlink');
 
             // Confirmation
-            Route::get('confirm', [UserConfirmationController::class, 'confirm'])->name('user.confirm');
-            Route::get('unconfirm', [UserConfirmationController::class, 'unconfirm'])->name('user.unconfirm');
+            Route::get('confirm', [UserConfirmationController::class, 'confirm'])->name('confirm');
+            Route::get('unconfirm', [UserConfirmationController::class, 'unconfirm'])->name('unconfirm');
 
             // Password
-            Route::get('password/change', [UserPasswordController::class, 'edit'])->name('user.change-password');
-            Route::patch('password/change', [UserPasswordController::class, 'update'])->name('user.change-password.post');
+            Route::get('password/change', [UserPasswordController::class, 'edit'])->name('change-password');
+            Route::patch('password/change', [UserPasswordController::class, 'update'])->name('change-password.post');
 
             // Session
-            Route::get('clear-session', [UserSessionController::class, 'clearSession'])->name('user.clear-session');
+            Route::get('clear-session', [UserSessionController::class, 'clearSession'])->name('clear-session');
 
             // Deleted
-            Route::get('delete', [UserStatusController::class, 'delete'])->name('user.delete-permanently');
-            Route::get('restore', [UserStatusController::class, 'restore'])->name('user.restore');
+            Route::get('delete', [UserStatusController::class, 'delete'])->name('delete-permanently');
+            Route::get('restore', [UserStatusController::class, 'restore'])->name('restore');
         });
     });
 
@@ -85,8 +84,8 @@ Route::group([
         // Logs Management
         Route::group(['namespace' => 'User'], function () {
             // Security Logs
-            Route::get('user', [UserLogController::class, 'index'])->name('user.index');
-            Route::get('user/{id}/show', [UserLogController::class, 'show'])->name('user.show');
+            Route::get('user', [UserLogController::class, 'index'])->name('index');
+            Route::get('user/{id}/show', [UserLogController::class, 'show'])->name('show');
 //            Route::get('user/{id}/restore', [UserLogController::class, 'restore'])->name('user.restore');
 //            Route::delete('user/{id}/destroy', [UserLogController::class, 'destroy'])->name('user.destroy');
 //            Route::delete('user', [UserLogController::class, 'deleteAll'])->name('user.deleteall');

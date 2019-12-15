@@ -94,10 +94,10 @@ Contacto: carlos@modocreativo.net
     <!--end::Global Theme Styles -->
 @stack('after-styles')
     <!--begin::Layout Skins(used by all pages) -->
-    <link href="css/skins/header/base/dark.css" rel="stylesheet" type="text/css" />
-    <link href="css/skins/header/menu/dark.css" rel="stylesheet" type="text/css" />
-    <link href="css/skins/brand/dark.css" rel="stylesheet" type="text/css" />
-    <link href="css/skins/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/skins/header/base/dark.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/skins/header/menu/dark.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/skins/brand/dark.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Skins -->
 
 

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\User\UserAccountController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Settings\SettingsController;
