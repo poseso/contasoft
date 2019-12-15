@@ -54,7 +54,6 @@
                     <div></div>
                 </div>
 
-
                 <div class="kt-login__right">
                     <div class="kt-login__wrapper">
                         <div class="kt-login__signin">
