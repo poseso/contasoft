@@ -6,8 +6,11 @@ Website: http://www.modocreativo.net/
 Contacto: carlos@modocreativo.net
 -->
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+@langrtl
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+@else
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@endlangrtl
 <head>
     <!-- ======================================================================================================================================
     TITLE
@@ -24,8 +27,8 @@ Contacto: carlos@modocreativo.net
     <meta name="copyright" content="Modo Creativo S.R.L.">
     <meta name="language" content="spanish">
     <meta name="robots" content="index,follow" />
-    <meta name="revised" content="Sabado, 04 de mayo, 2019, 09:57 am" />
-    <meta name="topic" content="Sistema de Gestión Contable - Contasoft">
+    <meta name="revised" content="Sabado, 14 de diciembre, 2019, 09:57 am" />
+    <meta name="topic" content="Sistema Integrado de Gestión Contable - Contasoft">
     <meta name="Classification" content="Accounting">
     <meta name="description" content="@yield('meta_description', 'Sistema Integrado de Gestión Contable')">
     <meta name="author" content="@yield('meta_author', 'Carlos Sánchez')">
@@ -99,8 +102,6 @@ Contacto: carlos@modocreativo.net
     <link href="{{ asset('css/skins/brand/dark.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Skins -->
-
-
 </head>
 
 <!-- begin::Body -->
