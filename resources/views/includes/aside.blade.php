@@ -11,6 +11,7 @@
                 <img width="160" alt="Logo" src="{{ asset('media/logos/contasoft-white.svg') }}">
             </a>
         </div>
+
         <div class="kt-aside__brand-tools">
             <button class="kt-aside__brand-aside-toggler kt-aside__brand-aside-toggler--left" id="kt_aside_toggler">
                 <span></span>

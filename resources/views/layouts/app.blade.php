@@ -106,13 +106,30 @@ Contacto: carlos@modocreativo.net
 <body class="kt-page--loading-enabled kt-page--loading kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
 <!-- begin::Page loader -->
-<div class="kt-page-loader kt-page-loader--logo">
-    <img alt="Logo" src="{{ asset('media/logos/logo-mini-brand-md.png') }}"/>
-    <div class="kt-spinner kt-spinner--danger"></div>
-</div>
+@include('layouts.partials._page-loader')
 <!-- end::Page Loader -->
 
 <!-- begin:: Page -->
+@include('layouts.partials._header.base-mobile')
+<div class="kt-grid kt-grid--hor kt-grid--root">
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+        @include('layouts.partials._aside.base')
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+            @include('layouts.partials._header.base')
+            <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+                @include('layouts.partials._subheader.subheader-v1')
+                @include('layouts.partials._content.base')
+            </div>
+            @include('layouts.partials._footer.base')
+        </div>
+    </div>
+</div>
+<!-- end:: Page -->
+
+@include('layouts.partials._topbar.offcanvas.search')
+@include('layouts.partials._quick-panel')
+@include('layouts.partials._scrolltop')
+@include('layouts.partials._chat')
 
 <!-- begin:: Header Mobile -->
 <div id="kt_header_mobile" class="kt-header-mobile kt-header-mobile--fixed">

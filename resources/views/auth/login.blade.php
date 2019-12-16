@@ -5,12 +5,12 @@
 @section('content')
     <div class="kt-grid kt-grid--ver kt-grid--root">
         <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v5 kt-login--signin" id="kt_login">
-            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile" style="background-image: url(media/bg/bg-3.jpg);">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile" style="background-image: url({{ asset('media/bg/bg-3.jpg') }});">
                 <div class="kt-login__left">
                     <div class="kt-login__wrapper">
                         <div class="kt-login__content">
                             <a class="kt-login__logo" href="#">
-                                <img src="media/logos/contasoft-black.svg">
+                                <img src="{{ asset('media/logos/contasoft-black.svg') }}">
                             </a>
 
                             <hr >
@@ -65,8 +65,8 @@
 
                             <div class="kt-login__form">
                                 {{ html()->form('POST', route('frontend.auth.login.post'))->class('kt-form')->open() }}
-                                <input class="form-control form-control-lg" style="background:none;" type="text" name="data" id="data" placeholder="{{ __('Usuario o Dirección de Correo') }}" maxlength="191" autofocus>
-                                <input class="form-control form-control-lg form-control-last" style="background:none;" type="password" name="password" id="password" placeholder="{{ __('Contraseña') }}">
+                                <input class="form-control form-control-lg" style="background:none;" type="text" name="data" id="data" placeholder="{{ __('Usuario o Dirección de Correo') }}" autocomplete="data" maxlength="191" autofocus>
+                                <input class="form-control form-control-lg form-control-last" style="background:none;" type="password" name="password" id="password" placeholder="{{ __('Contraseña') }}" autocomplete="current-password">
 
                                 <div class="row kt-login__extra">
                                     <div class="col-3 kt-align-left">
@@ -89,8 +89,8 @@
                                         <div class="col">
                                             @captcha
                                             {{ html()->hidden('captcha_status', 'true') }}
-                                        </div><!--col-->
-                                    </div><!--row-->
+                                        </div>
+                                    </div>
                                 @endif
 
                                 <div class="kt-login__actions">
