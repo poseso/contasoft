@@ -20,7 +20,7 @@ Route::group([
         Route::get('user/get', [UserController::class, 'getDataTables'])->name('get');
 
         // User Status'
-        Route::get('user/deactivated', [UserStatusController::class, 'getDeactivated'])->name('user.deactivated');
+        Route::get('user/deactivated', [UserStatusController::class, 'getDeactivated'])->name('deactivated');
         Route::get('user/deleted', [UserStatusController::class, 'getDeleted'])->name('deleted');
 
         // User CRUD

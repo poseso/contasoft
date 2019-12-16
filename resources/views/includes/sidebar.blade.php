@@ -25,9 +25,9 @@
                     <i class="kt-menu__section-icon flaticon-more-v2"></i>
                 </li>
 
-                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Route::is('admin.auth.user.*'), 'kt-menu__item--open kt-menu__item--active') }}"
+                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Route::is('admin.user.*'), 'kt-menu__item--open kt-menu__item--active') }}"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Route::is('admin/auth*')) }}">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Route::is('admin/user*')) }}">
                         <i class="kt-menu__link-icon flaticon-users-1"></i>
                         <span class="kt-menu__link-text">
                                 {{ __('Usuarios') }}
@@ -46,8 +46,8 @@
                     <div class="kt-menu__submenu">
                         <span class="kt-menu__arrow"></span>
                         <ul class="kt-menu__subnav">
-                            <li class="kt-menu__item @if(active_class(Route::is('admin.auth.user.index'))) kt-menu__item--active @endif" aria-haspopup="true">
-                                <a href="{{ route('admin.auth.user.index') }}" class="kt-menu__link">
+                            <li class="kt-menu__item @if(active_class(Route::is('admin.user.index'))) kt-menu__item--active @endif" aria-haspopup="true">
+                                <a href="{{ route('admin.user.index') }}" class="kt-menu__link">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span></span>
                                     </i>
@@ -66,8 +66,8 @@
                                 </a>
                             </li>
 
-                            <li class="kt-menu__item @if(active_class(Route::is('admin.auth.user.create'))) kt-menu__item--active @endif" aria-haspopup="true">
-                                <a href="{{ route('admin.auth.user.create') }}" class="kt-menu__link">
+                            <li class="kt-menu__item @if(active_class(Route::is('admin.user.create'))) kt-menu__item--active @endif" aria-haspopup="true">
+                                <a href="{{ route('admin.user.create') }}" class="kt-menu__link">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span></span>
                                     </i>
@@ -78,8 +78,8 @@
                                 </a>
                             </li>
 
-                            <li class="kt-menu__item @if(active_class(Route::is('admin.auth.user.deactivated'))) kt-menu__item--active @endif" aria-haspopup="true">
-                                <a href="{{ route('admin.auth.user.deactivated') }}" class="kt-menu__link">
+                            <li class="kt-menu__item @if(active_class(Route::is('admin.user.deactivated'))) kt-menu__item--active @endif" aria-haspopup="true">
+                                <a href="{{ route('admin.user.deactivated') }}" class="kt-menu__link">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span></span>
                                     </i>
@@ -90,8 +90,8 @@
                                 </a>
                             </li>
 
-                            <li class="kt-menu__item @if(active_class(Route::is('admin.auth.user.deleted'))) kt-menu__item--active @endif" aria-haspopup="true">
-                                <a href="{{ route('admin.auth.user.deleted') }}" class="kt-menu__link">
+                            <li class="kt-menu__item @if(active_class(Route::is('admin.user.deleted'))) kt-menu__item--active @endif" aria-haspopup="true">
+                                <a href="{{ route('admin.user.deleted') }}" class="kt-menu__link">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span></span>
                                     </i>
@@ -105,9 +105,9 @@
                     </div>
                 </li>
 
-                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Route::is('admin.auth.role.*'), 'kt-menu__item--open kt-menu__item--active') }}"
+                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Route::is('admin.user.role.*'), 'kt-menu__item--open kt-menu__item--active') }}"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Route::is('admin/auth/role*')) }}">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Route::is('role*')) }}">
                         <i class="kt-menu__link-icon flaticon-safe-shield-protection"></i>
                         <span class="kt-menu__link-text">
                             {{ __('Perfiles') }}
@@ -118,8 +118,8 @@
                     <div class="kt-menu__submenu">
                         <span class="kt-menu__arrow"></span>
                         <ul class="kt-menu__subnav">
-                            <li class="kt-menu__item @if(active_class(Route::is('admin.auth.role.index'))) kt-menu__item--active @endif" aria-haspopup="true">
-                                <a href="{{ route('admin.auth.role.index') }}" class="kt-menu__link">
+                            <li class="kt-menu__item @if(active_class(Route::is('admin.user.role.index'))) kt-menu__item--active @endif" aria-haspopup="true">
+                                <a href="{{ route('admin.user.role.index') }}" class="kt-menu__link">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span></span>
                                     </i>
@@ -130,8 +130,8 @@
                                 </a>
                             </li>
 
-                            <li class="kt-menu__item @if(active_class(Route::is('admin.auth.role.create'))) kt-menu__item--active @endif" aria-haspopup="true">
-                                <a href="{{ route('admin.auth.role.create') }}" class="kt-menu__link">
+                            <li class="kt-menu__item @if(active_class(Route::is('admin.user.role.create'))) kt-menu__item--active @endif" aria-haspopup="true">
+                                <a href="{{ route('admin.user.role.create') }}" class="kt-menu__link">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span></span>
                                     </i>
@@ -214,8 +214,8 @@
                     </div>
                 </li>
 
-                <li class="kt-menu__item @if(active_class(Route::is('admin.auth.logs.user.index*'))) kt-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{{ route('admin.auth.logs.user.index') }}" class="kt-menu__link">
+                <li class="kt-menu__item @if(active_class(Route::is('admin.user.logs.index*'))) kt-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{{ route('admin.user.logs.index') }}" class="kt-menu__link">
                         <i class="kt-menu__link-icon flaticon-graphic"></i>
                         <span class="kt-menu__link-text">
                         {{ __('Eventos') }}

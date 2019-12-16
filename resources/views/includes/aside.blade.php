@@ -20,7 +20,7 @@
     <!-- end:: Aside -->
 
     <!-- begin:: Aside Menu -->
-@include('backend.includes.sidebar')
+@include('includes.sidebar')
 <!-- end:: Aside Menu -->
 </div>
 <!-- end:: Aside -->

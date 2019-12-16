@@ -26,8 +26,8 @@ Contacto: carlos@modocreativo.net
         <meta name="copyright" content="Modo Creativo S.R.L.">
         <meta name="language" content="spanish">
         <meta name="robots" content="index,follow" />
-        <meta name="revised" content="Sábado, 23 de noviembre, 2019, 09:57 am" />
-        <meta name="topic" content="Sistema de Gestión Contable - Contasoft">
+        <meta name="revised" content="Sabado, 14 de diciembre, 2019, 09:57 am" />
+        <meta name="topic" content="Sistema Integrado de Gestión Contable - Contasoft">
         <meta name="Classification" content="Accounting">
         <meta name="description" content="@yield('meta_description', 'Sistema Integrado de Gestión Contable')">
         <meta name="author" content="@yield('meta_author', 'Carlos Sánchez')">
@@ -90,16 +90,20 @@ Contacto: carlos@modocreativo.net
         @stack('before-styles')
 
         <!--begin::Global Theme Styles(used by all pages) -->
-        {{ style(mix('css/backend.css')) }}
+        {{ style(mix('css/style.bundle.css')) }}
         <!--end::Global Theme Styles -->
 
         @stack('after-styles')
-        {{ style(mix('css/datatables.bundle.css')) }}
-        {{ style('css/custom.css') }}
+        <!--begin::Layout Skins(used by all pages) -->
+        <link href="{{ asset('css/skins/header/base/dark.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/skins/header/menu/dark.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/skins/brand/dark.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />
+        <!--end::Layout Skins -->
     </head>
 
 <!-- begin::Body -->
-<body class="kt-page--loading-enabled kt-page--loading kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+<body class="kt-page--loading-enabled kt-page--loading kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
 <!-- begin::Page loader -->
 <div class="kt-page-loader kt-page-loader--logo">
@@ -136,9 +140,9 @@ Contacto: carlos@modocreativo.net
 
 <div class="kt-grid kt-grid--hor kt-grid--root">
     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-        @include('backend.includes.aside')
+        @include('includes.aside')
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-            @include('backend.includes.header')
+            @include('includes.header')
             @include('includes.partials.read-only')
             @include('includes.partials.logged-in-as')
             {!! Breadcrumbs::render() !!}
@@ -150,19 +154,17 @@ Contacto: carlos@modocreativo.net
                 </div>
                 <!-- end:: Content -->
             </div>
-            @include('backend.includes.footer')
+            @include('includes.footer')
             <!-- Scripts -->
             @stack('before-scripts')
+            <!--begin::Global Theme Bundle (used by all pages) -->
             {!! script(mix('js/manifest.js')) !!}
             {!! script(mix('js/vendor.js')) !!}
-
-            <!--begin::Global Theme Bundle (used by all pages) -->
-            {!! script(mix('js/backend.js')) !!}
+            {!! script(mix('js/app.bundle.js')) !!}
             <!--end::Global Theme Bundle -->
 
             @stack('after-scripts')
-            {!! script('custom/datatables/datatables.bundle.js') !!}
-            {!! script('js/custom.js') !!}
+            {!! script(mix('js/custom.bundle.js')) !!}
         </div>
     </div>
 </div>
@@ -458,40 +460,7 @@ Contacto: carlos@modocreativo.net
 <!-- end::Scrolltop -->
 
 {{--@include('backend.includes.toolbar')--}}
-@include('backend.includes.chat')
-
-<!-- begin::Global Config(global config for global JS scripts) -->
-<script>
-    let KTAppOptions = {
-        "colors":{
-            "state":{
-                "brand":"#2c77f4",
-                "light":"#ffffff",
-                "dark":"#282a3c",
-                "primary":"#5867dd",
-                "success":"#34bfa3",
-                "info":"#36a3f7",
-                "warning":"#ffb822",
-                "danger":"#fd3995"
-            },
-            "base":{
-                "label":[
-                    "#c5cbe3",
-                    "#a1a8c3",
-                    "#3d4465",
-                    "#3e4466"
-                ],
-                "shape":[
-                    "#f0f3ff",
-                    "#d9dffa",
-                    "#afb4d4",
-                    "#646c9a"
-                ]
-            }
-        }
-    };
-</script>
-<!-- end::Global Config -->
+@include('includes.chat')
 
 <script>
     $(document).ready(function () {
