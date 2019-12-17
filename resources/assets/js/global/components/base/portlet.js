@@ -19,14 +19,14 @@ var KTPortlet = function(elementId, options) {
         tooltips: true,
         tools: {
             toggle: {
-                collapse: 'Collapse',
-                expand: 'Expand'
+                collapse: 'Colapsar',
+                expand: 'Expander'
             },
-            reload: 'Reload',
-            remove: 'Remove',
+            reload: 'Refrescar',
+            remove: 'Remover',
             fullscreen: {
-                on: 'Fullscreen',
-                off: 'Exit Fullscreen'
+                on: 'Encender Fullscreen',
+                off: 'Apagar Fullscreen'
             }
         },
         sticky: {

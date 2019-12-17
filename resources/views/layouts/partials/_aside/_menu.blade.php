@@ -34,15 +34,13 @@
                             {{ __('Usuarios') }}
                         </span>
 
-{{--                        @if ($pending_approval > 0)--}}
+                        @if ($pending_approval > 0)
                             <span class="kt-menu__link-badge">
                                 <span class="kt-badge kt-badge--warning kt-badge--md">
-{{--                                    {{ $pending_approval }}--}}
-                                    2
+                                    {{ $pending_approval }}
                                 </span>
                             </span>
-{{--                        @endif--}}
-
+                        @endif
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
 
@@ -59,14 +57,13 @@
                                         {{ __('Listado de Usuarios') }}
                                     </span>
 
-{{--                                    @if ($pending_approval > 0)--}}
+                                    @if ($pending_approval > 0)
                                         <span class="kt-menu__link-badge">
                                             <span class="kt-badge kt-badge--warning">
-{{--                                                {{ $pending_approval }}--}}
-                                                2
+                                                {{ $pending_approval }}
                                             </span>
                                         </span>
-{{--                                    @endif--}}
+                                    @endif
                                 </a>
                             </li>
 

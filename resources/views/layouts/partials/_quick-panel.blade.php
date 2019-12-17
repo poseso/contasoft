@@ -7,19 +7,19 @@
 	<div class="kt-quick-panel__nav">
 		<ul class="nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand kt-notification-item-padding-x" role="tablist">
 			<li class="nav-item active">
-				<a class="nav-link active" data-toggle="tab" href="#kt_quick_panel_tab_notifications" role="tab">
+				<a class="nav-link active" data-toggle="tab" href="#notifications" role="tab">
                     Notifications
                 </a>
 			</li>
 
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#kt_quick_panel_tab_logs" role="tab">
+				<a class="nav-link" data-toggle="tab" href="#logs" role="tab">
                     Audit Logs
                 </a>
 			</li>
 
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#kt_quick_panel_tab_settings" role="tab">
+				<a class="nav-link" data-toggle="tab" href="#settings" role="tab">
                     Settings
                 </a>
 			</li>
@@ -28,7 +28,7 @@
 
 	<div class="kt-quick-panel__content">
 		<div class="tab-content">
-			<div class="tab-pane fade show kt-scroll active" id="kt_quick_panel_tab_notifications" role="tabpanel">
+			<div class="tab-pane fade show kt-scroll active" id="notifications" role="tabpanel">
 				<div class="kt-notification">
 					<a href="#" class="kt-notification__item">
 						<div class="kt-notification__item-icon">
@@ -224,7 +224,7 @@
 				</div>
 			</div>
 
-			<div class="tab-pane fade kt-scroll" id="kt_quick_panel_tab_logs" role="tabpanel">
+			<div class="tab-pane fade kt-scroll" id="logs" role="tabpanel">
 				<div class="kt-notification-v2">
 					<a href="#" class="kt-notification-v2__item">
 						<div class="kt-notification-v2__item-icon">
@@ -356,7 +356,7 @@
 				</div>
 			</div>
 
-			<div class="tab-pane kt-quick-panel__content-padding-x fade kt-scroll" id="kt_quick_panel_tab_settings" role="tabpanel">
+			<div class="tab-pane kt-quick-panel__content-padding-x fade kt-scroll" id="settings" role="tabpanel">
 				<form class="kt-form">
 					<div class="kt-heading kt-heading--sm kt-heading--space-sm">
                         Customer Care

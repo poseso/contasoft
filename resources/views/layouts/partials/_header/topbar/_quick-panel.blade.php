@@ -1,6 +1,6 @@
 <!--begin: Quick panel toggler -->
-<div class="kt-header__topbar-item kt-header__topbar-item--quick-panel" data-toggle="kt-tooltip" title="Quick panel" data-placement="right">
-	<span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn">
+<div class="kt-header__topbar-item kt-header__topbar-item--quick-panel">
+	<span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn" data-toggle="kt-tooltip-desktop" data-skin="brand" title="{{ __('Panel Rápido') }}" data-placement="bottom">
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
 			<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 				<rect x="0" y="0" width="24" height="24" />

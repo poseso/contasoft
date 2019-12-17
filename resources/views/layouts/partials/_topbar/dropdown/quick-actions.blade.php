@@ -1,4 +1,3 @@
-
 <!--begin: Head -->
 <div class="kt-head kt-head--skin-dark" style="background-image: url({{ asset('media/misc/bg-1.jpg') }}">
 	<h3 class="kt-head__title">
@@ -7,7 +6,6 @@
 		<span class="btn btn-success btn-sm btn-bold btn-font-md">23 tasks pending</span>
 	</h3>
 </div>
-
 <!--end: Head -->
 
 <!--begin: Grid Nav -->

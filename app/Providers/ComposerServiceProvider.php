@@ -28,8 +28,8 @@ class ComposerServiceProvider extends ServiceProvider
 
         // Backend
         View::composer(
-        // This binds items like number of users pending approval when account approval is set to true
-            'includes.sidebar',
+            // This binds items like number of users pending approval when account approval is set to true
+            'layouts.partials._aside._menu',
             SidebarComposer::class
         );
     }
