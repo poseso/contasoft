@@ -3,11 +3,11 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Auth\AuthenticationException;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Spatie\Permission\Exceptions\UnauthorizedException;
