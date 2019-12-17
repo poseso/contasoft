@@ -7,7 +7,7 @@
  */
 
 // Datatables.net
-window.$.fn.DataTable = require("datatables.net");
+require("datatables.net");
 require("datatables.net-bs4");
 require("datatables.net-autofill");
 require("datatables.net-autofill-bs4");

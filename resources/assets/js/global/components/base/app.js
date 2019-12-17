@@ -10,7 +10,7 @@ var KTApp = function() {
 
     var initTooltip = function(el) {
         var skin = el.data('skin') ? 'tooltip-' + el.data('skin') : '';
-        var width = el.data('width') == 'auto' ? 'tooltop-auto-width' : '';
+        var width = el.data('width') === 'auto' ? 'tooltop-auto-width' : '';
         var triggerValue = el.data('trigger') ? el.data('trigger') : 'hover';
         var placement = el.data('placement') ? el.data('placement') : 'left';
 
@@ -21,14 +21,14 @@ var KTApp = function() {
                 <div class="tooltip-inner"></div>\
             </div>'
         });
-    }
+    };
 
     var initTooltips = function() {
         // init bootstrap tooltips
         $('[data-toggle="kt-tooltip"]').each(function() {
             initTooltip($(this));
         });
-    }
+    };
 
     var initPopover = function(el) {
         var skin = el.data('skin') ? 'popover-' + el.data('skin') : '';
@@ -43,14 +43,14 @@ var KTApp = function() {
                 <div class="popover-body"></div>\
             </div>'
         });
-    }
+    };
 
     var initPopovers = function() {
         // init bootstrap popover
         $('[data-toggle="kt-popover"]').each(function() {
             initPopover($(this));
         });
-    }
+    };
 
     var initFileInput = function() {
         // init bootstrap popover
@@ -58,13 +58,13 @@ var KTApp = function() {
             var fileName = $(this).val();
             $(this).next('.custom-file-label').addClass("selected").html(fileName);
         });
-    }
+    };
 
     var initPortlet = function(el, options) {
         // init portlet tools
         var el = $(el);
         var portlet = new KTPortlet(el[0], options);
-    }
+    };
 
     var initPortlets = function() {
         // init portlet tools
@@ -76,7 +76,7 @@ var KTApp = function() {
                 el.data('data-ktportlet-initialized', true);
             }
         });
-    }
+    };
 
     var initScroll = function() {
         $('[data-scroll="true"]').each(function() {
@@ -94,18 +94,18 @@ var KTApp = function() {
                 }
             });
         });
-    }
+    };
 
     var initAlerts = function() {
         // init bootstrap popover
         $('body').on('click', '[data-close=alert]', function() {
             $(this).closest('.alert').hide();
         });
-    }
+    };
 
     var initSticky = function() {
         var sticky = new Sticky('[data-sticky="true"]');
-    }
+    };
 
     var initAbsoluteDropdown = function(context) {
         var dropdownMenu;
@@ -127,7 +127,7 @@ var KTApp = function() {
         	$(e.target).append(dropdownMenu.detach());
         	dropdownMenu.hide();
         });
-    }
+    };
 
     var initAbsoluteDropdowns = function() {
         $('body').on('show.bs.dropdown', function(e) {
@@ -164,7 +164,7 @@ var KTApp = function() {
             $detachedDropdownMenu.hide();
         });
     };
-    
+
     return {
         init: function(options) {
             if (options && options.colors) {

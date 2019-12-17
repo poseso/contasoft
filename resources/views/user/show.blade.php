@@ -1,9 +1,9 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', __('Administración de Usuarios') . ' | ' . __('Visualizando Usuario') . ' | ' . app_name())
 
 @section('breadcrumb-links')
-    @include('backend.auth.user.includes.breadcrumb-links')
+    @include('user.includes.breadcrumb-links')
 @endsection
 
 @section('content')
@@ -38,7 +38,7 @@
         <div class="kt-portlet__body">
             <div class="tab-content">
                 <div class="tab-pane active" id="resumen" role="tabpanel">
-                    @include('backend.auth.user.show.tabs.overview')
+                    @include('user.show.tabs.overview')
                 </div>
             </div>
         </div>

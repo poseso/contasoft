@@ -38,7 +38,27 @@ window.PerfectScrollbar = require("perfect-scrollbar/dist/perfect-scrollbar");
 //** Begin: Global optional plugins
 
 // Datatables
-require('datatables.net-bs4');
+require("datatables.net-bs4");
+require("datatables.net-autofill");
+require("datatables.net-autofill-bs4");
+require("datatables.net-buttons-bs4");
+require("datatables.net-buttons/js/buttons.print.js");
+require("datatables.net-buttons/js/buttons.html5.js");
+require("datatables.net-buttons/js/buttons.flash.js");
+require("datatables.net-buttons/js/buttons.colVis.js");
+require("datatables.net-colreorder-bs4");
+require("datatables.net-fixedcolumns-bs4");
+require("datatables.net-fixedheader-bs4");
+require("datatables.net-keytable-bs4");
+require("datatables.net-responsive-bs4");
+require("datatables.net-rowgroup-bs4");
+require("datatables.net-rowreorder-bs4");
+require("datatables.net-scroller-bs4");
+require("datatables.net-select-bs4");
+require("jszip/dist/jszip.min.js");
+require("pdfmake/build/pdfmake.min.js");
+require("pdfmake/build/vfs_fonts.js");
+window.JSZip = require('jszip');
 
 // Daterangepicker
 require("bootstrap-daterangepicker/daterangepicker.css");
@@ -58,8 +78,9 @@ require("../../../../assets/js/global/integration/plugins/bootstrap-switch.init.
 
 // Sweetalert2
 require("sweetalert2/dist/sweetalert2.css");
-import swal from "sweetalert2/dist/sweetalert2";
-window.swal = swal;
+// import swal from "sweetalert2/dist/sweetalert2";
+import Swal from 'sweetalert2/dist/sweetalert2';
+window.Swal = Swal;
 require("es6-promise-polyfill/promise.min.js");
 require("../../../../assets/js/global/integration/plugins/sweetalert2.init");
 

@@ -98,33 +98,29 @@ $(function () {
     });
 
     // Change Tab on load
-    // var hash = window.location.hash;
-    // hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-    //
-    // $('.nav-tabs li > a').on('click', function (e) {
-    //     $(this).tab('show');
-    //     history.pushState(null,null, this.hash);
-    // });
+    var hash = window.location.hash;
+    hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 
-    var url = document.URL;
-    var hash = url.substring(url.indexOf('#'));
-
-    $(".nav-tabs").find("li a").each(function(key, val) {
-        if (hash == $(val).attr('href')) {
-            $(val).click();
-        }
-
-        $(val).click(function(ky, vl) {
-            location.hash = $(this).attr('href');
-        });
+    $('.nav-tabs li > a').on('click', function (e) {
+        $(this).tab('show');
+        history.pushState(null,null, this.hash);
     });
+
+    $(window).bind('hashchange', function(){
+        $('ul.nav a[href^="' + document.location.hash + '"]').click();
+    });
+
+    if (document.location.hash.length) {
+        $(window).trigger('hashchange');
+    }
 
     $('table').on('draw.dt', function() {
         $('[data-toggle="tooltip"]').tooltip();
         $('[data-toggle="popover"]').popover({
             trigger: "hover"
         });
-        KTApp.initTooltips();
+
+        initDesktopTooltips();
     });
 
     $('.select2').select2({
@@ -139,7 +135,6 @@ $(function () {
         }
     });
 });
-
 
 let initDesktopTooltips = function() {
     if (KTUtil.isInResponsiveRange('desktop')) {

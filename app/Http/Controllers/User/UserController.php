@@ -47,7 +47,7 @@ class UserController extends Controller
         return Datatables::of($this->userRepository->getForDataTable($request->get('status'), $request->get('trashed')))
             ->escapeColumns(['first_name', 'last_name', 'email'])
             ->editColumn('confirmed', function ($user) {
-                return view('backend.auth.user.includes.confirm', ['user' => $user]);
+                return view('user.includes.confirm', ['user' => $user]);
             })
             ->filterColumn('confirmed', function ($query, $keyword) {
                 $param = (strtolower($keyword) == __('si')) ? 1 : 0;
@@ -65,7 +65,7 @@ class UserController extends Controller
                 }
             })
             ->addColumn('social', function ($user) {
-                return view('backend.auth.user.includes.social-buttons', ['user' => $user]);
+                return view('user.includes.social-buttons', ['user' => $user]);
             })
             ->addColumn('roles', function ($user) {
                 return "<span class='badge badge-success bg-light-blue-a300'>$user->roles_label</span>";
@@ -74,7 +74,7 @@ class UserController extends Controller
                 return "<span class='badge badge-success bg-yellow-900'>$user->permissions_label</span>";
             })
             ->addColumn('actions', function ($user) {
-                return view('backend.auth.user.includes.actions', ['user' => $user]);
+                return view('user.includes.actions', ['user' => $user]);
             })
             ->make(true);
     }
@@ -86,7 +86,7 @@ class UserController extends Controller
      */
     public function index(ManageUserRequest $request)
     {
-        return view('backend.auth.user.index')
+        return view('user.index')
             ->withUsers($this->userRepository->getActivePaginated(25, 'id', 'asc'));
     }
 
@@ -139,7 +139,7 @@ class UserController extends Controller
      */
     public function show(ManageUserRequest $request, User $user)
     {
-        return view('backend.auth.user.show')
+        return view('user.show')
             ->withUser($user);
     }
 

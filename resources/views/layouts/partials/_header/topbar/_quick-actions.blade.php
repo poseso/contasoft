@@ -1,4 +1,3 @@
-
 <!--begin: Quick Actions -->
 <div class="kt-header__topbar-item dropdown">
 	<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px" aria-expanded="true">
@@ -11,14 +10,14 @@
 					<rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5" />
 					<rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5" />
 				</g>
-			</svg> </span>
+			</svg>
+        </span>
 	</div>
+
 	<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
 		<form>
-
-			<!--[html-partial:include:{"file":"partials/_topbar/dropdown/quick-actions.html"}]/-->
+            @include('layouts.partials._topbar.dropdown.quick-actions')
 		</form>
 	</div>
 </div>
-
 <!--end: Quick Actions -->

@@ -18,12 +18,12 @@
 
             <tr>
                 <th>{{ __('Estado') }}</th>
-                <td>@include('backend.auth.user.includes.status', ['user' => $user])</td>
+                <td>@include('user.includes.status', ['user' => $user])</td>
             </tr>
 
             <tr>
                 <th>{{ __('Confirmado') }}</th>
-                <td>@include('backend.auth.user.includes.confirm', ['user' => $user])</td>
+                <td>@include('user.includes.confirm', ['user' => $user])</td>
             </tr>
 
             <tr>

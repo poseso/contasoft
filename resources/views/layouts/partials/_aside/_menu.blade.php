@@ -34,13 +34,15 @@
                             {{ __('Usuarios') }}
                         </span>
 
-                        @if ($pending_approval > 0)
+{{--                        @if ($pending_approval > 0)--}}
                             <span class="kt-menu__link-badge">
                                 <span class="kt-badge kt-badge--warning kt-badge--md">
-                                    {{ $pending_approval }}
+{{--                                    {{ $pending_approval }}--}}
+                                    2
                                 </span>
                             </span>
-                        @endif
+{{--                        @endif--}}
+
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
 
@@ -57,13 +59,14 @@
                                         {{ __('Listado de Usuarios') }}
                                     </span>
 
-                                    @if ($pending_approval > 0)
+{{--                                    @if ($pending_approval > 0)--}}
                                         <span class="kt-menu__link-badge">
                                             <span class="kt-badge kt-badge--warning">
-                                                {{ $pending_approval }}
+{{--                                                {{ $pending_approval }}--}}
+                                                2
                                             </span>
                                         </span>
-                                    @endif
+{{--                                    @endif--}}
                                 </a>
                             </li>
 
@@ -113,6 +116,7 @@
                         <span class="kt-menu__link-text">
                             {{ __('Perfiles') }}
                         </span>
+
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
 
@@ -224,6 +228,7 @@
                     </a>
                 </li>
             @endif
+
             <li class="kt-menu__section kt-menu__section--first">
                 <h4 class="kt-menu__section-text">
                     {{ __('Configuraciones') }}

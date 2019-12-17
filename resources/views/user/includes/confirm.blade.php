@@ -1,13 +1,13 @@
 @if ($user->isConfirmed())
     @if ($user->id !== 1 && $user->id !== auth()->id())
-        <a href="{{ route( 'admin.auth.user.unconfirm', $user) }}" data-toggle="kt-tooltip-desktop" data-skin="brand" data-placement="top" data-original-title="{{ __('Deshacer') }}" name="confirm_item">
+        <a href="{{ route( 'admin.user.unconfirm', $user) }}" data-toggle="kt-tooltip-desktop" data-skin="brand" data-placement="top" data-original-title="{{ __('Deshacer') }}" name="confirm_item">
             <span class="badge badge-success bg-green-500" style="cursor:pointer">{{ __('Si') }}</span>
         </a>
     @else
         <span class="badge badge-success bg-green-500">{{ __('Si') }}</span>
     @endif
 @else
-    <a href="{{ route('admin.auth.user.confirm', $user) }}" data-toggle="kt-tooltip-desktop" data-skin="brand" data-placement="top" data-original-title="{{ __('Confirmar') }}" name="confirm_item">
+    <a href="{{ route('admin.user.confirm', $user) }}" data-toggle="kt-tooltip-desktop" data-skin="brand" data-placement="top" data-original-title="{{ __('Confirmar') }}" name="confirm_item">
         <span class="badge badge-danger bg-red-500" style="cursor:pointer">{{ __('No') }}</span>
     </a>
 @endif
