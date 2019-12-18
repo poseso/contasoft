@@ -5,7 +5,7 @@ namespace Tests\Feature\Backend\Role;
 use Tests\TestCase;
 use App\Models\Auth\Role;
 use Illuminate\Support\Facades\Event;
-use App\Events\Backend\Auth\Role\RoleUpdated;
+use App\Events\Role\RoleUpdated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UpdateRoleTest extends TestCase
@@ -18,7 +18,7 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $this->get("/admin/auth/role/{$role->id}/edit")->assertStatus(200);
+        $this->get("/role/{$role->id}/edit")->assertStatus(200);
     }
 
     /** @test */
@@ -27,9 +27,20 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $response = $this->patch("/admin/auth/role/{$role->id}", ['name' => '']);
+        $response = $this->patch("/role/{$role->id}", ['name' => '']);
 
         $response->assertSessionHasErrors('name');
+    }
+
+    /** @test */
+    public function description_is_required()
+    {
+        $role = factory(Role::class)->create();
+        $this->loginAsAdmin();
+
+        $response = $this->patch("/role/{$role->id}", ['description' => '']);
+
+        $response->assertSessionHasErrors('description');
     }
 
     /** @test */
@@ -38,9 +49,9 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $response = $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new role']);
+        $response = $this->patch("/role/{$role->id}", ['name' => 'new role']);
 
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.roles.needs_permission')]);
+        $response->assertSessionHas(['flash_danger' => __('Debe seleccionar al menos un permiso para cada Perfil.')]);
     }
 
     /** @test */
@@ -49,9 +60,16 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name', 'permissions' => ['view backend']]);
+        $this->patch("/admin/auth/role/{$role->id}", [
+            'name' => 'new name',
+            'description' => 'this is a role test',
+            'permissions' => [
+                'dashboard.read',
+            ],
+        ]);
 
         $this->assertSame('new name', $role->fresh()->name);
+        $this->assertSame('this is a role test', $role->fresh()->description);
     }
 
     /** @test */
@@ -61,7 +79,13 @@ class UpdateRoleTest extends TestCase
         Event::fake();
         $this->loginAsAdmin();
 
-        $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name', 'permissions' => ['view backend']]);
+        $this->patch("/admin/auth/role/{$role->id}", [
+            'name' => 'new name',
+            'description' => 'this is a role test',
+            'permissions' => [
+                'dashboard.read',
+            ],
+        ]);
 
         Event::assertDispatched(RoleUpdated::class);
     }

@@ -14,6 +14,6 @@ class ReadRolesTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $this->get('/admin/auth/role')->assertStatus(200);
+        $this->get('/role')->assertStatus(200);
     }
 }

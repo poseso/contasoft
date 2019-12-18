@@ -5,7 +5,7 @@ namespace Tests\Feature\Backend\Role;
 use Tests\TestCase;
 use App\Models\Auth\Role;
 use Illuminate\Support\Facades\Event;
-use App\Events\Backend\Auth\Role\RoleDeleted;
+use App\Events\Role\RoleDeleted;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DeleteRoleTest extends TestCase
@@ -20,7 +20,7 @@ class DeleteRoleTest extends TestCase
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => $role->id]);
 
-        $this->delete("/admin/auth/role/{$role->id}");
+        $this->delete("/role/{$role->id}");
 
         $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);
     }
@@ -31,9 +31,9 @@ class DeleteRoleTest extends TestCase
         $this->loginAsAdmin();
 
         $role = Role::whereName(config('access.users.admin_role'))->first();
-        $response = $this->delete('/admin/auth/role/'.$role->id);
+        $response = $this->delete('/role/'.$role->id);
 
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.roles.cant_delete_admin')]);
+        $response->assertSessionHas(['flash_danger' => __('No puede eliminar el Perfil de Administrador.')]);
     }
 
     /** @test */
@@ -43,7 +43,7 @@ class DeleteRoleTest extends TestCase
         Event::fake();
         $this->loginAsAdmin();
 
-        $this->delete("/admin/auth/role/{$role->id}");
+        $this->delete("/role/{$role->id}");
 
         Event::assertDispatched(RoleDeleted::class);
     }

@@ -7,9 +7,9 @@ use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
-use App\Events\Backend\Auth\User\UserCreated;
-use App\Events\Backend\Auth\User\UserUpdated;
-use App\Repositories\Backend\Auth\UserRepository;
+use App\Events\User\UserCreated;
+use App\Events\User\UserUpdated;
+use App\Repositories\Auth\UserRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserRepositoryTest extends TestCase
@@ -27,7 +27,10 @@ class UserRepositoryTest extends TestCase
 
         $this->userRepository = $this->app->make(UserRepository::class);
         // We create a test-role because almost every test need one
-        factory(Role::class)->create(['name' => 'test-role']);
+        factory(Role::class)->create([
+            'name' => 'test-role',
+            'description' => 'Role for testing purposes'
+        ]);
     }
 
     protected function getValidUserData($userData = [])
@@ -35,6 +38,7 @@ class UserRepositoryTest extends TestCase
         return array_merge([
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'timezone' => 'UTC',
             'password' => 'secret',
@@ -120,11 +124,13 @@ class UserRepositoryTest extends TestCase
         $this->userRepository->update($user, $this->getValidUserData([
             'first_name' => 'updated',
             'last_name' => 'name',
+            'username' => 'johndoe',
             'email' => 'new@email.com',
         ]));
 
         $this->assertSame('updated', $user->fresh()->first_name);
         $this->assertSame('name', $user->fresh()->last_name);
+        $this->assertSame('johndoe', $user->fresh()->username);
         $this->assertSame('new@email.com', $user->fresh()->email);
 
         Event::assertDispatched(UserUpdated::class);

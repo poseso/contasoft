@@ -2,18 +2,19 @@
 
 namespace Tests\Feature\Frontend;
 
+use Illuminate\Foundation\Testing\TestResponse;
 use Tests\TestCase;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
-use App\Events\Frontend\Auth\UserConfirmed;
-use App\Events\Frontend\Auth\UserRegistered;
+use App\Events\User\UserConfirmed;
+use App\Events\User\UserRegistered;
 use Illuminate\Support\Facades\Notification;
-use App\Repositories\Backend\Auth\UserRepository;
+use App\Repositories\Auth\UserRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Notifications\UserNeedsConfirmation;
 
 class UserRegistrationTest extends TestCase
 {
@@ -22,15 +23,16 @@ class UserRegistrationTest extends TestCase
     /**
      * Helper function for registering a user.
      * @param array $userData
-     * @return \Illuminate\Foundation\Testing\TestResponse
+     * @return TestResponse
      */
     protected function registerUser($userData = [])
     {
-        factory(Role::class)->create(['name' => 'user']);
+        factory(Role::class)->create(['name' => config('access.users.default_role')]);
 
         return $this->post('/register', array_merge([
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
@@ -56,6 +58,7 @@ class UserRegistrationTest extends TestCase
         $this->registerUser([
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
@@ -64,6 +67,7 @@ class UserRegistrationTest extends TestCase
         $newUser = resolve(UserRepository::class)->where('email', 'john@example.com')->first();
         $this->assertSame($newUser->first_name, 'John');
         $this->assertSame($newUser->last_name, 'Doe');
+        $this->assertSame($newUser->username, 'jdoe');
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $newUser->password));
     }
 
@@ -87,7 +91,7 @@ class UserRegistrationTest extends TestCase
 
         $response = $this->get('/account/confirm/'.$user->confirmation_code);
 
-        $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.success')]);
+        $response->assertSessionHas(['flash_success' => __('¡Su cuenta ha sido verificada satisfactoriamente!')]);
         $this->assertSame(true, $user->fresh()->confirmed);
         Event::assertDispatched(UserConfirmed::class);
     }
@@ -101,7 +105,7 @@ class UserRegistrationTest extends TestCase
 
         $response = $this->get('/account/confirm/resend/'.$user->uuid);
 
-        $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.resent')]);
+        $response->assertSessionHas(['flash_success' => __('Un nuevo correo de verificación le ha sido enviado.')]);
 
         Notification::assertSentTo($user, UserNeedsConfirmation::class);
     }
@@ -112,11 +116,11 @@ class UserRegistrationTest extends TestCase
         config(['access.users.requires_approval' => true]);
 
         $response = $this->registerUser();
-        $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.created_pending')]);
+        $response->assertSessionHas(['flash_success' => __('Su cuenta fue creada con éxito y está pendiente de aprobación. Se enviará un correo electrónico cuando su cuenta sea aprobada.')]);
 
         $response = $this->post('/login', ['email' => 'john@example.com', 'password' => 'OC4Nzu270N!QBVi%U%qX']);
 
-        $response->assertSessionHas(['flash_danger' => __('exceptions.frontend.auth.confirmation.pending')]);
+        $response->assertSessionHas(['flash_danger' => __('Su cuenta esta actualmente pendiente de aprobación.')]);
     }
 
     /** @test */
@@ -136,6 +140,7 @@ class UserRegistrationTest extends TestCase
     {
         $response = $this->post('/register', [
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
@@ -149,6 +154,7 @@ class UserRegistrationTest extends TestCase
     {
         $response = $this->post('/register', [
             'first_name' => 'John',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
@@ -158,16 +164,48 @@ class UserRegistrationTest extends TestCase
     }
 
     /** @test */
+    public function username_is_required()
+    {
+        $response = $this->post('/register', [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'john@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $response->assertSessionHasErrors('username');
+    }
+
+    /** @test */
     public function email_is_required()
     {
         $response = $this->post('/register', [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'password' => 'password',
             'password_confirmation' => 'password',
         ]);
 
         $response->assertSessionHasErrors('email');
+    }
+
+    /** @test */
+    public function username_must_be_unique()
+    {
+        factory(User::class)->create(['username' => 'jdoe']);
+
+        $response = $this->post('/register', [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'username' => 'jdoe',
+            'email' => 'john@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $response->assertSessionHasErrors('username');
     }
 
     /** @test */
@@ -178,6 +216,7 @@ class UserRegistrationTest extends TestCase
         $response = $this->post('/register', [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
@@ -192,6 +231,7 @@ class UserRegistrationTest extends TestCase
         $response = $this->post('/register', [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'password',
         ]);
@@ -205,6 +245,7 @@ class UserRegistrationTest extends TestCase
         $response = $this->post('/register', [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'password',
             'password_confirmation' => 'not_the_same',

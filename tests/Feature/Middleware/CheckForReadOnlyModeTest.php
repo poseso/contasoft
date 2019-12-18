@@ -20,7 +20,7 @@ class CheckForReadOnlyModeTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $response = $this->delete("/admin/auth/role/{$role->id}");
+        $response = $this->delete("/role/{$role->id}");
 
         $this->assertEquals($response->getStatusCode(), Response::HTTP_UNAUTHORIZED);
         $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => $role->id]);
@@ -35,7 +35,7 @@ class CheckForReadOnlyModeTest extends TestCase
         $this->loginAsAdmin();
 
         $response = $this->followingRedirects()
-            ->delete("/admin/auth/role/{$role->id}");
+            ->delete("/role/{$role->id}");
 
         $this->assertEquals($response->getStatusCode(), Response::HTTP_OK);
         $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);

@@ -6,10 +6,10 @@ use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
-use App\Events\Backend\Auth\User\UserConfirmed;
-use App\Events\Backend\Auth\User\UserUnconfirmed;
+use App\Events\User\UserConfirmed;
+use App\Events\User\UserUnconfirmed;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Notifications\Backend\Auth\UserAccountActive;
+use App\Notifications\UserAccountActive;
 
 class ConfirmUserTest extends TestCase
 {
@@ -23,12 +23,12 @@ class ConfirmUserTest extends TestCase
 
         Event::fake();
 
-        $response = $this->get("/admin/auth/user/{$user->id}/confirm");
+        $response = $this->get("/user/{$user->id}/confirm");
 
         $this->assertSame(true, $user->fresh()->confirmed);
         Event::assertDispatched(UserConfirmed::class);
 
-        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.confirmed')]);
+        $response->assertSessionHas(['flash_success' => __('El usuario fue confirmado correctamente.')]);
     }
 
     /** @test */
@@ -37,8 +37,8 @@ class ConfirmUserTest extends TestCase
         $this->loginAsAdmin();
         $user = factory(User::class)->states('confirmed')->create();
 
-        $response = $this->get("/admin/auth/user/{$user->id}/confirm");
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.already_confirmed')]);
+        $response = $this->get("/user/{$user->id}/confirm");
+        $response->assertSessionHas(['flash_danger' => __('Este Usuario ya fue confirmado.')]);
     }
 
     /** @test */
@@ -51,7 +51,7 @@ class ConfirmUserTest extends TestCase
 
         Notification::fake();
 
-        $this->get("/admin/auth/user/{$user->id}/confirm");
+        $this->get("/user/{$user->id}/confirm");
 
         Notification::assertSentTo($user, UserAccountActive::class);
     }
@@ -64,12 +64,12 @@ class ConfirmUserTest extends TestCase
 
         Event::fake();
 
-        $response = $this->get("/admin/auth/user/{$user->id}/unconfirm");
+        $response = $this->get("/user/{$user->id}/unconfirm");
 
         $this->assertSame(false, $user->fresh()->confirmed);
         Event::assertDispatched(UserUnconfirmed::class);
 
-        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.unconfirmed')]);
+        $response->assertSessionHas(['flash_success' => __('El usuario fue desconfirmado correctamente.')]);
     }
 
     /** @test */
@@ -78,8 +78,8 @@ class ConfirmUserTest extends TestCase
         $this->loginAsAdmin();
         $user = factory(User::class)->states('unconfirmed')->create();
 
-        $response = $this->get("/admin/auth/user/{$user->id}/unconfirm");
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.not_confirmed')]);
+        $response = $this->get("/user/{$user->id}/unconfirm");
+        $response->assertSessionHas(['flash_danger' => __('Este Usuario no está confirmado.')]);
     }
 
     /** @test */
@@ -89,8 +89,8 @@ class ConfirmUserTest extends TestCase
         $second_admin = $this->createAdmin();
         $this->actingAs($second_admin);
 
-        $response = $this->get("/admin/auth/user/{$admin->id}/unconfirm");
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.cant_unconfirm_admin')]);
+        $response = $this->get("/user/{$admin->id}/unconfirm");
+        $response->assertSessionHas(['flash_danger' => __('No puede anular la confirmación del super administrador.')]);
     }
 
     /** @test */
@@ -101,8 +101,8 @@ class ConfirmUserTest extends TestCase
         $second_admin = $this->createAdmin();
         $this->actingAs($second_admin);
 
-        $response = $this->get("/admin/auth/user/{$second_admin->id}/unconfirm");
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.cant_unconfirm_self')]);
+        $response = $this->get("/user/{$second_admin->id}/unconfirm");
+        $response->assertSessionHas(['flash_danger' => __('No puede anular su propia confirmación.')]);
     }
 
     /** @test */
@@ -111,9 +111,9 @@ class ConfirmUserTest extends TestCase
         $this->loginAsAdmin();
         $user = factory(User::class)->states(['unconfirmed', 'softDeleted'])->create();
 
-        $this->get("/admin/auth/user/{$user->id}/confirm");
+        $this->get("/user/{$user->id}/confirm");
 
-        $this->assertSame(true, $user->fresh()->confirmed);
+        $this->assertTrue($user->fresh()->confirmed);
     }
 
     /** @test */
@@ -122,8 +122,8 @@ class ConfirmUserTest extends TestCase
         $this->loginAsAdmin();
         $user = factory(User::class)->states(['confirmed', 'softDeleted'])->create();
 
-        $this->get("/admin/auth/user/{$user->id}/unconfirm");
+        $this->get("/user/{$user->id}/unconfirm");
 
-        $this->assertSame(false, $user->fresh()->confirmed);
+        $this->assertFalse($user->fresh()->confirmed);
     }
 }

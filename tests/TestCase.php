@@ -4,7 +4,7 @@ namespace Tests;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use Spatie\Permission\Models\Permission;
+use App\Models\Auth\Permission;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 /**
@@ -21,12 +21,20 @@ abstract class TestCase extends BaseTestCase
      */
     protected function getAdminRole()
     {
-        if ($role = Role::whereName(config('access.users.admin_role'))->first()) {
+        if ($role = Role::whereName(config('access.users.super_admin_role'))->first()) {
             return $role;
         }
 
-        $adminRole = factory(Role::class)->create(['name' => config('access.users.admin_role')]);
-        $adminRole->givePermissionTo(factory(Permission::class)->create(['name' => 'view backend']));
+        $adminRole = factory(Role::class)->create([
+            'name' => config('access.users.super_admin_role'),
+            'description' => 'this is a role test',
+        ]);
+
+        $adminRole->givePermissionTo(factory(Permission::class)->create([
+            'module_id' => '3',
+            'name' => 'dashboard.read',
+            'display_name' => 'Ver Tablero Principal',
+        ]));
 
         return $adminRole;
     }

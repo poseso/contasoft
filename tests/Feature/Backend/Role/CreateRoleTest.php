@@ -5,7 +5,7 @@ namespace Tests\Feature\Backend\Role;
 use Tests\TestCase;
 use App\Models\Auth\Role;
 use Illuminate\Support\Facades\Event;
-use App\Events\Backend\Auth\Role\RoleCreated;
+use App\Events\Role\RoleCreated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateRoleTest extends TestCase
@@ -17,7 +17,7 @@ class CreateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $this->get('/admin/auth/role/create')->assertStatus(200);
+        $this->get('/role/create')->assertStatus(200);
     }
 
     /** @test */
@@ -25,9 +25,19 @@ class CreateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->post('/admin/auth/role', ['name' => '']);
+        $response = $this->post('/role', ['name' => '']);
 
         $response->assertSessionHasErrors('name');
+    }
+
+    /** @test */
+    public function the_description_is_required()
+    {
+        $this->loginAsAdmin();
+
+        $response = $this->post('/role', ['description' => '']);
+
+        $response->assertSessionHasErrors('description');
     }
 
     /** @test */
@@ -35,7 +45,7 @@ class CreateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->post('/admin/auth/role', ['name' => config('access.users.admin_role')]);
+        $response = $this->post('/role', ['name' => config('access.users.admin_role')]);
 
         $response->assertSessionHasErrors('name');
     }
@@ -45,9 +55,9 @@ class CreateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->post('/admin/auth/role', ['name' => 'new role']);
+        $response = $this->post('/role', ['name' => 'new role']);
 
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.roles.needs_permission')]);
+        $response->assertSessionHas(['flash_danger' => __('Debe seleccionar al menos un permiso para cada Perfil.')]);
     }
 
     /** @test */
@@ -55,11 +65,19 @@ class CreateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $this->post('/admin/auth/role', ['name' => 'new role', 'permissions' => ['view backend']]);
+        $this->post('/role', [
+            'name' => 'new role',
+            'description' => 'this is a test role',
+            'permissions' => [
+                'dashboard.read',
+            ],
+        ]);
 
-        $role = Role::where(['name' => 'new role'])->first();
+        $role = Role::where([
+            'name' => 'new role',
+        ])->first();
 
-        $this->assertTrue($role->hasPermissionTo('view backend'));
+        $this->assertTrue($role->hasPermissionTo('dashboard.read'));
     }
 
     /** @test */
@@ -68,7 +86,13 @@ class CreateRoleTest extends TestCase
         $this->loginAsAdmin();
         Event::fake();
 
-        $this->post('/admin/auth/role', ['name' => 'new role', 'permissions' => ['view backend']]);
+        $this->post('/admin/auth/role', [
+            'name' => 'new role',
+            'description' => 'this is a test role',
+            'permissions' => [
+                'dashboard.read',
+            ],
+        ]);
 
         Event::assertDispatched(RoleCreated::class);
     }

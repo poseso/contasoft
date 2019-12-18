@@ -24,7 +24,7 @@ class ChangePasswordTest extends TestCase
                 'password_confirmation' => '1234567',
             ]);
 
-        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
+        $this->assertStringContainsString('La contraseña debe tener al menos 8 caracteres.', $response->content());
     }
 
     /** @test */

@@ -7,9 +7,9 @@ use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
-use App\Events\Backend\Auth\User\UserCreated;
+use App\Events\User\UserCreated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Notifications\UserNeedsConfirmation;
 
 class CreateUserTest extends TestCase
 {
@@ -20,7 +20,7 @@ class CreateUserTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->get('/admin/auth/user/create');
+        $response = $this->get('/user/create');
 
         $response->assertStatus(200);
     }
@@ -30,9 +30,9 @@ class CreateUserTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->post('/admin/auth/user', []);
+        $response = $this->post('/user', []);
 
-        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'password', 'roles']);
+        $response->assertSessionHasErrors(['first_name', 'last_name', 'username', 'email', 'password', 'roles']);
     }
 
     /** @test */
@@ -44,6 +44,7 @@ class CreateUserTest extends TestCase
         $response = $this->post('/admin/auth/user', [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
@@ -51,10 +52,33 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'executive', 2 => 'user'],
+            'roles' => [1 => 'ejecutivo', 2 => 'usuario'],
         ]);
 
         $response->assertSessionHasErrors('email');
+    }
+
+    /** @test */
+    public function user_username_needs_to_be_unique()
+    {
+        $this->loginAsAdmin();
+        factory(User::class)->create(['username' => 'jdoe']);
+
+        $response = $this->post('/admin/auth/user', [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'username' => 'jdoe',
+            'email' => 'john@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+            'active' => '1',
+            'confirmed' => '0',
+            'timezone' => 'UTC',
+            'confirmation_email' => '1',
+            'roles' => [1 => 'ejecutivo', 2 => 'usuario'],
+        ]);
+
+        $response->assertSessionHasErrors('username');
     }
 
     /** @test */
@@ -67,9 +91,10 @@ class CreateUserTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $response = $this->post('/admin/auth/user', [
+        $response = $this->post('/user', [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
@@ -77,7 +102,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '1',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'administrator'],
+            'roles' => [1 => 'administrador'],
         ]);
 
         $this->assertDatabaseHas(
@@ -85,13 +110,14 @@ class CreateUserTest extends TestCase
             [
                 'first_name' => 'John',
                 'last_name' => 'Doe',
+                'username' => 'jdoe',
                 'email' => 'john@example.com',
                 'active' => true,
                 'confirmed' => true,
             ]
         );
 
-        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.created')]);
+        $response->assertSessionHas(['flash_success' => __('El usuario fue creado correctamente.')]);
         Event::assertDispatched(UserCreated::class);
     }
 
@@ -101,9 +127,10 @@ class CreateUserTest extends TestCase
         $this->loginAsAdmin();
         Notification::fake();
 
-        $response = $this->post('/admin/auth/user', [
+        $response = $this->post('/user', [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
@@ -111,10 +138,10 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'administrator'],
+            'roles' => [1 => 'administrador'],
         ]);
 
-        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.created')]);
+        $response->assertSessionHas(['flash_success' => __('El usuario fue creado correctamente.')]);
 
         $user = User::where('email', 'john@example.com')->first();
         Notification::assertSentTo($user, UserNeedsConfirmation::class);

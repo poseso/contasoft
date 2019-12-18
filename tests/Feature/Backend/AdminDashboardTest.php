@@ -16,7 +16,7 @@ class AdminDashboardTest extends TestCase
     /** @test */
     public function unauthenticated_users_cant_access_admin_dashboard()
     {
-        $this->get('/admin/dashboard')->assertRedirect('/login');
+        $this->get('/dashboard')->assertRedirect('/login');
     }
 
     /** @test */
@@ -24,9 +24,11 @@ class AdminDashboardTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create());
 
-        $response = $this->get('/admin/dashboard');
+        $response = $this->get('/dashboard');
 
-        $response->assertRedirect('/dashboard');
+        // Unauthorized Exception
+        $response->assertViewIs('errors.401');
+
     }
 
     /** @test */
@@ -34,6 +36,6 @@ class AdminDashboardTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $this->get('/admin/dashboard')->assertStatus(200);
+        $this->get('/dashboard')->assertStatus(200);
     }
 }

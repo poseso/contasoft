@@ -71,7 +71,7 @@ class PasswordExpirationTest extends TestCase
                 'password_confirmation' => 'secret',
             ]);
 
-        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
+        $this->assertStringContainsString('La contraseña debe tener al menos 8 caracteres.', $response->content());
     }
 
     /** @test */
@@ -123,7 +123,7 @@ class PasswordExpirationTest extends TestCase
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
-        $this->assertSame($errors->get('password')[0], __('auth.password_used'));
+        $this->assertSame($errors->get('password')[0], __('No puede establecer una contraseña que haya usado previamente.'));
         $this->assertTrue(Hash::check(':ZqD~57}1t', $user->fresh()->password));
     }
 }

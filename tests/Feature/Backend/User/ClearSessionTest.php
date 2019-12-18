@@ -22,9 +22,9 @@ class ClearSessionTest extends TestCase
 
         $this->assertDatabaseHas('users', ['id' => $user->getKey(), 'to_be_logged_out' => false]);
 
-        $response = $this->get("/admin/auth/user/{$user->id}/clear-session");
+        $response = $this->get("/user/{$user->id}/clear-session");
 
-        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.session_cleared')]);
+        $response->assertSessionHas(['flash_success' => __('La sesión del usuario se borró correctamente.')]);
 
         $this->assertDatabaseHas('users', ['id' => $user->getKey(), 'to_be_logged_out' => true]);
     }

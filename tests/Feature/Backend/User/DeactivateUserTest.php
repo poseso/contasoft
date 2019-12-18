@@ -5,8 +5,8 @@ namespace Tests\Backend\User;
 use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
-use App\Events\Backend\Auth\User\UserDeactivated;
-use App\Events\Backend\Auth\User\UserReactivated;
+use App\Events\User\UserDeactivated;
+use App\Events\User\UserReactivated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DeactivateUserTest extends TestCase
@@ -18,7 +18,7 @@ class DeactivateUserTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->get('/admin/auth/user/deactivated');
+        $response = $this->get('/user/deactivated');
 
         $response->assertStatus(200);
     }
@@ -30,9 +30,9 @@ class DeactivateUserTest extends TestCase
         $this->loginAsAdmin();
         Event::fake();
 
-        $this->get("/admin/auth/user/{$user->id}/mark/0");
+        $this->get("/user/{$user->id}/mark/0");
 
-        $this->assertSame(false, $user->fresh()->active);
+        $this->assertFalse($user->fresh()->active);
         Event::assertDispatched(UserDeactivated::class);
     }
 
@@ -43,9 +43,9 @@ class DeactivateUserTest extends TestCase
         $this->loginAsAdmin();
         Event::fake();
 
-        $this->get("/admin/auth/user/{$user->id}/mark/1");
+        $this->get("/user/{$user->id}/mark/1");
 
-        $this->assertSame(true, $user->fresh()->active);
+        $this->assertTrue($user->fresh()->active);
         Event::assertDispatched(UserReactivated::class);
     }
 
@@ -54,10 +54,9 @@ class DeactivateUserTest extends TestCase
     {
         $admin = $this->loginAsAdmin();
 
-        $response = $this
-            ->from('admin/auth/user')
-            ->get("/admin/auth/user/{$admin->id}/mark/0");
+        $response = $this->from('admin/auth/user')
+            ->get("/user/{$admin->id}/mark/0");
 
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.cant_deactivate_self')]);
+        $response->assertSessionHas(['flash_danger' => __('No puede desactivarse a sí mismo.')]);
     }
 }

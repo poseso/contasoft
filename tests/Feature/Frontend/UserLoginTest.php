@@ -5,8 +5,8 @@ namespace Tests\Feature\Frontend;
 use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
-use App\Events\Frontend\Auth\UserLoggedIn;
-use App\Events\Frontend\Auth\UserLoggedOut;
+use App\Events\User\UserLoggedIn;
+use App\Events\User\UserLoggedOut;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -31,6 +31,24 @@ class UserLoginTest extends TestCase
 
         $this->post('/login', [
             'email' => 'john@example.com',
+            'password' => 'secret',
+        ]);
+
+        Event::assertDispatched(UserLoggedIn::class);
+        $this->assertAuthenticatedAs($user);
+    }
+
+    /** @test */
+    public function a_user_can_login_with_username_and_password()
+    {
+        $user = factory(User::class)->create([
+            'username' => 'jdoe',
+            'password' => 'secret',
+        ]);
+        Event::fake();
+
+        $this->post('/login', [
+            'username' => 'jdoe',
             'password' => 'secret',
         ]);
 
@@ -115,7 +133,7 @@ class UserLoginTest extends TestCase
 
         $this->actingAs($user)
             ->get('/logout')
-            ->assertRedirect('/');
+            ->assertRedirect('/login');
 
         $this->assertFalse($this->isAuthenticated());
         Event::assertDispatched(UserLoggedOut::class);

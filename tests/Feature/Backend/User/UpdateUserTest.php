@@ -6,9 +6,9 @@ use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
-use App\Events\Backend\Auth\User\UserUpdated;
+use App\Events\User\UserUpdated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Notifications\UserNeedsConfirmation;
 
 class UpdateUserTest extends TestCase
 {
@@ -20,7 +20,7 @@ class UpdateUserTest extends TestCase
         $this->loginAsAdmin();
         $user = factory(User::class)->create();
 
-        $response = $this->get('/admin/auth/user/'.$user->id.'/edit');
+        $response = $this->get('/user/'.$user->id.'/edit');
 
         $response->assertStatus(200);
     }
@@ -32,7 +32,7 @@ class UpdateUserTest extends TestCase
         $user = factory(User::class)->states('unconfirmed')->create();
         Notification::fake();
 
-        $this->get("/admin/auth/user/{$user->id}/account/confirm/resend");
+        $this->get("/user/{$user->id}/account/confirm/resend");
 
         Notification::assertSentTo($user, UserNeedsConfirmation::class);
     }
@@ -46,11 +46,13 @@ class UpdateUserTest extends TestCase
 
         $this->assertNotSame('John', $user->first_name);
         $this->assertNotSame('Doe', $user->last_name);
+        $this->assertNotSame('Doe', $user->username);
         $this->assertNotSame('john@example.com', $user->email);
 
-        $this->patch("/admin/auth/user/{$user->id}", [
+        $this->patch("/user/{$user->id}", [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'jdoe',
             'email' => 'john@example.com',
             'timezone' => 'UTC',
             'roles' => ['administrator'],
@@ -58,6 +60,7 @@ class UpdateUserTest extends TestCase
 
         $this->assertSame('John', $user->fresh()->first_name);
         $this->assertSame('Doe', $user->fresh()->last_name);
+        $this->assertSame('jdoe', $user->fresh()->username);
         $this->assertSame('john@example.com', $user->fresh()->email);
 
         Event::assertDispatched(UserUpdated::class);

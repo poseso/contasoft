@@ -4,7 +4,7 @@ namespace Tests\Feature\Frontend;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\Frontend\Contact\SendContact;
+use App\Mail\Contact\SendContact;
 
 class FillContactFormTest extends TestCase
 {
@@ -26,7 +26,7 @@ class FillContactFormTest extends TestCase
             'message' => 'This is a test message',
         ]);
 
-        $response->assertSessionHas(['flash_success' => __('alerts.frontend.contact.sent')]);
+        $response->assertSessionHas(['flash_success' => __('Su información fue enviada correctamente. Responderemos tan pronto sea posible al correo que proporcionó.')]);
         Mail::assertSent(SendContact::class);
     }
 

@@ -15,10 +15,10 @@ class ReadUsersTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->get('/admin/auth/user/create');
+        $response = $this->get('/user/create');
 
         $response->assertStatus(200)
-            ->assertSee('E-mail Address');
+            ->assertSee('Dirección de correo');
     }
 
     /** @test */
@@ -27,9 +27,9 @@ class ReadUsersTest extends TestCase
         $this->loginAsAdmin();
         $user = factory(User::class)->create();
 
-        $response = $this->get("/admin/auth/user/{$user->id}");
+        $response = $this->get("/user/{$user->id}");
 
         $response->assertStatus(200)
-            ->assertSee('Overview');
+            ->assertSee('Resúmen');
     }
 }

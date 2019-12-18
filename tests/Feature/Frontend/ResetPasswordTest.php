@@ -7,7 +7,7 @@ use App\Models\Auth\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
+use App\Notifications\UserNeedsPasswordReset;
 
 class ResetPasswordTest extends TestCase
 {
@@ -80,7 +80,7 @@ class ResetPasswordTest extends TestCase
                 'password_confirmation' => 'secret',
             ]);
 
-        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
+        $this->assertStringContainsString('La contraseña debe tener al menos 8 caracteres.', $response->content());
     }
 
     /** @test */
