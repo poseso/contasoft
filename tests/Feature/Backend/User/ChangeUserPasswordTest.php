@@ -6,8 +6,8 @@ use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Events\User\UserPasswordChanged;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ChangeUserPasswordTest extends TestCase
 {

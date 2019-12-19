@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Events\User\UserLoggedIn;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Helpers\Auth\SocialiteHelper;
+use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
 use App\Repositories\Auth\UserRepository;
 

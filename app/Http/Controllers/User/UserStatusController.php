@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Exceptions\GeneralException;
+use Throwable;
 use App\Models\Auth\User;
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\ManageUserRequest;
-use Throwable;
 
 /**
  * Class UserStatusController.

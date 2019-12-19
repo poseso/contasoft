@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
+use Exception;
+use Throwable;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\UpdateProfileRequest;
-use Exception;
-use Throwable;
 
 /**
  * Class ProfileController.

@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Exceptions\GeneralException;
+use Exception;
+use Throwable;
 use DataTables;
 use App\Models\Auth\User;
+use Illuminate\View\View;
 use App\Models\Auth\Permission;
 use App\Events\User\UserDeleted;
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\Factory;
 use App\Repositories\Auth\RoleRepository;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\ManageUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Repositories\Auth\PermissionRepository;
-use Exception;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\View\View;
-use Throwable;
 
 /**
  * Class UserController.

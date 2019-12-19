@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\View\View;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\Factory;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\UpdatePasswordRequest;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\View\View;
 
 /**
  * Class PasswordExpiredController.

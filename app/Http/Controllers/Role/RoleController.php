@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Role;
 
-use App\Exceptions\GeneralException;
+use Throwable;
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
 use App\Events\Role\RoleDeleted;
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\RoleRepository;
 use App\Http\Requests\Role\StoreRoleRequest;
 use App\Http\Requests\Role\ManageRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
 use App\Repositories\Auth\PermissionRepository;
-use Throwable;
 
 /**
  * Class RoleController.

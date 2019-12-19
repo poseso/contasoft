@@ -4,9 +4,9 @@ namespace Tests\Backend\User;
 
 use Tests\TestCase;
 use App\Models\Auth\User;
-use Illuminate\Support\Facades\Event;
 use App\Events\User\UserDeactivated;
 use App\Events\User\UserReactivated;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DeactivateUserTest extends TestCase

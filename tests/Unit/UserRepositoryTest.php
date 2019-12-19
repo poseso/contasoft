@@ -5,10 +5,10 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Database\Eloquent\Model;
 use App\Events\User\UserCreated;
 use App\Events\User\UserUpdated;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Model;
 use App\Repositories\Auth\UserRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -29,7 +29,7 @@ class UserRepositoryTest extends TestCase
         // We create a test-role because almost every test need one
         factory(Role::class)->create([
             'name' => 'test-role',
-            'description' => 'Role for testing purposes'
+            'description' => 'Role for testing purposes',
         ]);
     }
 

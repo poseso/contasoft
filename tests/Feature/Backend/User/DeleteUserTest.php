@@ -4,10 +4,10 @@ namespace Tests\Feature\Backend\User;
 
 use Tests\TestCase;
 use App\Models\Auth\User;
-use Illuminate\Support\Facades\Event;
 use App\Events\User\UserRestored;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use App\Events\User\UserPermanentlyDeleted;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DeleteUserTest extends TestCase
 {

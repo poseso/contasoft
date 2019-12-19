@@ -4,9 +4,9 @@ namespace Tests\Feature\Frontend;
 
 use Tests\TestCase;
 use App\Models\Auth\User;
-use Illuminate\Support\Facades\Event;
 use App\Events\User\UserLoggedIn;
 use App\Events\User\UserLoggedOut;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

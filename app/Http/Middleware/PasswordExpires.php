@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Carbon\Carbon;
 use Exception;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 
 /**

@@ -4,8 +4,8 @@ namespace Tests\Feature\Backend\Role;
 
 use Tests\TestCase;
 use App\Models\Auth\Role;
-use Illuminate\Support\Facades\Event;
 use App\Events\Role\RoleUpdated;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UpdateRoleTest extends TestCase

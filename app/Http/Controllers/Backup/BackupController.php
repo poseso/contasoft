@@ -42,7 +42,7 @@ class BackupController extends Controller
                         'file_size' => $disk->size($f),
                         'last_modified' => $disk->lastModified($f),
                         'disk' => $disk_name,
-                        'download' => (bool)($adapter instanceof Local),
+                        'download' => (bool) ($adapter instanceof Local),
                     ];
                 }
             }

@@ -28,7 +28,6 @@ class AdminDashboardTest extends TestCase
 
         // Unauthorized Exception
         $response->assertViewIs('errors.401');
-
     }
 
     /** @test */

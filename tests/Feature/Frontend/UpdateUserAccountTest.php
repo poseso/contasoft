@@ -6,9 +6,9 @@ use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\UserNeedsConfirmation;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Notifications\UserNeedsConfirmation;
 
 class UpdateUserAccountTest extends TestCase
 {
@@ -127,7 +127,7 @@ class UpdateUserAccountTest extends TestCase
                 'avatar_location' => UploadedFile::fake()->image('avatar.png'),
             ]));
 
-        Storage::disk('public')->assertExists((string)($user->fresh()->avatar_location));
+        Storage::disk('public')->assertExists((string) ($user->fresh()->avatar_location));
     }
 
     /** @test */

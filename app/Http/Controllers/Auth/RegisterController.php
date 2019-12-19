@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Throwable;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use App\Events\User\UserRegistered;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\RegisterRequest;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Redirector;
-use Throwable;
 
 /**
  * Class RegisterController.
@@ -59,8 +59,8 @@ class RegisterController extends Controller
     /**
      * @param RegisterRequest $request
      *
-     * @return RedirectResponse|Redirector
      *@throws Throwable
+     * @return RedirectResponse|Redirector
      */
     public function register(RegisterRequest $request)
     {
