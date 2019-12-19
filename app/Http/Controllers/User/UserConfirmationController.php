@@ -60,7 +60,7 @@ class UserConfirmationController extends Controller
     {
         $this->userRepository->confirm($user);
 
-        return redirect()->route('user.index')->withFlashSuccess(__('El usuario fue confirmado exitosamente.'));
+        return redirect()->route('admin.user.index')->withFlashSuccess(__('El usuario fue confirmado exitosamente.'));
     }
 
     /**
@@ -74,6 +74,6 @@ class UserConfirmationController extends Controller
     {
         $this->userRepository->unconfirm($user);
 
-        return redirect()->route('user.index')->withFlashSuccess(__('El usuario fue desconfirmado correctamente.'));
+        return redirect()->route('admin.user.index')->withFlashSuccess(__('El usuario fue desconfirmado correctamente.'));
     }
 }

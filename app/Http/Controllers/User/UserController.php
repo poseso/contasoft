@@ -133,7 +133,7 @@ class UserController extends Controller
             'permissions'
         ));
 
-        return redirect()->route('user.index')->withFlashSuccess(__('El usuario fue creado correctamente.'));
+        return redirect()->route('admin.user.index')->withFlashSuccess(__('El usuario fue creado correctamente.'));
     }
 
     /**
@@ -185,7 +185,7 @@ class UserController extends Controller
             'permissions'
         ));
 
-        return redirect()->route('user.index')->withFlashSuccess(__("El Usuario $user->full_name fue actualizado correctamente."));
+        return redirect()->route('admin.user.index')->withFlashSuccess(__("El Usuario $user->full_name fue actualizado correctamente."));
     }
 
     /**
@@ -201,6 +201,6 @@ class UserController extends Controller
 
         event(new UserDeleted($user));
 
-        return redirect()->route('user.deleted')->withFlashSuccess(__("El usuario $user->full_name fue eliminado correctamente."));
+        return redirect()->route('admin.user.deleted')->withFlashSuccess(__("El usuario $user->full_name fue eliminado correctamente."));
     }
 }

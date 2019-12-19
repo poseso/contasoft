@@ -1,6 +1,6 @@
 {
     "/js/manifest.js": "/js/manifest.js?id=7db827d654313dce4250",
-    "/js/app.bundle.js": "/js/app.bundle.js?id=e28169a958c3bb50b448",
+    "/js/app.bundle.js": "/js/app.bundle.js?id=802dbc34fa6a50cb8077",
     "/css/style.bundle.css": "/css/style.bundle.css?id=4bf3f602bfd285bc97f5",
     "/css/skins/aside/dark.css": "/css/skins/aside/dark.css?id=c1f82150f213d6d51046",
     "/css/skins/aside/light.css": "/css/skins/aside/light.css?id=1260384e81776da65230",
@@ -12,5 +12,5 @@
     "/css/skins/header/menu/light.css": "/css/skins/header/menu/light.css?id=836fe34cbf9478f77a69",
     "/css/login-5.css": "/css/login-5.css?id=2e9979532dbab24449c1",
     "/js/custom.bundle.js": "/js/custom.bundle.js?id=00546ef8488d3401027c",
-    "/js/vendor.js": "/js/vendor.js?id=af78513885130f7f61ac"
+    "/js/vendor.js": "/js/vendor.js?id=822219d88e03cda4854c"
 }

@@ -12,7 +12,6 @@ const mix = require('laravel-mix');
  */
 
 mix.setPublicPath('public')
-    .setResourceRoot('../') // Turns assets paths in css relative to css file
     // Extract packages from node_modules to vendor.js
     .extract()
     // Merge the default JS files
