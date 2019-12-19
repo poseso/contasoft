@@ -1,13 +1,13 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', __('Administración de Usuarios') . ' | ' . __('Nuevo Usuario') . ' | ' . app_name())
 
 @section('breadcrumb-links')
-    @include('backend.auth.user.includes.breadcrumb-links')
+    @include('user.includes.breadcrumb-links')
 @endsection
 
 @section('content')
-    {{ html()->form('POST', route('admin.auth.user.store'))->class('form-horizontal')->open() }}
+    {{ html()->form('POST', route('admin.user.store'))->class('form-horizontal')->open() }}
     <!--begin::Portlet-->
     <div class="kt-portlet" data-ktportlet="true" id="kt_portlet_tools_3">
         <div class="kt-portlet__head">
@@ -258,7 +258,7 @@
         <div class="kt-portlet__foot">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.auth.user.index'), __('Cancelar')) }}
+                    {{ form_cancel(route('admin.user.index'), __('Cancelar')) }}
                 </div>
 
                 <div class="col text-right">

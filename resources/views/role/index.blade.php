@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', app_name() . ' | ' . __('Administración de Perfiles'))
 
@@ -20,7 +20,7 @@
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions">
                         <span class="d-none d-lg-inline" id="ExportButtons"></span>
-                        @include('backend.auth.role.includes.header-buttons')
+                        @include('role.includes.header-buttons')
                     </div>
                 </div>
             </div>
@@ -68,16 +68,16 @@
                             @endif
                         </td>
                         <td>{{ $role->users->count() }} {{ trans_choice('{1} Usuario|[2,*] Usuarios', $role->users->count()) }}</td>
-                        <td>@include('backend.auth.role.includes.actions', ['role' => $role])</td>
+                        <td>@include('role.includes.actions', ['role' => $role])</td>
                     </tr>
                 @endforeach
                 </tbody>
 
                 <tfoot>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tfoot>
             </table>
         </div>

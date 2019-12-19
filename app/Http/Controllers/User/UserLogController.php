@@ -23,7 +23,7 @@ class UserLogController extends Controller
 //        }
 
 //        dd($ledgers->toArray());
-        return view('backend.logs.index')
+        return view('logs.index')
             ->withLogs(UserLog::with('user', 'recordableUser')
             ->orderBy('id', 'desc')
             ->get());
@@ -39,7 +39,7 @@ class UserLogController extends Controller
             ->where('id', $log->id)
             ->first();
 
-        return view('backend.logs.show')
+        return view('logs.show')
             ->withLog($log)
             ->withOriginal($original);
     }

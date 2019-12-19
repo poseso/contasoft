@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+
 /**
  * Class LanguageController.
  */
@@ -10,9 +12,9 @@ class LanguageController extends Controller
     /**
      * @param $locale
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function swap($locale)
+    public function swap($locale): RedirectResponse
     {
         if (array_key_exists($locale, config('locale.languages'))) {
             session()->put('locale', $locale);

@@ -1,9 +1,9 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', __('Administración de Perfiles') . ' | ' . __('Modificar Perfil') . ' | ' . app_name())
 
 @section('content')
-    {{ html()->modelForm($role, 'PATCH', route('admin.auth.role.update', $role))->class('form-horizontal')->open() }}
+    {{ html()->modelForm($role, 'PATCH', route('admin.role.update', $role))->class('form-horizontal')->open() }}
     <!--begin::Portlet-->
     <div class="kt-portlet" data-ktportlet="true" id="kt_portlet_tools_3">
         <div class="kt-portlet__head">
@@ -78,7 +78,7 @@
                                                 <div class="checkboxes">
                                                     <span class="kt-switch kt-switch--sm kt-switch--icon" style="display: block !important;">
                                                         {{ html()->label(
-                                                            html()->checkbox('permissions[]', in_array($permission->name, $rolePermissions), $permission->name)
+                                                            html()->checkbox('permissions[]', in_array($permission->name, $rolePermissions, true), $permission->name)
                                                                     ->id('permission-'.$permission->id)
                                                                     . '<span></span>')
                                                                     ->for('permission-'.$permission->id) }}
@@ -100,13 +100,13 @@
         <div class="kt-portlet__foot">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.auth.role.index'), __('Cancelar')) }}
-                </div><!--col-->
+                    {{ form_cancel(route('admin.role.index'), __('Cancelar')) }}
+                </div>
 
                 <div class="col text-right">
                     {{ form_submit(__('Modificar')) }}
-                </div><!--col-->
-            </div><!--row-->
+                </div>
+            </div>
         </div>
     </div>
     <!--end::Portlet-->

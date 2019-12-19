@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', app_name() . ' | ' . __('Administración de Copias de Seguridad'))
 
@@ -73,11 +73,11 @@
                             </tbody>
 
                             <tfoot>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tfoot>
                         </table>
                     </div>

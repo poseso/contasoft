@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 /**
  * Class AccountController.
@@ -10,10 +12,10 @@ use App\Http\Controllers\Controller;
 class UserAccountController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
-        return view('frontend.user.account');
+        return view('auth.user.account');
     }
 }

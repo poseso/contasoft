@@ -17,7 +17,7 @@ class SettingsController extends Controller
     {
         $paises = Pais::all();
 
-        return view('frontend.user.account.tabs.settings')
+        return view('auth.user.account.tabs.settings')
             ->withPaises($paises);
     }
 

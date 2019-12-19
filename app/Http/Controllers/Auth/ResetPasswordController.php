@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
@@ -39,9 +43,9 @@ class ResetPasswordController extends Controller
      *
      * @param string|null $token
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function showResetForm($token = null)
+    public function showResetForm($token = null): Response
     {
         if (! $token) {
             return redirect()->route('frontend.auth.password.email');
@@ -63,7 +67,7 @@ class ResetPasswordController extends Controller
      * Reset the given user's password.
      *
      * @param  ResetPasswordRequest  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return RedirectResponse|JsonResponse
      */
     public function reset(ResetPasswordRequest $request)
     {
@@ -88,7 +92,7 @@ class ResetPasswordController extends Controller
     /**
      * Reset the given user's password.
      *
-     * @param  \Illuminate\Contracts\Auth\CanResetPassword  $user
+     * @param  CanResetPassword  $user
      * @param  string  $password
      */
     protected function resetPassword($user, $password)
@@ -110,9 +114,9 @@ class ResetPasswordController extends Controller
      * Get the response for a successful password reset.
      *
      * @param  string  $response
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    protected function sendResetResponse($response)
+    protected function sendResetResponse($response): RedirectResponse
     {
         return redirect()->route(home_route())->withFlashSuccess(e(trans($response)));
     }

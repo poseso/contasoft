@@ -4,7 +4,7 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-right">
-        <a href="{{ route('admin.auth.logs.user.show', $log) }}" class="dropdown-item">
+        <a href="{{ route('admin.logs.user.show', $log) }}" class="dropdown-item">
             {{ __('Visualizar') }}
         </a>
     </div>

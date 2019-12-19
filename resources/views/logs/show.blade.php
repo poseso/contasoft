@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', app_name() . ' | ' . __('Administración de Eventos') . ' | ' . __('Visualizando Evento'))
 
@@ -34,7 +34,7 @@
         <div class="kt-portlet__foot">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.auth.logs.user.index'), __('Cancelar')) }}
+                    {{ form_cancel(route('admin.user.logs.index'), __('Cancelar')) }}
                 </div><!--col-->
 
                 <div class="col text-right">

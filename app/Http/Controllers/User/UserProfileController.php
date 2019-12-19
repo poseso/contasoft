@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\UpdateProfileRequest;
+use Exception;
+use Throwable;
 
 /**
  * Class ProfileController.
@@ -29,9 +32,9 @@ class UserProfileController extends Controller
     /**
      * @param UpdateProfileRequest $request
      *
-     * @throws \App\Exceptions\GeneralException
-     * @throws \Exception
-     * @throws \Throwable
+     * @throws GeneralException
+     * @throws Exception
+     * @throws Throwable
      * @return mixed
      */
     public function update(UpdateProfileRequest $request)

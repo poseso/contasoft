@@ -29,7 +29,8 @@
         "spatie/laravel-html": "^2.22",
         "spatie/laravel-permission": "^3.0",
         "torann/geoip": "^1.0",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "~9.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

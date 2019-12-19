@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exceptions\GeneralException;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\ManageUserRequest;
+use Throwable;
 
 /**
  * Class UserStatusController.
@@ -32,7 +34,7 @@ class UserStatusController extends Controller
      */
     public function getDeactivated(ManageUserRequest $request)
     {
-        return view('backend.auth.user.deactivated')
+        return view('user.deactivated')
             ->withUsers($this->userRepository->getInactivePaginated(25, 'id', 'asc'));
     }
 
@@ -43,7 +45,7 @@ class UserStatusController extends Controller
      */
     public function getDeleted(ManageUserRequest $request)
     {
-        return view('backend.auth.user.deleted')
+        return view('user.deleted')
             ->withUsers($this->userRepository->getDeletedPaginated(25, 'id', 'asc'));
     }
 
@@ -52,7 +54,7 @@ class UserStatusController extends Controller
      * @param User              $user
      * @param                   $status
      *
-     * @throws \App\Exceptions\GeneralException
+     * @throws GeneralException
      * @return mixed
      */
     public function mark(ManageUserRequest $request, User $user, $status)
@@ -61,8 +63,8 @@ class UserStatusController extends Controller
 
         return redirect()->route(
             (int) $status === 1 ?
-                'admin.auth.user.index' :
-                'admin.auth.user.deactivated'
+                'admin.user.index' :
+                'admin.user.deactivated'
         )->withFlashSuccess(__("El usuario $user->full_name fue actualizado correctamente."));
     }
 
@@ -70,28 +72,28 @@ class UserStatusController extends Controller
      * @param ManageUserRequest $request
      * @param User              $deletedUser
      *
-     * @throws \App\Exceptions\GeneralException
-     * @throws \Throwable
+     * @throws GeneralException
+     * @throws Throwable
      * @return mixed
      */
     public function delete(ManageUserRequest $request, User $deletedUser)
     {
         $this->userRepository->forceDelete($deletedUser);
 
-        return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__("El usuario $deletedUser->full_name fue eliminado de forma permanente."));
+        return redirect()->route('admin.user.deleted')->withFlashSuccess(__("El usuario $deletedUser->full_name fue eliminado de forma permanente."));
     }
 
     /**
      * @param ManageUserRequest $request
      * @param User              $deletedUser
      *
-     * @throws \App\Exceptions\GeneralException
+     * @throws GeneralException
      * @return mixed
      */
     public function restore(ManageUserRequest $request, User $deletedUser)
     {
         $this->userRepository->restore($deletedUser);
 
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__("El usuario $deletedUser->full_name fue restaurado correctamente."));
+        return redirect()->route('admin.user.index')->withFlashSuccess(__("El usuario $deletedUser->full_name fue restaurado correctamente."));
     }
 }

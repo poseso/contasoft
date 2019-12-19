@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('layouts.login')
 
 @section('title', app_name() . ' | ' . __('Registrarse'))
 

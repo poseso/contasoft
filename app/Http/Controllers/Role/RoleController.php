@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Role;
 
+use App\Exceptions\GeneralException;
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
 use App\Events\Role\RoleDeleted;
@@ -11,6 +12,7 @@ use App\Http\Requests\Role\StoreRoleRequest;
 use App\Http\Requests\Role\ManageRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
 use App\Repositories\Auth\PermissionRepository;
+use Throwable;
 
 /**
  * Class RoleController.
@@ -58,7 +60,7 @@ class RoleController extends Controller
             }
         }
 
-        return view('backend.auth.role.index')
+        return view('role.index')
             ->withRoles($roles)
             ->withPerm($perm);
     }
@@ -73,22 +75,22 @@ class RoleController extends Controller
         $permissions = Permission::with('module')->orderBy('permissions.id', 'ASC')->get();
         $permissions = $permissions->groupBy('module.name');
 
-        return view('backend.auth.role.create')
+        return view('role.create')
             ->withPermissions($permissions);
     }
 
     /**
      * @param  StoreRoleRequest  $request
      *
-     * @throws \App\Exceptions\GeneralException
-     * @throws \Throwable
+     * @throws GeneralException
+     * @throws Throwable
      * @return mixed
      */
     public function store(StoreRoleRequest $request)
     {
         $this->roleRepository->create($request->only('name', 'description', 'associated-permissions', 'permissions', 'sort'));
 
-        return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('Perfil creado correctamente.'));
+        return redirect()->route('role.index')->withFlashSuccess(__('Perfil creado correctamente.'));
     }
 
     /**
@@ -100,13 +102,13 @@ class RoleController extends Controller
     public function edit(ManageRoleRequest $request, Role $role)
     {
         if ($role->isSuperAdmin()) {
-            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('No puedes modificar el Perfil de Super Administrador.'));
+            return redirect()->route('role.index')->withFlashDanger(__('No puedes modificar el Perfil de Super Administrador.'));
         }
 
         $permissions = Permission::with('module')->orderBy('permissions.id', 'ASC')->get();
         $permissions = $permissions->groupBy('module.name');
 
-        return view('backend.auth.role.edit')
+        return view('role.edit')
             ->withRole($role)
             ->withRolePermissions($role->permissions->pluck('name')->all())
             ->withPermissions($permissions);
@@ -116,15 +118,15 @@ class RoleController extends Controller
      * @param  UpdateRoleRequest  $request
      * @param  Role  $role
      *
-     * @throws \App\Exceptions\GeneralException
-     * @throws \Throwable
+     * @throws GeneralException
+     * @throws Throwable
      * @return mixed
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
         $this->roleRepository->update($role, $request->only('name', 'description', 'permissions'));
 
-        return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('Perfil actualizado correctamente.'));
+        return redirect()->route('role.index')->withFlashSuccess(__('Perfil actualizado correctamente.'));
     }
 
     /**
@@ -137,13 +139,13 @@ class RoleController extends Controller
     public function destroy(ManageRoleRequest $request, Role $role)
     {
         if ($role->isAdmin()) {
-            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('No puede eliminar el Perfil de Administrador.'));
+            return redirect()->route('role.index')->withFlashDanger(__('No puede eliminar el Perfil de Administrador.'));
         }
 
         $this->roleRepository->deleteById($role->id);
 
         event(new RoleDeleted($role));
 
-        return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('Perfil eliminado correctamente.'));
+        return redirect()->route('role.index')->withFlashSuccess(__('Perfil eliminado correctamente.'));
     }
 }

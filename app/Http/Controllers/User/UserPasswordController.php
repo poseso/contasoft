@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exceptions\GeneralException;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
@@ -34,7 +35,7 @@ class UserPasswordController extends Controller
      */
     public function edit(ManageUserRequest $request, User $user)
     {
-        return view('backend.auth.user.change-password')
+        return view('user.change-password')
             ->withUser($user);
     }
 
@@ -42,13 +43,13 @@ class UserPasswordController extends Controller
      * @param UpdateUserPasswordRequest $request
      * @param User                      $user
      *
-     * @throws \App\Exceptions\GeneralException
+     * @throws GeneralException
      * @return mixed
      */
     public function update(UpdateUserPasswordRequest $request, User $user)
     {
         $this->userRepository->updatePassword($user, $request->only('password'));
 
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('La contraseña fue actualizada correctamente.'));
+        return redirect()->route('user.index')->withFlashSuccess(__('La contraseña fue actualizada correctamente.'));
     }
 }

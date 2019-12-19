@@ -1,9 +1,9 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', __('Administración de Perfiles') . ' | ' . __('Nuevo Perfil') . ' | ' . app_name())
 
 @section('content')
-    {{ html()->form('POST', route('admin.auth.role.store'))->class('form-horizontal')->open() }}
+    {{ html()->form('POST', route('admin.role.store'))->class('form-horizontal')->open() }}
     <!--begin::Portlet-->
     <div class="kt-portlet" data-ktportlet="true" id="kt_portlet_tools_3">
         <div class="kt-portlet__head">
@@ -101,13 +101,13 @@
         <div class="kt-portlet__foot">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.auth.role.index'), __('Cancelar')) }}
-                </div><!--col-->
+                    {{ form_cancel(route('admin.role.index'), __('Cancelar')) }}
+                </div>
 
                 <div class="col text-right">
                     {{ form_submit(__('Crear')) }}
-                </div><!--col-->
-            </div><!--row-->
+                </div>
+            </div>
         </div>
     </div>
     <!--end::Portlet-->

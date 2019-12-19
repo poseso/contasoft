@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Events\User\UserLoggedIn;
 use App\Exceptions\GeneralException;
@@ -43,7 +44,7 @@ class SocialLoginController extends Controller
      *
      * @throws GeneralException
      *
-     * @return \Illuminate\Http\RedirectResponse|mixed
+     * @return RedirectResponse|mixed
      */
     public function login(Request $request, $provider)
     {

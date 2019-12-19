@@ -25,10 +25,9 @@ class DashboardController extends Controller
 
     /**
      * Display a listing of Color Palette.
-     * @return Response
      */
     public function colores()
     {
-        return view('backend.colores');
+        return view('colores');
     }
 }

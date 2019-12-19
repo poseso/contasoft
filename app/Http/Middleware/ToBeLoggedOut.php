@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class ToBeLoggedOut.
@@ -13,7 +14,7 @@ class ToBeLoggedOut
      * @param         $request
      * @param Closure $next
      *
-     * @return \Illuminate\Http\RedirectResponse|mixed
+     * @return RedirectResponse|mixed
      */
     public function handle($request, Closure $next)
     {

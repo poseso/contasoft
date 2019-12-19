@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Carbon\Carbon;
+use Exception;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class PasswordExpired.
@@ -14,8 +16,8 @@ class PasswordExpires
      * @param         $request
      * @param Closure $next
      *
-     * @throws \Exception
-     * @return \Illuminate\Http\RedirectResponse|mixed
+     * @throws Exception
+     * @return RedirectResponse|mixed
      */
     public function handle($request, Closure $next)
     {

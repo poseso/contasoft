@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exceptions\GeneralException;
 use DataTables;
 use App\Models\Auth\User;
 use App\Models\Auth\Permission;
@@ -13,6 +14,10 @@ use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\ManageUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Repositories\Auth\PermissionRepository;
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
+use Throwable;
 
 /**
  * Class UserController.
@@ -39,7 +44,7 @@ class UserController extends Controller
      *
      * @param ManageUserRequest $request
      *
-     * @throws \Exception
+     * @throws Exception
      * @return mixed
      */
     public function getDataTables(ManageUserRequest $request)
@@ -50,7 +55,7 @@ class UserController extends Controller
                 return view('user.includes.confirm', ['user' => $user]);
             })
             ->filterColumn('confirmed', function ($query, $keyword) {
-                $param = (strtolower($keyword) == __('si')) ? 1 : 0;
+                $param = (strtolower($keyword) === __('si')) ? 1 : 0;
                 $query->where('confirmed', '=', $param);
             })
             ->editColumn('updated_at', function ($user) {
@@ -82,7 +87,7 @@ class UserController extends Controller
     /**
      * @param ManageUserRequest $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index(ManageUserRequest $request)
     {
@@ -102,7 +107,7 @@ class UserController extends Controller
         $permissions = Permission::with('module')->orderBy('permissions.id', 'ASC')->get();
         $permissions = $permissions->groupBy('module.name');
 
-        return view('backend.auth.user.create')
+        return view('user.create')
             ->withRoles($roleRepository->with('permissions')->get(['id', 'name']))
             ->withPermissions($permissions);
     }
@@ -110,7 +115,7 @@ class UserController extends Controller
     /**
      * @param StoreUserRequest $request
      *
-     * @throws \Throwable
+     * @throws Throwable
      * @return mixed
      */
     public function store(StoreUserRequest $request)
@@ -128,7 +133,7 @@ class UserController extends Controller
             'permissions'
         ));
 
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('El usuario fue creado correctamente.'));
+        return redirect()->route('user.index')->withFlashSuccess(__('El usuario fue creado correctamente.'));
     }
 
     /**
@@ -153,7 +158,7 @@ class UserController extends Controller
      */
     public function edit(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository, User $user)
     {
-        return view('backend.auth.user.edit')
+        return view('user.edit')
             ->withUser($user)
             ->withRoles($roleRepository->get())
             ->withUserRoles($user->roles->pluck('name')->all())
@@ -165,8 +170,8 @@ class UserController extends Controller
      * @param UpdateUserRequest $request
      * @param User              $user
      *
-     * @throws \App\Exceptions\GeneralException
-     * @throws \Throwable
+     * @throws GeneralException
+     * @throws Throwable
      * @return mixed
      */
     public function update(UpdateUserRequest $request, User $user)
@@ -180,14 +185,14 @@ class UserController extends Controller
             'permissions'
         ));
 
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__("El Usuario $user->full_name fue actualizado correctamente."));
+        return redirect()->route('user.index')->withFlashSuccess(__("El Usuario $user->full_name fue actualizado correctamente."));
     }
 
     /**
      * @param ManageUserRequest $request
      * @param User              $user
      *
-     * @throws \Exception
+     * @throws Exception
      * @return mixed
      */
     public function destroy(ManageUserRequest $request, User $user)
@@ -196,6 +201,6 @@ class UserController extends Controller
 
         event(new UserDeleted($user));
 
-        return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__("El usuario $user->full_name fue eliminado correctamente."));
+        return redirect()->route('user.deleted')->withFlashSuccess(__("El usuario $user->full_name fue eliminado correctamente."));
     }
 }

@@ -134,6 +134,7 @@ Contacto: carlos@modocreativo.net
 
             @stack('after-scripts')
             {!! script(mix('js/custom.bundle.js')) !!}
+            @include('includes.partials.ga')
         </div>
     </div>
 </div>

@@ -10,6 +10,7 @@ use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class BackupController extends Controller
 {
@@ -34,14 +35,14 @@ class BackupController extends Controller
             // make an array of backup files, with their filesize and creation date
             foreach ($files as $k => $f) {
                 // only take the zip files into account
-                if (substr($f, -4) == '.zip' && $disk->exists($f)) {
+                if (substr($f, -4) === '.zip' && $disk->exists($f)) {
                     $backups[] = [
                         'file_path' => $f,
                         'file_name' => str_replace('backups/', '', $f),
                         'file_size' => $disk->size($f),
                         'last_modified' => $disk->lastModified($f),
                         'disk' => $disk_name,
-                        'download' => ($adapter instanceof Local) ? true : false,
+                        'download' => (bool)($adapter instanceof Local),
                     ];
                 }
             }
@@ -51,7 +52,7 @@ class BackupController extends Controller
         $backups = array_reverse($backups);
         $count = count($backups);
 
-        return view('backend.backup.index', compact('backups', 'count'));
+        return view('backup.index', compact('backups', 'count'));
     }
 
     /**
@@ -82,7 +83,7 @@ class BackupController extends Controller
      *
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @return BinaryFileResponse
      */
     public function download(Request $request)
     {
@@ -119,6 +120,7 @@ class BackupController extends Controller
 
             return 'success';
         }
+
         abort(404, __('La copia de seguridad no existe.'));
     }
 }

@@ -1,9 +1,9 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', app_name() . ' | ' . __('Administración de Eventos') . ' | ' . __('Listado de Eventos'))
 
 @section('breadcrumb-links')
-    @include('backend.logs.includes.header-buttons')
+    @include('logs.includes.header-buttons')
 @endsection
 
 @section('content')
@@ -91,7 +91,7 @@
                 let log_id = $(this).data('log-id');
                 let _selector = $('#log_'+log_id);
 
-                swal.fire({
+                Swal.fire({
                     title: "{{ __('Estás seguro que desea eliminar este registro?') }}",
                     text: "{{ __('Luego de eliminado, este no podrá ser recuperado.') }}",
                     type: 'warning',
@@ -111,7 +111,7 @@
                 let url = $(this).attr('log-id');
                 let _selector = $('#deleteAll');
 
-                swal.fire({
+                Swal.fire({
                     title: "Estas seguro que desea eliminar todos los registros?",
                     text: "Luego de eliminados, estos no podrán ser recuperados.",
                     type: 'warning',

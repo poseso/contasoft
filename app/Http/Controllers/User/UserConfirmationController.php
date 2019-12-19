@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exceptions\GeneralException;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
@@ -52,27 +53,27 @@ class UserConfirmationController extends Controller
      * @param ManageUserRequest $request
      * @param User              $user
      *
-     * @throws \App\Exceptions\GeneralException
+     * @throws GeneralException
      * @return mixed
      */
     public function confirm(ManageUserRequest $request, User $user)
     {
         $this->userRepository->confirm($user);
 
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('El usuario fue confirmado exitosamente.'));
+        return redirect()->route('user.index')->withFlashSuccess(__('El usuario fue confirmado exitosamente.'));
     }
 
     /**
      * @param ManageUserRequest $request
      * @param User              $user
      *
-     * @throws \App\Exceptions\GeneralException
+     * @throws GeneralException
      * @return mixed
      */
     public function unconfirm(ManageUserRequest $request, User $user)
     {
         $this->userRepository->unconfirm($user);
 
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('El usuario fue desconfirmado correctamente.'));
+        return redirect()->route('user.index')->withFlashSuccess(__('El usuario fue desconfirmado correctamente.'));
     }
 }

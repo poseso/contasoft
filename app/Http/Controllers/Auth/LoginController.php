@@ -167,9 +167,9 @@ class LoginController extends Controller
      *
      * @param Request $request
      *
-     * @return Response
+     * @return RedirectResponse
      */
-    public function logout(Request $request): Response
+    public function logout(Request $request): RedirectResponse
     {
         // Remove the socialite session variable if exists
         if (app('session')->has(config('access.socialite_session_name'))) {

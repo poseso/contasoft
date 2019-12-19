@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\RegisterRequest;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Throwable;
 
 /**
  * Class RegisterController.
@@ -43,7 +47,7 @@ class RegisterController extends Controller
     /**
      * Show the application registration form.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function showRegistrationForm()
     {
@@ -55,8 +59,8 @@ class RegisterController extends Controller
     /**
      * @param RegisterRequest $request
      *
-     * @throws \Throwable
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
+     *@throws Throwable
      */
     public function register(RegisterRequest $request)
     {

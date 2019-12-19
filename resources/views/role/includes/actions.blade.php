@@ -5,11 +5,11 @@
         </a>
 
         <div class="dropdown-menu dropdown-menu-right">
-            <a href="{{ route('admin.auth.role.edit', $role) }}" class="dropdown-item">
+            <a href="{{ route('role.edit', $role) }}" class="dropdown-item">
                 {{ __('Modificar') }}
             </a>
 
-            <a href="{{ route('admin.auth.role.destroy', $role) }}"
+            <a href="{{ route('role.destroy', $role) }}"
                data-method="delete"
                data-trans-button-cancel="{{ __('Cancelar') }}"
                data-trans-button-confirm="{{ __('Eliminar') }}"

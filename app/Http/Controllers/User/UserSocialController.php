@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exceptions\GeneralException;
 use App\Models\Auth\User;
 use App\Models\Auth\SocialAccount;
 use App\Http\Controllers\Controller;
@@ -19,7 +20,7 @@ class UserSocialController extends Controller
      * @param User              $user
      * @param SocialAccount     $social
      *
-     * @throws \App\Exceptions\GeneralException
+     * @throws GeneralException
      * @return mixed
      */
     public function unlink(ManageUserRequest $request, SocialRepository $socialRepository, User $user, SocialAccount $social)

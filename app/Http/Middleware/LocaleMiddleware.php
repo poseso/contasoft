@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 /**
  * Class LocaleMiddleware.
@@ -13,8 +14,8 @@ class LocaleMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param Request $request
+     * @param Closure $next
      *
      * @return mixed
      */

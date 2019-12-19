@@ -23,20 +23,20 @@
 
                                     <div>
                                         <label class="kt-radio kt-radio--bold kt-radio--brand">
-                                            <input type="radio" name="avatar_type" value="gravatar" {{ $logged_in_user->avatar_type == 'gravatar' ? 'checked' : '' }} />
+                                            <input type="radio" name="avatar_type" value="gravatar" {{ $logged_in_user->avatar_type === 'gravatar' ? 'checked' : '' }} />
                                             {{ __('Gravatar') }}
                                             <span></span>
                                         </label>
                                         &nbsp; &nbsp;
                                         <label class="kt-radio kt-radio--bold kt-radio--brand">
-                                            <input type="radio" name="avatar_type" value="storage" {{ $logged_in_user->avatar_type == 'storage' ? 'checked' : '' }} />
+                                            <input type="radio" name="avatar_type" value="storage" {{ $logged_in_user->avatar_type === 'storage' ? 'checked' : '' }} />
                                             {{ __('Subir') }}
                                             <span></span>
                                         </label>
 
                                         @foreach($logged_in_user->providers as $provider)
                                             @if(strlen($provider->avatar))
-                                                <input type="radio" name="avatar_type" value="{{ $provider->provider }}" {{ $logged_in_user->avatar_type == $provider->provider ? 'checked' : '' }} /> {{ ucfirst($provider->provider) }}
+                                                <input type="radio" name="avatar_type" value="{{ $provider->provider }}" {{ $logged_in_user->avatar_type === $provider->provider ? 'checked' : '' }} /> {{ ucfirst($provider->provider) }}
                                             @endif
                                         @endforeach
                                     </div>

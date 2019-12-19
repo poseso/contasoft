@@ -22,17 +22,17 @@
 
                                 @php $dateformat = $logged_in_user->settings['date_format'] ?? ''; @endphp
                                 <select class="form-control select2" data-live-search="true" name="settings[date_format]">
-                                    <option value="d/m/Y" @if($dateformat == 'd/m/Y') selected @endif>15/05/2018</option>
-                                    <option value="d.m.Y" @if($dateformat == 'd.m.Y') selected @endif>15.05.2018</option>
-                                    <option value="d-m-Y" @if($dateformat == 'd-m-Y') selected @endif>15-05-2018</option>
-                                    <option value="m/d/Y" @if($dateformat == 'm/d/Y') selected @endif>05/15/2018</option>
-                                    <option value="Y/m/d" @if($dateformat == 'Y/m/d') selected @endif>2018/05/15</option>
-                                    <option value="Y-m-d" @if($dateformat == 'Y-m-d') selected @endif>2018-05-15</option>
-                                    <option value="M d Y" @if($dateformat == 'M d Y') selected @endif>Mayo 15 2018</option>
-                                    <option value="d M Y" @if($dateformat == 'd M Y') selected @endif>15 Mayo 2018</option>
-                                    <option value="jS M y" @if($dateformat == 'jS M y') selected @endif>15 Mayo 18</option>
-                                    <option value="F j, Y" @if($dateformat == 'F j, Y') selected @endif>Junio 17, 2018</option>
-                                    <option value="j F, Y" @if($dateformat == 'j F, Y') selected @endif>17 Junio, 2018</option>
+                                    <option value="d/m/Y" @if($dateformat === 'd/m/Y') selected @endif>15/05/2018</option>
+                                    <option value="d.m.Y" @if($dateformat === 'd.m.Y') selected @endif>15.05.2018</option>
+                                    <option value="d-m-Y" @if($dateformat === 'd-m-Y') selected @endif>15-05-2018</option>
+                                    <option value="m/d/Y" @if($dateformat === 'm/d/Y') selected @endif>05/15/2018</option>
+                                    <option value="Y/m/d" @if($dateformat === 'Y/m/d') selected @endif>2018/05/15</option>
+                                    <option value="Y-m-d" @if($dateformat === 'Y-m-d') selected @endif>2018-05-15</option>
+                                    <option value="M d Y" @if($dateformat === 'M d Y') selected @endif>Mayo 15 2018</option>
+                                    <option value="d M Y" @if($dateformat === 'd M Y') selected @endif>15 Mayo 2018</option>
+                                    <option value="jS M y" @if($dateformat === 'jS M y') selected @endif>15 Mayo 18</option>
+                                    <option value="F j, Y" @if($dateformat === 'F j, Y') selected @endif>Junio 17, 2018</option>
+                                    <option value="j F, Y" @if($dateformat === 'j F, Y') selected @endif>17 Junio, 2018</option>
                                 </select>
                             </div>
                         </div>
@@ -45,19 +45,19 @@
 
                                 @php $timeformat = $logged_in_user->settings['time_format'] ?? ''; @endphp
                                 <select class="form-control select2" data-live-search="true" name="settings[time_format]">
-                                    <option value="g:i A" @if($timeformat == 'g:i A') selected @endif>1:30 PM</option>
-                                    <option value="g:i a" @if($timeformat == 'g:i a') selected @endif>1:30 pm</option>
-                                    <option value="g:i" @if($timeformat == 'g:i') selected @endif>1:30</option>
-                                    <option value="G:i a" @if($timeformat == 'G:i a') selected @endif>13:30 pm</option>
-                                    <option value="G:i A" @if($timeformat == 'G:i A') selected @endif>13:30 PM</option>
-                                    <option value="G:i" @if($timeformat == 'G:i') selected @endif>13:30</option>
-                                    <option value="Gi" @if($timeformat == 'Gi') selected @endif>1330</option>
-                                    <option value="g:i:s" @if($timeformat == 'g:i:s') selected @endif>1:33:00</option>
-                                    <option value="G:i:s" @if($timeformat == 'G:i:s') selected @endif>13:33:00</option>
-                                    <option value="G:i:s A" @if($timeformat == 'G:i:s A') selected @endif>13:33:00 PM</option>
-                                    <option value="G:i:s a" @if($timeformat == 'G:i:s a') selected @endif>13:33:00 pm</option>
-                                    <option value="g:i:s A" @if($timeformat == 'g:i:s A') selected @endif>1:33:00 PM</option>
-                                    <option value="g:i:s a" @if($timeformat == 'g:i:s a') selected @endif>1:33:00 pm</option>
+                                    <option value="g:i A" @if($timeformat === 'g:i A') selected @endif>1:30 PM</option>
+                                    <option value="g:i a" @if($timeformat === 'g:i a') selected @endif>1:30 pm</option>
+                                    <option value="g:i" @if($timeformat === 'g:i') selected @endif>1:30</option>
+                                    <option value="G:i a" @if($timeformat === 'G:i a') selected @endif>13:30 pm</option>
+                                    <option value="G:i A" @if($timeformat === 'G:i A') selected @endif>13:30 PM</option>
+                                    <option value="G:i" @if($timeformat === 'G:i') selected @endif>13:30</option>
+                                    <option value="Gi" @if($timeformat === 'Gi') selected @endif>1330</option>
+                                    <option value="g:i:s" @if($timeformat === 'g:i:s') selected @endif>1:33:00</option>
+                                    <option value="G:i:s" @if($timeformat === 'G:i:s') selected @endif>13:33:00</option>
+                                    <option value="G:i:s A" @if($timeformat === 'G:i:s A') selected @endif>13:33:00 PM</option>
+                                    <option value="G:i:s a" @if($timeformat === 'G:i:s a') selected @endif>13:33:00 pm</option>
+                                    <option value="g:i:s A" @if($timeformat === 'g:i:s A') selected @endif>1:33:00 PM</option>
+                                    <option value="g:i:s a" @if($timeformat === 'g:i:s a') selected @endif>1:33:00 pm</option>
                                 </select>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                 @php $timezone = $logged_in_user->settings['timezone'] ?? ''; @endphp
                                 <select name="settings[timezone]" class="form-control select2" data-live-search="true">
                                     @foreach (timezones() as $value => $label)
-                                        <option value="{{ $value }}" @if($timezone == $value) selected @endif>{{ $label }}</option>
+                                        <option value="{{ $value }}" @if($timezone === $value) selected @endif>{{ $label }}</option>
                                     @endforeach
                                 </select>
                             </div><!--form-group-->
@@ -83,8 +83,8 @@
                                 {{ html()->label(__('Idioma por Defecto'))->for('language') }}
                                 @php $language = $logged_in_user->settings['language'] ?? ''; @endphp
                                 <select name="settings[language]" class="form-control select2">
-                                    <option value="es" @if($language == 'es') selected @endif>{{ __('Español') }}</option>
-                                    <option value="en" @if($language == 'en') selected @endif>{{ __('Inglés') }}</option>
+                                    <option value="es" @if($language === 'es') selected @endif>{{ __('Español') }}</option>
+                                    <option value="en" @if($language === 'en') selected @endif>{{ __('Inglés') }}</option>
                                 </select>
                             </div>
                         </div>

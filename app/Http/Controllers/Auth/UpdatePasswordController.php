@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\UserRepository;
 use App\Http\Requests\User\UpdatePasswordRequest;
@@ -29,7 +30,7 @@ class UpdatePasswordController extends Controller
     /**
      * @param UpdatePasswordRequest $request
      *
-     * @throws \App\Exceptions\GeneralException
+     * @throws GeneralException
      * @return mixed
      */
     public function update(UpdatePasswordRequest $request)
