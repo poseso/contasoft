@@ -1,0 +1,26 @@
+
+[0;32mPHPUnit Pretty Result Printer 0.26.2 by Codedungeon and contributors.
+[0m[0;33m==> Configuration: [0;33m/Applications/MAMP/htdocs/contasoft/vendor/codedungeon/phpunit-result-printer/src/phpunit-printer.yml[0m
+
+PHPUnit 8.0.6 by Sebastian Bergmann and contributors.
+
+
+ ==> CreateRoleTest             ✔  ✔  ✔  ✖  ✔  ✔  ✔  
+
+Time: 817 ms, Memory: 40.25 MB
+
+There was 1 failure:
+
+1) Tests\Feature\Backend\Role\CreateRoleTest::the_name_must_be_unique
+  Failed asserting that two strings are equal.
+
+-'El Nombre del Perfil suministrado ya existe'
++'Debe seleccionar al menos un permiso para cada Perfil.'
+
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:952
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:970
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:941
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Backend/Role/CreateRoleTest.php:53
+
+FAILURES!
+Tests: 7, Assertions: 9, Failures: 1.

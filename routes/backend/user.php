@@ -68,11 +68,9 @@ Route::group([
         Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
         Route::post('role', [RoleController::class, 'store'])->name('role.store');
 
-        Route::group(['prefix' => 'role/{role}'], function () {
-            Route::get('edit', [RoleController::class, 'edit'])->name('role.edit');
-            Route::patch('/', [RoleController::class, 'update'])->name('role.update');
-            Route::delete('/', [RoleController::class, 'destroy'])->name('role.destroy');
-        });
+        Route::get('role/{role}/edit', [RoleController::class, 'edit'])->name('role.edit');
+        Route::patch('role/{role}/update', [RoleController::class, 'update'])->name('role.update');
+        Route::delete('role/{role}/destroy', [RoleController::class, 'destroy'])->name('role.destroy');
     });
 
     // User Logs Routes

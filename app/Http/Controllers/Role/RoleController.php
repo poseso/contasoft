@@ -90,7 +90,7 @@ class RoleController extends Controller
     {
         $this->roleRepository->create($request->only('name', 'description', 'associated-permissions', 'permissions', 'sort'));
 
-        return redirect()->route('role.index')->withFlashSuccess(__('Perfil creado correctamente.'));
+        return redirect()->route('admin.user.role.index')->withFlashSuccess(__('Perfil creado correctamente.'));
     }
 
     /**
@@ -102,7 +102,7 @@ class RoleController extends Controller
     public function edit(ManageRoleRequest $request, Role $role)
     {
         if ($role->isSuperAdmin()) {
-            return redirect()->route('role.index')->withFlashDanger(__('No puedes modificar el Perfil de Super Administrador.'));
+            return redirect()->route('admin.user.role.index')->withFlashDanger(__('No puedes modificar el Perfil de Super Administrador.'));
         }
 
         $permissions = Permission::with('module')->orderBy('permissions.id', 'ASC')->get();
@@ -126,7 +126,7 @@ class RoleController extends Controller
     {
         $this->roleRepository->update($role, $request->only('name', 'description', 'permissions'));
 
-        return redirect()->route('role.index')->withFlashSuccess(__('Perfil actualizado correctamente.'));
+        return redirect()->route('admin.user.role.index')->withFlashSuccess(__('Perfil actualizado correctamente.'));
     }
 
     /**
@@ -139,13 +139,13 @@ class RoleController extends Controller
     public function destroy(ManageRoleRequest $request, Role $role)
     {
         if ($role->isAdmin()) {
-            return redirect()->route('role.index')->withFlashDanger(__('No puede eliminar el Perfil de Administrador.'));
+            return redirect()->route('admin.user.role.index')->withFlashDanger(__('No puede eliminar el Perfil de Administrador.'));
         }
 
         $this->roleRepository->deleteById($role->id);
 
         event(new RoleDeleted($role));
 
-        return redirect()->route('role.index')->withFlashSuccess(__('Perfil eliminado correctamente.'));
+        return redirect()->route('admin.user.role.index')->withFlashSuccess(__('Perfil eliminado correctamente.'));
     }
 }

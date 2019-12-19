@@ -3,7 +3,7 @@
 @section('title', __('Administración de Perfiles') . ' | ' . __('Modificar Perfil') . ' | ' . app_name())
 
 @section('content')
-    {{ html()->modelForm($role, 'PATCH', route('admin.role.update', $role))->class('form-horizontal')->open() }}
+    {{ html()->modelForm($role, 'PATCH', route('admin.user.role.update', $role))->class('form-horizontal')->open() }}
     <!--begin::Portlet-->
     <div class="kt-portlet" data-ktportlet="true" id="kt_portlet_tools_3">
         <div class="kt-portlet__head">
@@ -100,7 +100,7 @@
         <div class="kt-portlet__foot">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.role.index'), __('Cancelar')) }}
+                    {{ form_cancel(route('admin.user.role.index'), __('Cancelar')) }}
                 </div>
 
                 <div class="col text-right">

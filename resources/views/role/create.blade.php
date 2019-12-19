@@ -3,7 +3,7 @@
 @section('title', __('Administración de Perfiles') . ' | ' . __('Nuevo Perfil') . ' | ' . app_name())
 
 @section('content')
-    {{ html()->form('POST', route('admin.role.store'))->class('form-horizontal')->open() }}
+    {{ html()->form('POST', route('admin.user.role.store'))->class('form-horizontal')->open() }}
     <!--begin::Portlet-->
     <div class="kt-portlet" data-ktportlet="true" id="kt_portlet_tools_3">
         <div class="kt-portlet__head">
@@ -36,7 +36,6 @@
                         ->class('form-control form-control-lg')
                         ->placeholder(__('Escriba un nombre para el Perfil'))
                         ->attribute('maxlength', 191)
-                        ->required()
                         ->autofocus() }}
                 </div>
 
@@ -46,8 +45,7 @@
                     {{ html()->text('description')
                         ->class('form-control form-control-lg')
                         ->placeholder(__('Escriba una descripción para el Perfil'))
-                        ->attribute('maxlength', 191)
-                        ->required() }}
+                        ->attribute('maxlength', 191) }}
                 </div>
 
                 <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
@@ -101,7 +99,7 @@
         <div class="kt-portlet__foot">
             <div class="row">
                 <div class="col">
-                    {{ form_cancel(route('admin.role.index'), __('Cancelar')) }}
+                    {{ form_cancel(route('admin.user.role.index'), __('Cancelar')) }}
                 </div>
 
                 <div class="col text-right">

@@ -45,9 +45,12 @@ class CreateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->post('/role', ['name' => config('access.users.admin_role')]);
+        $response = $this->post('/role', [
+            'name' => config('access.users.admin_role'),
+            'description' => 'this is a test role'
+        ]);
 
-        $response->assertSessionHasErrors('name');
+        $response->assertSessionHas(['flash_danger' => __('El Nombre del Perfil suministrado ya existe')]);
     }
 
     /** @test */
@@ -55,7 +58,10 @@ class CreateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->post('/role', ['name' => 'new role']);
+        $response = $this->post('/role', [
+            'name' => 'new role',
+            'description' => 'this is a test role'
+        ]);
 
         $response->assertSessionHas(['flash_danger' => __('Debe seleccionar al menos un permiso para cada Perfil.')]);
     }
@@ -86,7 +92,7 @@ class CreateRoleTest extends TestCase
         $this->loginAsAdmin();
         Event::fake();
 
-        $this->post('/admin/auth/role', [
+        $this->post('/role', [
             'name' => 'new role',
             'description' => 'this is a test role',
             'permissions' => [
