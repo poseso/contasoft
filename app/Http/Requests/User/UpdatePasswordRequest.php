@@ -41,4 +41,11 @@ class UpdatePasswordRequest extends FormRequest
             ),
         ];
     }
+
+    public function messages() {
+        return [
+            'password.min' => __('La contraseña debe tener al menos 8 caracteres.'),
+            'old_password.required' => __('Debe ingresar la contraseña actual')
+        ];
+    }
 }

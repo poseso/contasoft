@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
@@ -43,9 +44,9 @@ class ResetPasswordController extends Controller
      *
      * @param string|null $token
      *
-     * @return Response
+     * @return View
      */
-    public function showResetForm($token = null): Response
+    public function showResetForm($token = null): View
     {
         if (! $token) {
             return redirect()->route('frontend.auth.password.email');
@@ -54,7 +55,7 @@ class ResetPasswordController extends Controller
         $user = $this->userRepository->findByPasswordResetToken($token);
 
         if ($user && resolve('auth.password.broker')->tokenExists($user, $token)) {
-            return view('frontend.auth.passwords.reset')
+            return view('auth.passwords.reset')
                 ->withToken($token)
                 ->withEmail($user->email);
         }

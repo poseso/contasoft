@@ -1,9 +1,9 @@
-@extends('backend.layouts.app')
+@extends('layouts.app')
 
 @section('title', app_name() . ' | ' . __('Administración de Usuarios') . ' | ' . __('Usuarios Eliminados'))
 
 @section('breadcrumb-links')
-    @include('backend.auth.user.includes.breadcrumb-links')
+    @include('user.includes.breadcrumb-links')
 @endsection
 
 @section('content')
@@ -24,7 +24,7 @@
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions">
                         <span class="d-none d-lg-inline" id="ExportButtons"></span>
-                        @include('backend.auth.user.includes.header-buttons')
+                        @include('user.includes.header-buttons')
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                 serverSide: true,
                 autoWidth: false,
                 ajax: {
-                    url: '{{ route("admin.auth.user.get") }}',
+                    url: '{{ route("admin.user.get") }}',
                     type: 'get',
                     data: {trashed: true},
                     error: function (xhr, err) {

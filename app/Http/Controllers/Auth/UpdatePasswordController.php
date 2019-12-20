@@ -35,7 +35,7 @@ class UpdatePasswordController extends Controller
      */
     public function update(UpdatePasswordRequest $request)
     {
-        $this->userRepository->updatePassword($request->only('old_password', 'password'));
+        $this->userRepository->updatePasswordFront($request->only('old_password', 'password'));
 
         return redirect()->to(route('frontend.user.account').'#password')->withFlashSuccess(__('Contraseña actualizada correctamente.'));
     }

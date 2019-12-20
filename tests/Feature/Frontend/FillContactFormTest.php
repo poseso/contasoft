@@ -26,7 +26,7 @@ class FillContactFormTest extends TestCase
             'message' => 'This is a test message',
         ]);
 
-        $response->assertSessionHas(['flash_success' => __('Su información fue enviada correctamente. Responderemos tan pronto sea posible al correo que proporcionó.')]);
+        $response->assertSessionHas(['flash_success' => __('Su información ha sido enviada correctamente. Responderemos tan pronto nos sea posible al correo que proporcionó.')]);
         Mail::assertSent(SendContact::class);
     }
 

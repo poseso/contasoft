@@ -46,7 +46,7 @@ class UpdateUserTest extends TestCase
 
         $this->assertNotSame('John', $user->first_name);
         $this->assertNotSame('Doe', $user->last_name);
-        $this->assertNotSame('Doe', $user->username);
+        $this->assertNotSame('jdoe', $user->username);
         $this->assertNotSame('john@example.com', $user->email);
 
         $this->patch("/user/{$user->id}", [
@@ -55,7 +55,7 @@ class UpdateUserTest extends TestCase
             'username' => 'jdoe',
             'email' => 'john@example.com',
             'timezone' => 'UTC',
-            'roles' => ['administrator'],
+            'roles' => ['Super Administrador'],
         ]);
 
         $this->assertSame('John', $user->fresh()->first_name);

@@ -90,6 +90,7 @@ Contacto: carlos@modocreativo.net
 {{-- See https://laravel.com/docs/6.x/blade#stacks for usage --}}
 @stack('before-styles')
     <!--begin::Login Layout -->
+    {{ style(mix('css/login-3.css')) }}
     {{ style(mix('css/login-5.css')) }}
     <!--end::Login Layout -->
     <!--begin::Global Theme Styles(used by all pages) -->

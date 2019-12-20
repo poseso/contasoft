@@ -88,8 +88,15 @@ class ResetPasswordTest extends TestCase
     {
         config(['access.users.password_history' => false]);
 
-        $user = factory(User::class)->create(['email' => 'john@example.com', 'password' => ']EqZL4}zBT']);
-        $token = $this->app->make('auth.password.broker')->createToken($user);
+        $adminRole = $this->getAdminRole();
+        $admin = factory(User::class)->create([
+            'email' => 'john@example.com',
+            'password' => ']EqZL4}zBT',
+        ]);
+
+        $admin->assignRole($adminRole);
+
+        $token = $this->app->make('auth.password.broker')->createToken($admin);
 
         $response = $this->post('password/reset', [
             'token' => $token,
@@ -98,8 +105,9 @@ class ResetPasswordTest extends TestCase
             'password_confirmation' => ']EqZL4}zBT',
         ]);
 
+
         $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check(']EqZL4}zBT', $user->fresh()->password));
+        $this->assertTrue(Hash::check(']EqZL4}zBT', $admin->fresh()->password));
     }
 
     /** @test */

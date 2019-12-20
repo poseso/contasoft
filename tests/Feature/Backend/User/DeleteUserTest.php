@@ -42,7 +42,7 @@ class DeleteUserTest extends TestCase
         Event::fake();
 
         $response = $this->get("/user/{$user->id}/restore");
-        $response->assertSessionHas(['flash_success' => __('El usuario fue restaurado correctamente.')]);
+        $response->assertSessionHas(['flash_success' => __("El usuario $user->name fue restaurado correctamente.")]);
 
         $this->assertNull($user->fresh()->deleted_at);
         Event::assertDispatched(UserRestored::class);
@@ -58,7 +58,7 @@ class DeleteUserTest extends TestCase
         $response = $this->get("/user/{$user->id}/delete");
 
         $this->assertNull($user->fresh());
-        $response->assertSessionHas(['flash_success' => __('El usuario fue eliminado de forma permanente.')]);
+        $response->assertSessionHas(['flash_success' => __("El usuario $user->name fue eliminado de forma permanente.")]);
         Event::assertDispatched(UserPermanentlyDeleted::class);
     }
 
@@ -81,7 +81,7 @@ class DeleteUserTest extends TestCase
 
         $response = $this->delete("/user/{$user->id}");
 
-        $response->assertSessionHas(['flash_success' => __('El usuario fue eliminado correctamente.')]);
+        $response->assertSessionHas(['flash_success' => __("El usuario $user->name fue eliminado correctamente.")]);
         $this->assertDatabaseMissing('users', ['id' => $user->id, 'deleted_at' => null]);
     }
 }

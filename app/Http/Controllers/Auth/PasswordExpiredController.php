@@ -21,7 +21,7 @@ class PasswordExpiredController extends Controller
     {
         abort_unless(config('access.users.password_expires_days'), 404);
 
-        return view('frontend.auth.passwords.expired');
+        return view('auth.passwords.expired');
     }
 
     /**
@@ -35,7 +35,7 @@ class PasswordExpiredController extends Controller
     {
         abort_unless(config('access.users.password_expires_days'), 404);
 
-        $userRepository->updatePassword($request->only('old_password', 'password'), true);
+        $userRepository->updatePasswordFront($request->only('old_password', 'password'), true);
 
         return redirect()->route('frontend.user.account')
             ->withFlashSuccess(__('Contraseña actualizada correctamente.'));

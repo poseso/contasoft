@@ -94,21 +94,21 @@
                         <div class="kt-portlet__body">
                             <div class="tab-content">
                                 <div class="tab-pane active" id="profile" role="tabpanel">
-                                    @include('frontend.user.account.tabs.profile')
+                                    @include('auth.user.account.tabs.profile')
                                 </div>
 
                                 <div class="tab-pane" id="edit" role="tabpanel">
-                                    @include('frontend.user.account.tabs.edit')
+                                    @include('auth.user.account.tabs.edit')
                                 </div>
 
                                 @if($logged_in_user->canChangePassword())
                                     <div class="tab-pane" id="password" role="tabpanel">
-                                        @include('frontend.user.account.tabs.change-password')
+                                        @include('auth.user.account.tabs.change-password')
                                     </div>
                                 @endif
 
                                 <div class="tab-pane" id="settings" role="tabpanel">
-                                    @include('frontend.user.account.tabs.settings')
+                                    @include('auth.user.account.tabs.settings')
                                 </div>
                             </div>
                         </div>

@@ -5,8 +5,71 @@
 PHPUnit 8.0.6 by Sebastian Bergmann and contributors.
 
 
- ==> CreateUserTest             ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> UpdateUserAccountTest      ✔  ✖  ✖  ✖  ✖  ✖  ✖  ✖  ✖  ✔  
 
-Time: 906 ms, Memory: 50.25 MB
+Time: 924 ms, Memory: 40.25 MB
 
-OK (6 tests, 17 assertions)
+There were 8 failures:
+
+1) Tests\Feature\Frontend\UpdateUserAccountTest::the_email_needs_to_be_confirmed_if_confirm_email_is_true
+  Failed asserting that true is false.
+
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Frontend/UpdateUserAccountTest.php:146
+
+2) Tests\Feature\Frontend\UpdateUserAccountTest::a_user_can_upload_his_own_avatar
+  Unable to find a file at path [].
+Failed asserting that false is true.
+
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemAdapter.php:62
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Frontend/UpdateUserAccountTest.php:130
+
+3) Tests\Feature\Frontend\UpdateUserAccountTest::the_avatar_type_is_required
+  Session is missing expected key [errors].
+Failed asserting that false is true.
+
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:947
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:1022
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Frontend/UpdateUserAccountTest.php:115
+
+4) Tests\Feature\Frontend\UpdateUserAccountTest::the_last_name_is_required
+  Session is missing expected key [errors].
+Failed asserting that false is true.
+
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:947
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:1022
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Frontend/UpdateUserAccountTest.php:104
+
+5) Tests\Feature\Frontend\UpdateUserAccountTest::the_first_name_is_required
+  Session is missing expected key [errors].
+Failed asserting that false is true.
+
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:947
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:1022
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Frontend/UpdateUserAccountTest.php:93
+
+6) Tests\Feature\Frontend\UpdateUserAccountTest::the_email_is_required
+  Session is missing expected key [errors].
+Failed asserting that false is true.
+
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:947
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:1022
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Frontend/UpdateUserAccountTest.php:82
+
+7) Tests\Feature\Frontend\UpdateUserAccountTest::the_username_is_required
+  Session is missing expected key [errors].
+Failed asserting that false is true.
+
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:947
+/Applications/MAMP/htdocs/contasoft/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php:1022
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Frontend/UpdateUserAccountTest.php:71
+
+8) Tests\Feature\Frontend\UpdateUserAccountTest::a_user_can_update_his_profile
+  Failed asserting that two strings are identical.
+
+-'César'
++'John'
+
+/Applications/MAMP/htdocs/contasoft/tests/Feature/Frontend/UpdateUserAccountTest.php:56
+
+FAILURES!
+Tests: 10, Assertions: 13, Failures: 8.

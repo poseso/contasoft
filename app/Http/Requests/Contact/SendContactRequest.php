@@ -41,6 +41,9 @@ class SendContactRequest extends FormRequest
     {
         return [
             'g-recaptcha-response.required_if' => __('El campo :attribute es requerido.', ['attribute' => 'captcha']),
+            'name.required' => __('El campo Nombre Completo es obligatorio'),
+            'email.required' => __('El campo Dirección de Correo es obligatorio'),
+            'message.required' => __('El campo Mensaje es obligatorio'),
         ];
     }
 }

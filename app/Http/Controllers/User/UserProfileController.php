@@ -39,7 +39,7 @@ class UserProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request)
     {
-        $output = $this->userRepository->update(
+        $output = $this->userRepository->updateFront(
             $request->user()->id,
             $request->only('first_name', 'last_name', 'username', 'email', 'avatar_type', 'avatar_location'),
             $request->has('avatar_location') ? $request->file('avatar_location') : false
