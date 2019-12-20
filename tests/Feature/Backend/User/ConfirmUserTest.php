@@ -28,7 +28,7 @@ class ConfirmUserTest extends TestCase
         $this->assertSame(true, $user->fresh()->confirmed);
         Event::assertDispatched(UserConfirmed::class);
 
-        $response->assertSessionHas(['flash_success' => __('El usuario fue confirmado correctamente.')]);
+        $response->assertSessionHas(['flash_success' => __('El usuario fue confirmado exitosamente.')]);
     }
 
     /** @test */
@@ -38,7 +38,7 @@ class ConfirmUserTest extends TestCase
         $user = factory(User::class)->states('confirmed')->create();
 
         $response = $this->get("/user/{$user->id}/confirm");
-        $response->assertSessionHas(['flash_danger' => __('Este Usuario ya fue confirmado.')]);
+        $response->assertSessionHas(['flash_danger' => __('Este usuario ya está confirmado.')]);
     }
 
     /** @test */

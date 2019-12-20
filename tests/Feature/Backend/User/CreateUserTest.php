@@ -41,7 +41,7 @@ class CreateUserTest extends TestCase
         $this->loginAsAdmin();
         factory(User::class)->create(['email' => 'john@example.com']);
 
-        $response = $this->post('/admin/auth/user', [
+        $response = $this->post('/user', [
             'first_name' => 'John',
             'last_name' => 'Doe',
             'username' => 'jdoe',
@@ -52,7 +52,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'ejecutivo', 2 => 'usuario'],
+            'roles' => [ 1 => config('access.users.super_admin_role')],
         ]);
 
         $response->assertSessionHasErrors('email');
@@ -64,7 +64,7 @@ class CreateUserTest extends TestCase
         $this->loginAsAdmin();
         factory(User::class)->create(['username' => 'jdoe']);
 
-        $response = $this->post('/admin/auth/user', [
+        $response = $this->post('/user', [
             'first_name' => 'John',
             'last_name' => 'Doe',
             'username' => 'jdoe',
@@ -75,7 +75,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'ejecutivo', 2 => 'usuario'],
+            'roles' => [ 1 => config('access.users.super_admin_role')],
         ]);
 
         $response->assertSessionHasErrors('username');
@@ -85,6 +85,7 @@ class CreateUserTest extends TestCase
     public function admin_can_create_new_user()
     {
         $this->loginAsAdmin();
+
         // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
         // Make sure our events are fired
         $initialDispatcher = Event::getFacadeRoot();
@@ -102,7 +103,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '1',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'administrador'],
+            'roles' => [ 1 => config('access.users.super_admin_role')],
         ]);
 
         $this->assertDatabaseHas(
@@ -138,7 +139,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'administrador'],
+            'roles' => [ 1 => config('access.users.super_admin_role')],
         ]);
 
         $response->assertSessionHas(['flash_success' => __('El usuario fue creado correctamente.')]);

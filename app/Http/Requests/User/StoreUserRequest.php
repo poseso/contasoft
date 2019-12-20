@@ -31,8 +31,15 @@ class StoreUserRequest extends FormRequest
         return [
             'first_name' => ['required'],
             'last_name' => ['required'],
-            'username' => ['required'],
-            'email' => ['required', 'email', Rule::unique('users')],
+            'username' => [
+                'required',
+                'max:25',
+                Rule::unique('users', 'username'),
+            ],
+            'email' => [
+                'required',
+                'email', Rule::unique('users')
+            ],
             'password' => PasswordRules::register($this->email),
             'roles' => ['required', 'array'],
         ];
@@ -47,6 +54,8 @@ class StoreUserRequest extends FormRequest
             'first_name.required' => __('El campo Nombre es obligatorio.'),
             'last_name.required' => __('El campo Apellidos es obligatorio.'),
             'username.required' => __('El campo Usuario es obligatorio.'),
+            'username.unique' => __('El Usuario').' '.$this->get('username').' '.__('se encuentra en uso.'),
+            'username.max' => __('El usuario no debe exceder los :max caracteres.'),
             'password.required' => __('El campo Contraseña es obligatorio.'),
             'password_confirmation.required' => __('El campo Confirmación de la contraseña es obligatorio.'),
             'email.required' => __('El campo Dirección de correo es obligatorio.'),

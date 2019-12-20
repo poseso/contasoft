@@ -24,7 +24,7 @@ class ClearSessionTest extends TestCase
 
         $response = $this->get("/user/{$user->id}/clear-session");
 
-        $response->assertSessionHas(['flash_success' => __('La sesión del usuario se borró correctamente.')]);
+        $response->assertSessionHas(['flash_success' => __('La sesión del usuario se limpio correctamente.')]);
 
         $this->assertDatabaseHas('users', ['id' => $user->getKey(), 'to_be_logged_out' => true]);
     }
