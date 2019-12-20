@@ -20,7 +20,7 @@ class DeleteRoleTest extends TestCase
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => $role->id]);
 
-        $this->delete("/role/{$role->id}");
+        $this->delete("/role/{$role->id}/destroy");
 
         $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);
     }
@@ -30,10 +30,11 @@ class DeleteRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $role = Role::whereName(config('access.users.admin_role'))->first();
-        $response = $this->delete('/role/'.$role->id);
+        $role = Role::whereName(config('access.users.super_admin_role'))->first();
 
-        $response->assertSessionHas(['flash_danger' => __('No puede eliminar el Perfil de Administrador.')]);
+        $response = $this->delete("/role/{$role->id}/destroy");
+
+        $response->assertSessionHas(['flash_danger' => __('No puede eliminar el Perfil de Super Administrador.')]);
     }
 
     /** @test */
@@ -43,7 +44,7 @@ class DeleteRoleTest extends TestCase
         Event::fake();
         $this->loginAsAdmin();
 
-        $this->delete("/role/{$role->id}");
+        $this->delete("/role/{$role->id}/destroy");
 
         Event::assertDispatched(RoleDeleted::class);
     }

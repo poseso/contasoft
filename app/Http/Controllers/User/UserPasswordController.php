@@ -50,6 +50,6 @@ class UserPasswordController extends Controller
     {
         $this->userRepository->updatePassword($user, $request->only('password'));
 
-        return redirect()->route('user.index')->withFlashSuccess(__('La contraseña fue actualizada correctamente.'));
+        return redirect()->route('admin.user.index')->withFlashSuccess(__('La contraseña fue actualizada correctamente.'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Role;
 
+use Exception;
 use Throwable;
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
@@ -133,13 +134,13 @@ class RoleController extends Controller
      * @param ManageRoleRequest $request
      * @param Role              $role
      *
-     * @throws \Exception
+     * @throws Exception
      * @return mixed
      */
     public function destroy(ManageRoleRequest $request, Role $role)
     {
-        if ($role->isAdmin()) {
-            return redirect()->route('admin.user.role.index')->withFlashDanger(__('No puede eliminar el Perfil de Administrador.'));
+        if ($role->isSuperAdmin()) {
+            return redirect()->route('admin.user.role.index')->withFlashDanger(__('No puede eliminar el Perfil de Super Administrador.'));
         }
 
         $this->roleRepository->deleteById($role->id);

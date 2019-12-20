@@ -95,6 +95,7 @@ class ChangeUserPasswordTest extends TestCase
         $this->loginAsAdmin();
         $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
 
+
         $this->patch("/user/{$user->id}/password/change", [
             'password' => 'OC4Nzu270N!QBVi%U%qX_02',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX_02',

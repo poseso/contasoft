@@ -47,7 +47,7 @@ class CreateRoleTest extends TestCase
 
         $response = $this->post('/role', [
             'name' => config('access.users.admin_role'),
-            'description' => 'this is a test role'
+            'description' => 'this is a test role',
         ]);
 
         $response->assertSessionHas(['flash_danger' => __('El Nombre del Perfil suministrado ya existe')]);

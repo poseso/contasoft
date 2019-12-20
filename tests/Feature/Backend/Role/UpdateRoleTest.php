@@ -27,7 +27,7 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $response = $this->patch("/role/{$role->id}", ['name' => '']);
+        $response = $this->patch("/role/{$role->id}/update", ['name' => '']);
 
         $response->assertSessionHasErrors('name');
     }
@@ -38,7 +38,7 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $response = $this->patch("/role/{$role->id}", ['description' => '']);
+        $response = $this->patch("/role/{$role->id}/update", ['description' => '']);
 
         $response->assertSessionHasErrors('description');
     }
@@ -49,7 +49,7 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $response = $this->patch("/role/{$role->id}", ['name' => 'new role']);
+        $response = $this->patch("/role/{$role->id}/update", ['name' => 'new role']);
 
         $response->assertSessionHas(['flash_danger' => __('Debe seleccionar al menos un permiso para cada Perfil.')]);
     }
@@ -60,7 +60,7 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $this->patch("/admin/auth/role/{$role->id}", [
+        $this->patch("/role/{$role->id}/update", [
             'name' => 'new name',
             'description' => 'this is a role test',
             'permissions' => [
@@ -79,7 +79,7 @@ class UpdateRoleTest extends TestCase
         Event::fake();
         $this->loginAsAdmin();
 
-        $this->patch("/admin/auth/role/{$role->id}", [
+        $this->patch("/role/{$role->id}/update", [
             'name' => 'new name',
             'description' => 'this is a role test',
             'permissions' => [
