@@ -89,7 +89,7 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-        $this->roleRepository->create($request->only('name', 'description', 'associated-permissions', 'permissions', 'sort'));
+        $this->roleRepository->create($request->only('name', 'description', 'permissions'));
 
         return redirect()->route('admin.user.role.index')->withFlashSuccess(__('Perfil creado correctamente.'));
     }

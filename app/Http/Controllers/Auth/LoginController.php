@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Events\User\UserLoggedIn;
 use App\Events\User\UserLoggedOut;
 use App\Exceptions\GeneralException;
@@ -70,14 +69,14 @@ class LoginController extends Controller
      *
      * @param Request $request
      */
-    protected function validateLogin(Request $request): void
+    protected function validateLogin(Request $request)
     {
         $messages = [
             'data.required' => __('El campo usuario o correo electrónico es obligatorio.'),
             'email.exists' => __('La dirección de correo suministrada no existe.'),
             'username.exists' => __('El usuario suministrado no existe.'),
             'password.required' => __('El campo contraseña es obligatorio.'),
-            'g-recaptcha-response.required_if' => __('El campo :attribute es obligatorio.', ['attribute' => 'captcha']),
+            'g-recaptcha-response.required_if' => __('El campo :attribute es obligatorio.', ['attribute' => 'CAPTCHA']),
         ];
 
         $request->validate([
@@ -95,7 +94,7 @@ class LoginController extends Controller
      * @param Request $request
      * @return array
      */
-    protected function credentials(Request $request): array
+    protected function credentials(Request $request)
     {
         $field = filter_var($request->input('data'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
@@ -108,7 +107,7 @@ class LoginController extends Controller
      * @param Request $request
      * @throws ValidationException
      */
-    protected function sendFailedLoginResponse(Request $request): void
+    protected function sendFailedLoginResponse(Request $request)
     {
         throw ValidationException::withMessages([
             $this->username() => [__('Las credenciales no se han encontrado.')],
@@ -124,7 +123,7 @@ class LoginController extends Controller
      * @throws GeneralException
      * @return RedirectResponse
      */
-    protected function authenticated(Request $request, $user): RedirectResponse
+    protected function authenticated(Request $request, $user)
     {
         // Check to see if the users account is confirmed and active
         if (! $user->isConfirmed()) {
@@ -137,7 +136,7 @@ class LoginController extends Controller
 
             // Otherwise see if they want to resent the confirmation e-mail
             throw new GeneralException(__('Su cuenta no ha sido verificada todavía. Por favor, revise su e-mail, o 
-                <a href=":url">
+                <a class="text-white" href=":url">
                     pulse aquí
                 </a> 
                     para re-enviar el correo de verificación.', [
@@ -169,7 +168,7 @@ class LoginController extends Controller
      *
      * @return RedirectResponse
      */
-    public function logout(Request $request): RedirectResponse
+    public function logout(Request $request)
     {
         // Remove the socialite session variable if exists
         if (app('session')->has(config('access.socialite_session_name'))) {
@@ -183,6 +182,6 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
 
-        return redirect()->route('frontend.auth.login');
+        return redirect()->route('frontend.auth.login')->withFlashSuccess('Ha finalizado la sesión correctamente!');
     }
 }

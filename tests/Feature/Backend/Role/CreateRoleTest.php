@@ -46,11 +46,16 @@ class CreateRoleTest extends TestCase
         $this->loginAsAdmin();
 
         $response = $this->post('/role', [
-            'name' => config('access.users.admin_role'),
+            'name' => config('access.users.super_admin_role'),
             'description' => 'this is a test role',
+            'permissions' => [
+                'dashboard.read',
+            ],
         ]);
 
-        $response->assertSessionHas(['flash_danger' => __('El Nombre del Perfil suministrado ya existe')]);
+        $response->assertSessionHasErrors();
+        $errors = session('errors');
+        $this->assertSame($errors->get('name')[0], __('El Nombre de Perfil'.' ('.config('access.users.super_admin_role').')'. ' se encuentra en uso.'));
     }
 
     /** @test */

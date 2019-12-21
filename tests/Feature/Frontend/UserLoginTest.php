@@ -30,7 +30,7 @@ class UserLoginTest extends TestCase
         Event::fake();
 
         $this->post('/login', [
-            'email' => 'john@example.com',
+            'data' => 'john@example.com',
             'password' => 'secret',
         ]);
 
@@ -48,7 +48,7 @@ class UserLoginTest extends TestCase
         Event::fake();
 
         $this->post('/login', [
-            'username' => 'jdoe',
+            'data' => 'jdoe',
             'password' => 'secret',
         ]);
 
@@ -65,7 +65,7 @@ class UserLoginTest extends TestCase
         ]);
 
         $response = $this->post('/login', [
-            'email' => 'john@example.com',
+            'data' => 'john@example.com',
             'password' => 'secret',
         ]);
 
@@ -82,7 +82,7 @@ class UserLoginTest extends TestCase
         ]);
 
         $response = $this->post('/login', [
-            'email' => 'john@example.com',
+            'data' => 'john@example.com',
             'password' => 'secret',
         ]);
 
@@ -105,7 +105,7 @@ class UserLoginTest extends TestCase
     public function password_is_required()
     {
         $response = $this->post('/login', [
-            'email' => 'john@example.com',
+            'data' => 'john@example.com',
             'password' => '',
         ]);
 
@@ -120,7 +120,7 @@ class UserLoginTest extends TestCase
         $this->expectException(ValidationException::class);
 
         $this->post('/login', [
-            'email' => 'not-existend@user.com',
+            'data' => 'not-existend@user.com',
             'password' => '9s8gy8s9diguh4iev',
         ]);
     }
@@ -131,11 +131,12 @@ class UserLoginTest extends TestCase
         $user = factory(User::class)->create();
         Event::fake();
 
-        $this->actingAs($user)
+        $response = $this->actingAs($user)
             ->get('/logout')
             ->assertRedirect('/login');
 
         $this->assertFalse($this->isAuthenticated());
+        $response->assertSessionHas('flash_success');
         Event::assertDispatched(UserLoggedOut::class);
     }
 }

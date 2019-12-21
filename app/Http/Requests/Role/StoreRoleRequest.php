@@ -36,7 +36,7 @@ class StoreRoleRequest extends FormRequest
     public function messages() {
         return [
             'name.required' => __('El campo Nombre del Perfil es obligatorio'),
-            'name.unique' => __('El Nombre del Perfil suministrado ya existe'),
+            'name.unique' => __('El Nombre de Perfil').' '.'('.$this->get('name').')'.' '.__('se encuentra en uso.'),
             'description.required' => __('El campo Descripción del Perfil es obligatorio'),
         ];
     }

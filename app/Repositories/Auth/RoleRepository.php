@@ -8,6 +8,7 @@ use App\Events\Role\RoleUpdated;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
+use Throwable;
 
 /**
  * Class RoleRepository.
@@ -28,15 +29,15 @@ class RoleRepository extends BaseRepository
      * @param array $data
      *
      * @throws GeneralException
-     * @throws \Throwable
+     * @throws Throwable
      * @return Role
      */
     public function create(array $data) : Role
     {
         // Make sure it doesn't already exist
-        if ($this->roleExists($data['name'])) {
-            throw new GeneralException('Ya existe un perfil con el nombre '.e($data['name']));
-        }
+//        if ($this->roleExists($data['name'])) {
+//            throw new GeneralException('Ya existe un perfil con el nombre '.e($data['name']));
+//        }
 
         if (! isset($data['permissions']) || ! \count($data['permissions'])) {
             $data['permissions'] = [];
@@ -70,7 +71,7 @@ class RoleRepository extends BaseRepository
      * @param array $data
      *
      * @throws GeneralException
-     * @throws \Throwable
+     * @throws Throwable
      * @return mixed
      */
     public function update(Role $role, array $data)
