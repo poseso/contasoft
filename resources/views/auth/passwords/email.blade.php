@@ -34,19 +34,21 @@
                                         ->placeholder(__('Dirección de correo'))
                                         ->attribute('maxlength', 191)
                                         ->autofocus() }}
-                                </div><!--form-group-->
-                            </div><!--col-->
-                        </div><!--row-->
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col">
                                 {{ form_cancel(route('frontend.auth.login'), __('Cancelar')) }}
-                            </div><!--col-->
+                            </div>
 
                             <div class="col text-right">
-                                {{ form_submit(__('Enviar el correo de verificación')) }}
-                            </div><!--col-->
-                        </div><!--row-->
+                                <button class="btn btn-success btn-sm" style="padding-right: 5px !important;" type="submit">
+                                    {{ __('Enviar el correo de verificación') }}
+                                </button>
+                            </div>
+                        </div>
                         {{ html()->form()->close() }}
                     </div>
                 </div>
