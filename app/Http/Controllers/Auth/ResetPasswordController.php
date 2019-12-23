@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
-use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -46,7 +45,7 @@ class ResetPasswordController extends Controller
      *
      * @return View
      */
-    public function showResetForm($token = null): View
+    public function showResetForm($token = null)
     {
         if (! $token) {
             return redirect()->route('frontend.auth.password.email');
@@ -117,7 +116,7 @@ class ResetPasswordController extends Controller
      * @param  string  $response
      * @return RedirectResponse
      */
-    protected function sendResetResponse($response): RedirectResponse
+    protected function sendResetResponse($response)
     {
         return redirect()->route(home_route())->withFlashSuccess(e(trans($response)));
     }

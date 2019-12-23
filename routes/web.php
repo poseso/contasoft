@@ -1,5 +1,10 @@
 <?php
 
+// Switch between the included languages
+use App\Http\Controllers\LanguageController;
+
+Route::get('lang/{lang}', [LanguageController::class, 'swap']);
+
 // Frontend Routes
 Route::name('frontend.')->group(function () {
     include_route_files(__DIR__.'/frontend/');

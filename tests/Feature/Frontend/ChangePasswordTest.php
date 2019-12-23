@@ -17,14 +17,16 @@ class ChangePasswordTest extends TestCase
         $user = factory(User::class)->create(['password' => '1234']);
 
         $response = $this->actingAs($user)
-            ->followingRedirects()
             ->patch('/password/update', [
                 'old_password' => '1234',
                 'password' => '1234567',
                 'password_confirmation' => '1234567',
             ]);
 
-        $this->assertStringContainsString('La contraseña debe tener al menos 8 caracteres.', $response->content());
+        $response->assertSessionHasErrors();
+        $errors = session('errors');
+
+        $this->assertSame($errors->get('password')[0], __('La contraseña debe tener al menos 8 caracteres.'));
     }
 
     /** @test */

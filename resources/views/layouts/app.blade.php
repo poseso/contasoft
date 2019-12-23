@@ -100,6 +100,10 @@ Contacto: carlos@modocreativo.net
         <link href="{{ asset('css/skins/brand/dark.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />
         <!--end::Layout Skins -->
+
+        <!--begin::3rd Party Custom Styles -->
+        <link rel="stylesheet" href="{{ asset('custom/select2-bootstrap-theme/select2-bootstrap.css') }}" type="text/css" />
+        <!--end::3rd Party Custom Styles -->
     </head>
 
 <!-- begin::Body -->

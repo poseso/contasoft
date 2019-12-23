@@ -17,15 +17,18 @@ class ChangeUserPasswordTest extends TestCase
     public function the_password_can_be_validated()
     {
         $this->loginAsAdmin();
+
         $user = factory(User::class)->create();
 
-        $response = $this->followingRedirects()
-            ->patch("/user/{$user->id}/password/change", [
+        $response = $this->patch("/user/{$user->id}/password/change", [
                 'password' => '1234567',
                 'password_confirmation' => '1234567',
             ]);
 
-        $this->assertStringContainsString('La contraseña debe tener al menos 8 caracteres.', $response->content());
+        $response->assertSessionHasErrors();
+        $errors = session('errors');
+
+        $this->assertSame($errors->get('password')[0], __('La contraseña debe tener al menos 8 caracteres.'));
     }
 
     /** @test */

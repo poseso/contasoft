@@ -3,7 +3,7 @@
 @section('title', app_name() . ' | ' . __('Administración de Eventos') . ' | ' . __('Visualizando Evento'))
 
 @section('breadcrumb-links')
-    @include('backend.logs.includes.header-buttons')
+    @include('logs.includes.header-buttons')
 @endsection
 
 @section('content')

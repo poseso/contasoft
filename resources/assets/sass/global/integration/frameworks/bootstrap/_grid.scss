@@ -25,7 +25,7 @@
     .col-stretch {
     	display: flex;
 		align-items: stretch;
-    } 
+    }
 
     // row separator
     &[class*="row-col-separator-"] {
@@ -48,8 +48,14 @@
                     &:last-child {
                         border-right: 0;
                     }
-                }    
+                }
             }
-        }        
-    }    
+        }
+    }
+
+    > .col,
+    > [class*="col-"] {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
 }

@@ -92,7 +92,7 @@ class UserRegistrationTest extends TestCase
         $response = $this->get('/account/confirm/'.$user->confirmation_code);
 
         $response->assertSessionHas(['flash_success' => __('¡Su cuenta ha sido verificada satisfactoriamente!')]);
-        $this->assertSame(true, $user->fresh()->confirmed);
+        $this->assertTrue($user->fresh()->confirmed);
         Event::assertDispatched(UserConfirmed::class);
     }
 
@@ -116,11 +116,12 @@ class UserRegistrationTest extends TestCase
         config(['access.users.requires_approval' => true]);
 
         $response = $this->registerUser();
+
         $response->assertSessionHas(['flash_success' => __('Su cuenta fue creada con éxito y está pendiente de aprobación. Se enviará un correo electrónico cuando su cuenta sea aprobada.')]);
 
-        $response = $this->post('/login', ['email' => 'john@example.com', 'password' => 'OC4Nzu270N!QBVi%U%qX']);
+        $response = $this->post('/login', ['data' => 'john@example.com', 'password' => 'OC4Nzu270N!QBVi%U%qX']);
 
-        $response->assertSessionHas(['flash_danger' => __('Su cuenta esta actualmente pendiente de aprobación.')]);
+        $response->assertSessionHas(['flash_danger' => __('Su cuenta está actualmente pendiente de aprobación.')]);
     }
 
     /** @test */
@@ -261,6 +262,6 @@ class UserRegistrationTest extends TestCase
 
         $response = $this->registerUser();
 
-        $response->assertRedirect('/dashboard');
+        $response->assertRedirect('/account');
     }
 }

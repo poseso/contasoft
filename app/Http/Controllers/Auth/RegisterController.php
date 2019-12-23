@@ -53,7 +53,7 @@ class RegisterController extends Controller
     {
         abort_unless(config('access.registration'), 404);
 
-        return view('frontend.auth.register');
+        return view('auth.register');
     }
 
     /**
@@ -66,7 +66,13 @@ class RegisterController extends Controller
     {
         abort_unless(config('access.registration'), 404);
 
-        $user = $this->userRepository->createFront($request->only('first_name', 'last_name', 'username', 'email', 'password'));
+        $user = $this->userRepository->createFront($request->only(
+            'first_name',
+            'last_name',
+            'username',
+            'email',
+            'password'
+        ));
 
         // If the user must confirm their email or their account requires approval,
         // create the account but don't log them in.

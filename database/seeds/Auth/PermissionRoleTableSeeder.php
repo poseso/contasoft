@@ -84,7 +84,6 @@ class PermissionRoleTableSeeder extends Seeder
         User::find(1)->assignRole(config('access.users.super_admin_role'));
         User::find(2)->assignRole(config('access.users.admin_role'));
         User::find(3)->assignRole(config('access.users.default_role'));
-//        User::find(3)->givePermissionTo('dashboard.read');
 
         $this->enableForeignKeys();
     }

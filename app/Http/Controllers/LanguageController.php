@@ -14,7 +14,7 @@ class LanguageController extends Controller
      *
      * @return RedirectResponse
      */
-    public function swap($locale): RedirectResponse
+    public function swap($locale)
     {
         if (array_key_exists($locale, config('locale.languages'))) {
             session()->put('locale', $locale);

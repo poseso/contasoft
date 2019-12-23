@@ -94,11 +94,11 @@ class UserLoginTest extends TestCase
     public function email_is_required()
     {
         $response = $this->post('/login', [
-            'email' => '',
+            'data' => '',
             'password' => '12345',
         ]);
 
-        $response->assertSessionHasErrors('email');
+        $response->assertSessionHasErrors('username');
     }
 
     /** @test */

@@ -5,7 +5,7 @@
                 <div class="row">
                     <label class="col-xl-3"></label>
 
-                    <div class="col-lg-9 col-xl-6">
+                    <div class="col-lg-9 col-xl-9">
                         <h3 class="kt-section__title kt-section__title-sm">
                             {{ __('Información de Usuario') }}:
                         </h3>
@@ -13,11 +13,11 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-xl-3 col-lg-3 col-form-label">
+                    <label class="col-xl-3 col-lg-3 col-form-label col-">
                         {{ __('Avatar') }}
                     </label>
 
-                    <div class="col-lg-9 col-xl-6">
+                    <div class="col-lg-9 col-xl-9">
                         <div class="kt-avatar kt-avatar--outline kt-avatar--circle-" id="kt_apps_user_add_avatar">
                             <div class="kt-avatar__holder" style="background-image: url({{ $logged_in_user->picture }})"></div>
                         </div>

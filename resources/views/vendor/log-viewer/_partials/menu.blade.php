@@ -1,7 +1,9 @@
 <div class="card">
     <div class="card-header">
-        <i class="fa fa-fw fa-flag"></i> Levels
+        <i class="fa fa-fw fa-flag"></i>
+        {{ __('Niveles') }}
     </div>
+
     <ul class="list-group list-group-flush">
         @foreach($log->menu() as $level => $item)
             @if($item['count'] === 0)

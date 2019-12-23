@@ -35,7 +35,7 @@ if (! function_exists('home_route')) {
                 return 'admin.dashboard';
             }
 
-            abort(403);
+            return 'frontend.user.account';
         }
 
         return 'frontend.auth.login';

@@ -5,8 +5,8 @@
 PHPUnit 8.4.3 by Sebastian Bergmann and contributors.
 
 
- ==> UserLoginTest              ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> ReadBackupTest             ✔  ✔  
 
-Time: 592 ms, Memory: 40.50 MB
+Time: 410 ms, Memory: 38.50 MB
 
-OK (9 tests, 23 assertions)
+OK (2 tests, 2 assertions)

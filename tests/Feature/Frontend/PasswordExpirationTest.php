@@ -64,14 +64,16 @@ class PasswordExpirationTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-            ->followingRedirects()
             ->patch('/password/expired', [
                 'old_password' => ']EqZL4}zBT',
                 'password' => 'secret',
                 'password_confirmation' => 'secret',
             ]);
 
-        $this->assertStringContainsString('La contraseña debe tener al menos 8 caracteres.', $response->content());
+        $response->assertSessionHasErrors();
+        $errors = session('errors');
+
+        $this->assertSame($errors->get('password')[0], __('La contraseña debe tener al menos 8 caracteres.'));
     }
 
     /** @test */

@@ -95,7 +95,7 @@
 
                 @if ($logged_in_user->canChangeEmail())
                     <div class="col-6 offset-3">
-                        <div class="alert alert-warning" role="alert">
+                        <div class="alert alert-warning m-10" role="alert">
                             <div class="alert-icon">
                                 <i class="flaticon-warning"></i>
                             </div>

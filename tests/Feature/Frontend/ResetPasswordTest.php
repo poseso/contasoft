@@ -72,15 +72,17 @@ class ResetPasswordTest extends TestCase
         $user = factory(User::class)->create(['email' => 'john@example.com']);
         $token = $this->app->make('auth.password.broker')->createToken($user);
 
-        $response = $this->followingRedirects()
-            ->post('password/reset', [
+        $response = $this->post('password/reset', [
                 'token' => $token,
                 'email' => 'john@example.com',
                 'password' => 'secret',
                 'password_confirmation' => 'secret',
             ]);
 
-        $this->assertStringContainsString('La contraseña debe tener al menos 8 caracteres.', $response->content());
+        $response->assertSessionHasErrors();
+        $errors = session('errors');
+
+        $this->assertSame($errors->get('password')[1], __('El texto password debe tener, al menos, 8 caracteres.'));
     }
 
     /** @test */

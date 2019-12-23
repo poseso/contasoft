@@ -33,8 +33,8 @@ class UpdateProfileRequest extends FormRequest
         return [
             'first_name' => ['required'],
             'last_name' => ['required'],
-            'username' => ['sometimes', 'required', 'string', 'min:5', 'max:25', Rule::unique('users')->ignore($user)],
-            'email' => ['sometimes', 'required', 'email', Rule::unique('users')],
+            'username' => ['sometimes', 'required', 'string', 'max:25', Rule::unique('users')->ignore($user)],
+            'email' => ['sometimes', 'required', 'email', Rule::unique('users')->ignore($user)],
             'avatar_type' => ['required', Rule::in(array_merge(['gravatar', 'storage'], (new SocialiteHelper)->getAcceptedProviders()))],
             'avatar_location' => ['sometimes', 'image'],
         ];
@@ -53,7 +53,6 @@ class UpdateProfileRequest extends FormRequest
             'username.unique' => __('El Usuario').' '.$this->get('username').' '.__('se encuentra en uso.'),
             'email.unique' => __('Ya existe un usuario con la dirección de correo').' '.$this->get('email'),
             'username.max' => __('El usuario no debe exceder los :max caracteres.'),
-            'username.min' => __('El usuario debe tener un mínimo de :min caracteres.'),
         ];
     }
 }

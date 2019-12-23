@@ -34,7 +34,7 @@ class LoginController extends Controller
      *
      * @return string
      */
-    public function redirectPath(): string
+    public function redirectPath()
     {
         return route(home_route());
     }
@@ -52,7 +52,7 @@ class LoginController extends Controller
      *
      * @return string
      */
-    public function username(): string
+    public function username()
     {
         $login = request()->input('data');
 
@@ -73,17 +73,14 @@ class LoginController extends Controller
     {
         $messages = [
             'data.required' => __('El campo usuario o correo electrónico es obligatorio.'),
-            'email.exists' => __('La dirección de correo suministrada no existe.'),
-            'username.exists' => __('El usuario suministrado no existe.'),
+            'username.required' => __('El campo usuario o correo electrónico es obligatorio.'),
             'password.required' => __('El campo contraseña es obligatorio.'),
             'g-recaptcha-response.required_if' => __('El campo :attribute es obligatorio.', ['attribute' => 'CAPTCHA']),
         ];
 
         $request->validate([
-            'data' => 'required|string',
+            $this->username() => 'required|string',
             'password' => PasswordRules::login(),
-            'email' => 'string|exists:users,email',
-            'username' => 'string|exists:users,username',
             'g-recaptcha-response' => ['required_if:captcha_status,true', 'captcha'],
         ], $messages);
     }
@@ -136,10 +133,10 @@ class LoginController extends Controller
 
             // Otherwise see if they want to resent the confirmation e-mail
             throw new GeneralException(__('Su cuenta no ha sido verificada todavía. Por favor, revise su e-mail, o 
-                <a class="text-white" href=":url">
+                <a class="text-black font-italic" style="text-decoration: underline; color:black;" href=":url">
                     pulse aquí
                 </a> 
-                    para re-enviar el correo de verificación.', [
+                    &nbsp;para re-enviar el correo de verificación.', [
                 'url' => route('frontend.auth.account.confirm.resend', e($user->{$user->getUuidName()})),
             ]));
         }

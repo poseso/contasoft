@@ -50,12 +50,12 @@
                         @foreach($logs as $log)
                             <tr>
                                 <td class="text-center">
-                                    @include('backend.logs.includes.actions', ['log' => $log])
+                                    @include('logs.includes.actions', ['log' => $log])
                                 </td>
                                 <td class="text-center">{{ $log->id }}</td>
                                 <td>{{ $log->recordable_type }}</td>
                                 <td class="text-center">{{ $log->event }}</td>
-                                <td class="text-center">{{ $log->user->username }} ({{ $log->user->full_name }})</td>
+                                <td class="text-center">{{ $logged_in_user->username }} ({{ $logged_in_user->full_name }})</td>
                                 <td class="text-center">{{ $log->recordableUser->full_name }}</td>
                                 <td class="text-center">{{ $log->ip_address }}</td>
                                 <td>{{ $log->url }}</td>

@@ -3,7 +3,7 @@
     <div class="kt-form__body">
         <div class="kt-section kt-section--first">
             <div class="kt-section__body">
-                <div class="alert alert-solid-danger alert-bold fade show kt-margin-t-20 kt-margin-b-40" role="alert">
+                <div class="alert alert-solid-danger alert-bold fade show kt-margin-t-10 kt-margin-b-40" role="alert">
                     <div class="alert-icon">
                         <i class="fa fa-exclamation-triangle"></i>
                     </div>

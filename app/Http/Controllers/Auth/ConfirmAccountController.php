@@ -34,7 +34,7 @@ class ConfirmAccountController extends Controller
      */
     public function confirm($token)
     {
-        $this->user->confirm($token);
+        $this->user->confirmFront($token);
 
         return redirect()->route('frontend.auth.login')->withFlashSuccess(__('¡Su cuenta ha sido verificada satisfactoriamente!'));
     }

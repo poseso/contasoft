@@ -35,7 +35,7 @@ class CheckForReadOnlyModeTest extends TestCase
         $this->loginAsAdmin();
 
         $response = $this->followingRedirects()
-            ->delete("/role/{$role->id}");
+            ->delete("/role/{$role->id}/destroy");
 
         $this->assertSame($response->getStatusCode(), Response::HTTP_OK);
         $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);
@@ -52,7 +52,7 @@ class CheckForReadOnlyModeTest extends TestCase
         ]);
 
         $this->post('/login', [
-            'email' => 'john@example.com',
+            'data' => 'john@example.com',
             'password' => 'secret',
         ]);
 

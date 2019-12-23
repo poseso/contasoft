@@ -40,7 +40,10 @@ class UpdateUserAccountTest extends TestCase
     /** @test */
     public function a_user_can_update_his_profile()
     {
+        $adminRole = $this->getAdminRole();
         $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
+
         config(['access.users.change_email' => true]);
 
         $this->actingAs($user)
@@ -63,7 +66,9 @@ class UpdateUserAccountTest extends TestCase
     /** @test */
     public function the_username_is_required()
     {
+        $adminRole = $this->getAdminRole();
         $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
 
         $response = $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData(['username' => '']));
@@ -74,7 +79,9 @@ class UpdateUserAccountTest extends TestCase
     /** @test */
     public function the_email_is_required()
     {
+        $adminRole = $this->getAdminRole();
         $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
 
         $response = $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData(['email' => '']));
@@ -85,7 +92,9 @@ class UpdateUserAccountTest extends TestCase
     /** @test */
     public function the_first_name_is_required()
     {
+        $adminRole = $this->getAdminRole();
         $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
 
         $response = $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData(['first_name' => '']));
@@ -96,7 +105,9 @@ class UpdateUserAccountTest extends TestCase
     /** @test */
     public function the_last_name_is_required()
     {
+        $adminRole = $this->getAdminRole();
         $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
 
         $response = $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData(['last_name' => '']));
@@ -107,7 +118,9 @@ class UpdateUserAccountTest extends TestCase
     /** @test */
     public function the_avatar_type_is_required()
     {
+        $adminRole = $this->getAdminRole();
         $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
 
         $response = $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData(['avatar_type' => '']));
@@ -118,7 +131,10 @@ class UpdateUserAccountTest extends TestCase
     /** @test */
     public function a_user_can_upload_his_own_avatar()
     {
+        $adminRole = $this->getAdminRole();
         $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
+
         Storage::fake('public');
 
         $this->actingAs($user)
@@ -133,7 +149,10 @@ class UpdateUserAccountTest extends TestCase
     /** @test */
     public function the_email_needs_to_be_confirmed_if_confirm_email_is_true()
     {
+        $adminRole = $this->getAdminRole();
         $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
+
         config(['access.users.confirm_email' => true]);
         config(['access.users.change_email' => true]);
         Notification::fake();
