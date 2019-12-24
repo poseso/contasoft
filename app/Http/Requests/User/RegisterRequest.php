@@ -42,6 +42,7 @@ class RegisterRequest extends FormRequest
             'username' => [
                 'required',
                 'string',
+                'min:5',
                 'max:25',
                 Rule::unique('users', 'username')
             ],

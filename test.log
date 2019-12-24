@@ -5,8 +5,33 @@
 PHPUnit 8.4.3 by Sebastian Bergmann and contributors.
 
 
+ ==> UserRepositoryTest         ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> AdminDashboardTest         ✔  ✔  ✔  
  ==> ReadBackupTest             ✔  ✔  
+ ==> CreateRoleTest             ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> DeleteRoleTest             ✔  ✔  ✔  
+ ==> ReadRolesTest              ✔  
+ ==> UpdateRoleTest             ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> ChangeUserPasswordTest     ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> ClearSessionTest           ✔  
+ ==> ConfirmUserTest            ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> CreateUserTest             ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> DeactivateUserTest         ✔  ✔  ✔  ✔  
+ ==> DeleteUserTest             ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> ManageUserSocialTest       ✔  ✔  
+ ==> ReadUsersTest              ✔  ✔  
+ ==> UpdateUserTest             ✔  ✔  ✔  
+ ==> ChangePasswordTest         ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> FillContactFormTest        ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> PasswordExpirationTest     ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> ResetPasswordTest          ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> UpdateUserAccountTest      ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> UserDashboardTest          ✔  
+ ==> UserLoginTest              ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> UserRegistrationTest       ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  ✔  
+ ==> CheckForReadOnlyModeTest   ✔  ✔  ✔  
+ ==> SwitchLanguageTest         ✔  
 
-Time: 410 ms, Memory: 38.50 MB
+Time: 5.84 seconds, Memory: 68.50 MB
 
-OK (2 tests, 2 assertions)
+OK (136 tests, 280 assertions)

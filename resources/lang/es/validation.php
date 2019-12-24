@@ -29,6 +29,7 @@ return [
         'array' => 'La lista :attribute debe contener entre :min y :max elementos.',
     ],
     'boolean' => 'El campo :attribute debe ser booleano.',
+    'captcha' => 'Debes confirmar que eres Humano!',
     'confirmed' => 'El campo :attribute de confirmación no coincide.',
     'date' => 'El campo :attribute no es una fecha válida.',
     'date_equals' => 'The :attribute must be a date equal to :date.',
