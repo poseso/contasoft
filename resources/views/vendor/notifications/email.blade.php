@@ -1,12 +1,12 @@
 @component('mail::message')
     {{-- Greeting --}}
     @if (! empty($greeting))
-        # {{ $greeting }}
+        {{ $greeting }}
     @else
         @if ($level === 'error')
-            # {{ __('Ups!') }}
+            {{ __('Ups!') }}
         @else
-            # {{ __('Confirmación de la cuenta!') }}
+            <h1>{{ __('Confirmación de la cuenta!') }}</h1>
         @endif
     @endif
 
@@ -42,7 +42,8 @@
     @if (! empty($salutation))
         {!! $salutation !!}
     @else
-        {{ __('Sinceramente') }},
+        <br><br>
+        {{ __('Sinceramente') }},<br>
         {{ config('app.name') }}
     @endif
 
