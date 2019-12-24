@@ -36,11 +36,11 @@
             <div class="row mt-4 mb-4">
                 <div class="col">
                     <div class="form-group row">
-                        {{ html()->label(__('Nombre'))->class('col-md-2 form-control-label')->for('first_name') }}
+                        {{ html()->label(__('Nombre'))->class('col-md-2 form-control-label align-self-center')->for('first_name') }}
 
                         <div class="col-md-10">
                             {{ html()->text('first_name')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Nombre'))
                                 ->attribute('maxlength', 70)
                                 ->autofocus() }}
@@ -48,33 +48,33 @@
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Apellidos'))->class('col-md-2 form-control-label')->for('last_name') }}
+                        {{ html()->label(__('Apellidos'))->class('col-md-2 form-control-label align-self-center')->for('last_name') }}
 
                         <div class="col-md-10">
                             {{ html()->text('last_name')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Apellidos'))
                                 ->attribute('maxlength', 70) }}
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Usuario'))->class('col-md-2 form-control-label')->for('username') }}
+                        {{ html()->label(__('Usuario'))->class('col-md-2 form-control-label align-self-center')->for('username') }}
 
                         <div class="col-md-10">
                             {{ html()->text('username')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Usuario'))
                                 ->attribute('maxlength', 25) }}
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Dirección de correo'))->class('col-md-2 form-control-label')->for('email') }}
+                        {{ html()->label(__('Dirección de correo'))->class('col-md-2 form-control-label align-self-center')->for('email') }}
 
                         <div class="col-md-10">
                             {{ html()->email('email')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Dirección de correo'))
                                 ->attribute('maxlength', 65) }}
                         </div>
@@ -135,7 +135,8 @@
                         </div>
 
                         <div class="col-xl-6 col-sm-12">
-                            <h3 class="kt-portlet__head-title">{{ __('Permisos') }}</h3>
+                            <h3 class="kt-portlet__head-title">{{ __('Permisos Adicionales') }}</h3>
+                            <div class="kt-separator kt-separator--space-lg kt-separator--border-2x" style="margin-top: 10px; border-bottom: 2px solid #0d47a1;"></div>
                             <div class="table-responsive">
                                 <table class="table-permissions">
                                     <tbody>

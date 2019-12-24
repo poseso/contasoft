@@ -30,7 +30,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     {{ html()->email('email')
-                                        ->class('form-control')
+                                        ->class('form-control form-control-lg')
                                         ->placeholder(__('Dirección de correo'))
                                         ->attribute('maxlength', 191) }}
                                 </div><!--form-group-->
@@ -41,7 +41,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     {{ html()->password('password')
-                                        ->class('form-control')
+                                        ->class('form-control form-control-lg')
                                         ->placeholder(__('Contraseña')) }}
                                 </div><!--form-group-->
                             </div><!--col-->
@@ -51,7 +51,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     {{ html()->password('password_confirmation')
-                                        ->class('form-control')
+                                        ->class('form-control form-control-lg')
                                         ->placeholder(__('Confirmación de la Contraseña')) }}
                                 </div><!--form-group-->
                             </div><!--col-->

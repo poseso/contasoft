@@ -36,11 +36,11 @@
             <div class="row mt-4 mb-4">
                 <div class="col">
                     <div class="form-group row">
-                        {{ html()->label(__('Nombre'))->class('col-md-2 form-control-label')->for('first_name') }}
+                        {{ html()->label(__('Nombre'))->class('col-md-2 form-control-label align-self-center')->for('first_name') }}
 
                         <div class="col-md-10">
                             {{ html()->text('first_name')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Nombre'))
                                 ->attribute('maxlength', 70)
                                 ->autofocus() }}
@@ -48,60 +48,60 @@
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Apellidos'))->class('col-md-2 form-control-label')->for('last_name') }}
+                        {{ html()->label(__('Apellidos'))->class('col-md-2 form-control-label align-self-center')->for('last_name') }}
 
                         <div class="col-md-10">
                             {{ html()->text('last_name')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Apellidos'))
                                 ->attribute('maxlength', 70) }}
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Usuario'))->class('col-md-2 form-control-label')->for('username') }}
+                        {{ html()->label(__('Usuario'))->class('col-md-2 form-control-label align-self-center')->for('username') }}
 
                         <div class="col-md-10">
                             {{ html()->text('username')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Usuario'))
                                 ->attribute('maxlength', 25) }}
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Dirección de correo'))->class('col-md-2 form-control-label')->for('email') }}
+                        {{ html()->label(__('Dirección de correo'))->class('col-md-2 form-control-label align-self-center')->for('email') }}
 
                         <div class="col-md-10">
                             {{ html()->email('email')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Dirección de correo'))
                                 ->attribute('maxlength', 65) }}
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Contraseña'))->class('col-md-2 form-control-label')->for('password') }}
+                        {{ html()->label(__('Contraseña'))->class('col-md-2 form-control-label align-self-center')->for('password') }}
 
                         <div class="col-md-10">
                             {{ html()->password('password')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Contraseña')) }}
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Confirmación de la contraseña'))->class('col-md-2 form-control-label')->for('password_confirmation') }}
+                        {{ html()->label(__('Confirmación de la contraseña'))->class('col-md-2 form-control-label align-self-center')->for('password_confirmation') }}
 
                         <div class="col-md-10">
                             {{ html()->password('password_confirmation')
-                                ->class('form-control')
+                                ->class('form-control form-control-lg')
                                 ->placeholder(__('Confirmación de la contraseña')) }}
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Activo'))->class('col-md-2 form-control-label')->for('active') }}
+                        {{ html()->label(__('Activo'))->class('col-md-2 form-control-label align-self-center')->for('active') }}
 
                         <div class="col-md-10">
                             <span class="kt-switch kt-switch--sm kt-switch--icon">
@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Confirmado'))->class('col-md-2 form-control-label')->for('confirmed') }}
+                        {{ html()->label(__('Confirmado'))->class('col-md-2 form-control-label align-self-center')->for('confirmed') }}
 
                         <div class="col-md-10">
                             <span class="kt-switch kt-switch--sm kt-switch--icon">

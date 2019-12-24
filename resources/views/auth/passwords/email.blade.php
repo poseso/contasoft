@@ -30,7 +30,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     {{ html()->email('email')
-                                        ->class('form-control')
+                                        ->class('form-control form-control-lg')
                                         ->placeholder(__('Dirección de correo'))
                                         ->attribute('maxlength', 191)
                                         ->autofocus() }}
@@ -44,9 +44,7 @@
                             </div>
 
                             <div class="col text-right">
-                                <button class="btn btn-success btn-sm" style="padding-right: 5px !important;" type="submit">
-                                    {{ __('Enviar el correo de verificación') }}
-                                </button>
+                                {{ form_submit(__('Enviar verificación')) }}
                             </div>
                         </div>
                         {{ html()->form()->close() }}

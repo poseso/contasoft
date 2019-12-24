@@ -73,7 +73,7 @@
                                     {{ html()->textarea('message')
                                         ->class('form-control')
                                         ->placeholder(__('Mensaje'))
-                                        ->attribute('rows', 3) }}
+                                        ->attribute('rows', 10) }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->

@@ -27,7 +27,7 @@
 
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <div class="form-group" style="padding-right: 14px !important;">
+                                <div class="form-group">
                                     {{ html()->text('first_name')
                                         ->class('form-control form-control-lg')
                                         ->placeholder(__('Nombre'))
