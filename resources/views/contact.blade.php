@@ -31,7 +31,7 @@
                                     {{ html()->label(__('Nombre Completo'))->for('name') }}
 
                                     {{ html()->text('name', optional(auth()->user())->name)
-                                        ->class('form-control')
+                                        ->class('form-control form-control-lg')
                                         ->placeholder(__('Nombre Completo'))
                                         ->attribute('maxlength', 191)
                                         ->autofocus() }}
@@ -45,7 +45,7 @@
                                     {{ html()->label(__('Dirección de Correo'))->for('email') }}
 
                                     {{ html()->email('email', optional(auth()->user())->email)
-                                        ->class('form-control')
+                                        ->class('form-control form-control-lg')
                                         ->placeholder(__('Dirección de Correo'))
                                         ->attribute('maxlength', 191) }}
                                 </div><!--form-group-->
@@ -58,7 +58,7 @@
                                     {{ html()->label(__('Teléfono'))->for('phone') }}
 
                                     {{ html()->text('phone')
-                                        ->class('form-control')
+                                        ->class('form-control form-control-lg')
                                         ->placeholder(__('Teléfono'))
                                         ->attribute('maxlength', 191) }}
                                 </div><!--form-group-->
@@ -71,7 +71,7 @@
                                     {{ html()->label(__('Mensaje'))->for('message') }}
 
                                     {{ html()->textarea('message')
-                                        ->class('form-control')
+                                        ->class('form-control form-control-lg')
                                         ->placeholder(__('Mensaje'))
                                         ->attribute('rows', 10) }}
                                 </div><!--form-group-->
