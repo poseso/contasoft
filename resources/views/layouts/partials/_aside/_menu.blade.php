@@ -28,7 +28,7 @@
 
                 <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Route::is('admin.user.*'), 'kt-menu__item--open kt-menu__item--active') }}"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Route::is('admin/user*')) }}">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Route::is('user*')) }}">
                         <i class="kt-menu__link-icon flaticon-users-1"></i>
                         <span class="kt-menu__link-text">
                             {{ __('Usuarios') }}
