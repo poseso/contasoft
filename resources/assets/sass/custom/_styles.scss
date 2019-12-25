@@ -3949,6 +3949,7 @@ table.dataTable tbody tr.selected a, table.dataTable tbody th.selected a, table.
 .select2-container .select2-selection--single {
     height: 48px !important;
 }
+
 @media only screen and (min-width: 768px) {
     .centered {
         position: fixed;
@@ -3962,4 +3963,12 @@ table.dataTable tbody tr.selected a, table.dataTable tbody th.selected a, table.
 .read-only, .logged-in-as {
     margin: 0 !important;
     border-radius: 0 !important;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+table tr:first-child th, table tr:first-child td {
+    border-top: 0;
 }
