@@ -9,7 +9,7 @@
                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
             </li>
 
-            <li class="kt-menu__item @if(active_class(Route::is('admin.dashboard'))) kt-menu__item--active @endif" aria-haspopup="true">
+            <li class="kt-menu__item @if(active_class(Request::is('dashboard'))) kt-menu__item--active @endif" aria-haspopup="true">
                 <a href="{{ route('admin.dashboard') }}" class="kt-menu__link">
                     <i class="kt-menu__link-icon flaticon2-architecture-and-city"></i>
                     <span class="kt-menu__link-text">
@@ -26,9 +26,9 @@
                     <i class="kt-menu__section-icon flaticon-more-v2"></i>
                 </li>
 
-                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Route::is('admin.user.*'), 'kt-menu__item--open kt-menu__item--active') }}"
+                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Request::is('user*'), 'kt-menu__item--open kt-menu__item--active') }}"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Route::is('user*')) }}">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Request::is('user*')) }}">
                         <i class="kt-menu__link-icon flaticon-users-1"></i>
                         <span class="kt-menu__link-text">
                             {{ __('Usuarios') }}
@@ -106,9 +106,9 @@
                     </div>
                 </li>
 
-                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Route::is('admin.user.role.*'), 'kt-menu__item--open kt-menu__item--active') }}"
+                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Request::is('role*'), 'kt-menu__item--open kt-menu__item--active') }}"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Route::is('role*')) }}">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle {{ active_class(Request::is('role*')) }}">
                         <i class="kt-menu__link-icon flaticon-safe-shield-protection"></i>
                         <span class="kt-menu__link-text">
                             {{ __('Perfiles') }}
@@ -147,9 +147,9 @@
                     </div>
                 </li>
 
-                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Request::is('admin/log-viewer*'), 'kt-menu__item--open kt-menu__item--active') }}"
+                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Request::is('log-viewer*'), 'kt-menu__item--open kt-menu__item--active') }}"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                    <a href="javascript:" class="kt-menu__link kt-menu__toggle {{ active_class(Request::is('admin/log-viewer*')) }}">
+                    <a href="javascript:" class="kt-menu__link kt-menu__toggle {{ active_class(Request::is('log-viewer*')) }}">
                         <i class="kt-menu__link-icon flaticon-security"></i>
                         <span class="kt-menu__link-text">
                             {{ __('Logs de Errores') }}
@@ -188,9 +188,9 @@
                     </div>
                 </li>
 
-                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Request::is('admin/backup*'), 'kt-menu__item--open kt-menu__item--active') }}"
+                <li class="kt-menu__item kt-menu__item--submenu {{ active_class(Request::is('backup*'), 'kt-menu__item--open kt-menu__item--active') }}"
                     aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                    <a href="javascript:" class="kt-menu__link kt-menu__toggle {{ active_class(Request::is('admin/backup*')) }}">
+                    <a href="javascript:" class="kt-menu__link kt-menu__toggle {{ active_class(Request::is('backup*')) }}">
                         <i class="kt-menu__link-icon flaticon-refresh"></i>
                         <span class="kt-menu__link-text">
                             {{ __('Copias de Seguridad') }}
@@ -216,7 +216,7 @@
                     </div>
                 </li>
 
-                <li class="kt-menu__item @if(active_class(Route::is('admin.user.logs.index*'))) kt-menu__item--active @endif" aria-haspopup="true">
+                <li class="kt-menu__item @if(active_class(Request::is('logs/user*'))) kt-menu__item--active @endif" aria-haspopup="true">
                     <a href="{{ route('admin.user.logs.index') }}" class="kt-menu__link">
                         <i class="kt-menu__link-icon flaticon-graphic"></i>
                         <span class="kt-menu__link-text">

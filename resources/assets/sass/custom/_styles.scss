@@ -3908,7 +3908,12 @@ input[readonly] {
 }
 
 table.dataTable tbody tr.selected a, table.dataTable tbody th.selected a, table.dataTable tbody td.selected a {
-    color: #969696;
+    color: #434343;
+}
+
+.dataTables_wrapper .dataTable .selected td, .dataTables_wrapper .dataTable .selected th {
+    background-color: #E1F5FE;
+    //color: #FFFFFF;
 }
 
 .checkboxes label {

@@ -50,7 +50,7 @@ return [
         'enabled' => true,
 
         'attributes' => [
-            'prefix' => 'admin/log-viewer',
+            'prefix' => 'log-viewer',
 
             'middleware' => ['web', 'admin'],
         ],
