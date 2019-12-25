@@ -17,8 +17,10 @@ class UserLog extends Model implements \Altek\Accountant\Contracts\Ledger
         'extra' => 'json',
     ];
 
+    // Affected User
     public function recordableUser()
     {
         return $this->belongsTo(User::class, 'recordable_id');
     }
+
 }

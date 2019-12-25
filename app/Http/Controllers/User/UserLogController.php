@@ -35,12 +35,7 @@ class UserLogController extends Controller
             ->where('id', $id)
             ->first();
 
-        $original = call_user_func([$log->recordable_type, 'select'])
-            ->where('id', $log->id)
-            ->first();
-
         return view('logs.show')
-            ->withLog($log)
-            ->withOriginal($original);
+            ->withLog($log);
     }
 }

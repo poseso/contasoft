@@ -44,19 +44,54 @@
                             </div>
 
                             <div class="kt-portlet__body">
-                                <div class="form-group row">
-                                    {{ html()->label(__('Fecha'))->class('col-xl-3 col-lg-3') }}
+                                <div class="col">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tr class="text-white">
+                                                <th class="w-30">{{ html()->label(mb_strtoupper(__('Fecha'))) }}</th>
+                                                <td>{{ $log->created_at }}</td>
+                                            </tr>
 
-                                    <div class="col-lg-9 col-xl-6">
-                                        {{ $log->created_at }}
-                                    </div>
-                                </div>
+                                            <tr class="text-white">
+                                                <th>{{ html()->label(mb_strtoupper(__('Modelo'))) }}</th>
+                                                <td>{{ $log->recordable_type }}</td>
+                                            </tr>
 
-                                <div class="form-group row">
-                                    {{ html()->label(__('Modelo'))->class('col-xl-3 col-lg-3') }}
+                                            <tr class="text-white">
+                                                <th>{{ html()->label(mb_strtoupper(__('ID de Fila'))) }}</th>
+                                                <td>{{ $log->recordable_id }}</td>
+                                            </tr>
 
-                                    <div class="col-lg-9 col-xl-6">
-                                        {{ $log->recordable_type }}
+                                            <tr class="text-white">
+                                                <th>{{ html()->label(mb_strtoupper(__('Tipo'))) }}</th>
+                                                <td>{{ mb_strtoupper($log->event) }}</td>
+                                            </tr>
+
+                                            <tr class="text-white">
+                                                <th>{{ html()->label(mb_strtoupper(__('Usuario IP'))) }}</th>
+                                                <td>{{ $log->ip_address }}</td>
+                                            </tr>
+
+                                            <tr class="text-white">
+                                                <th>{{ html()->label(mb_strtoupper(__('Usuario'))) }}</th>
+                                                <td>{{ $log->user->name ?? __('No disponible') }}</td>
+                                            </tr>
+
+                                            <tr class="text-white">
+                                                <th>{{ html()->label(mb_strtoupper(__('Usuario Afectado'))) }}</th>
+                                                <td>{{ $log->recordableUser->fullname }}</td>
+                                            </tr>
+
+                                            <tr class="text-white">
+                                                <th>{{ html()->label(mb_strtoupper(__('URL'))) }}</th>
+                                                <td>{{ $log->url }}</td>
+                                            </tr>
+
+                                            <tr class="text-white">
+                                                <th>{{ html()->label(mb_strtoupper(__('Usuario Agente'))) }}</th>
+                                                <td>{{ $log->user_agent }}</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +113,49 @@
                             </div>
 
                             <div class="kt-portlet__body">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting  dummy text of the printing  dummy text of the printing dummy text of the printing industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
+                                Request Payload
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="kt-portlet kt-portlet--skin-solid kt-bg-primary">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <span class="kt-portlet__head-icon">
+                                        <i class="flaticon-layers"></i>
+                                    </span>
+
+                                    <h3 class="kt-portlet__head-title">
+                                        {{ __('Estado actual del objeto') }}
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="kt-portlet__body">
+                                Datos
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="kt-portlet kt-portlet--skin-solid kt-bg-primary">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <span class="kt-portlet__head-icon">
+                                        <i class="flaticon-layers"></i>
+                                    </span>
+
+                                    <h3 class="kt-portlet__head-title">
+                                        {{ __('Estado del objeto en este registro') }}
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="kt-portlet__body">
+                                Datos
                             </div>
                         </div>
                     </div>
