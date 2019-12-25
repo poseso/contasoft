@@ -19,7 +19,7 @@ return [
      * Only used in the built-in controller.
      * * Use 'back' to redirect to the previous page
      */
-    'take_redirect_to' => '/admin/dashboard',
+    'take_redirect_to' => '/dashboard',
 
     /*
      * The URI to redirect after leaving an impersonation.
@@ -27,5 +27,5 @@ return [
      * Only used in the built-in controller.
      * Use 'back' to redirect to the previous page
      */
-    'leave_redirect_to' => '/admin/auth/user',
+    'leave_redirect_to' => '/user',
 ];

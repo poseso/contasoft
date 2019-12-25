@@ -74,7 +74,7 @@
                 serverSide: true,
                 autoWidth: false,
                 ajax: {
-                    url: '{{ route("admin.user.get") }}',
+                    url: '{{ route('admin.user.get') }}',
                     type: 'get',
                     data: {trashed: true},
                     error: function (xhr, err) {

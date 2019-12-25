@@ -54,7 +54,7 @@
                         @endif
                     </small>
                 </div>
-            </div><!--row-->
+            </div>
         </div>
     </div>
     <!--end::Portlet-->
