@@ -3938,18 +3938,6 @@ table.dataTable tbody tr.selected a, table.dataTable tbody th.selected a, table.
     border-color: grey;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    top: 22px !important;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered {
-    padding-left: 15px !important;
-}
-
-.select2-container .select2-selection--single {
-    height: 48px !important;
-}
-
 @media only screen and (min-width: 768px) {
     .centered {
         position: fixed;

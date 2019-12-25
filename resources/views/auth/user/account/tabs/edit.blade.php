@@ -61,33 +61,33 @@
                 </div>
 
                 <div class="form-group row">
-                    {{ html()->label(__('Nombre'))->class('col-xl-3 col-lg-3 col-form-label') }}
+                    {{ html()->label(__('Nombre'))->class('col-xl-3 col-lg-3 col-form-label align-self-center') }}
 
                     <div class="col-lg-9 col-xl-6">
                         {{ html()->text('first_name')
-                            ->class('form-control')
+                            ->class('form-control form-control-lg')
                             ->placeholder(__('Nombre'))
                             ->attribute('maxlength', 70) }}
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    {{ html()->label(__('Apellidos'))->class('col-xl-3 col-lg-3 col-form-label') }}
+                    {{ html()->label(__('Apellidos'))->class('col-xl-3 col-lg-3 col-form-label align-self-center') }}
 
                     <div class="col-lg-9 col-xl-6">
                         {{ html()->text('last_name')
-                            ->class('form-control')
+                            ->class('form-control form-control-lg')
                             ->placeholder(__('Apellidos'))
                             ->attribute('maxlength', 70) }}
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    {{ html()->label(__('Usuario'))->class('col-xl-3 col-lg-3 col-form-label') }}
+                    {{ html()->label(__('Usuario'))->class('col-xl-3 col-lg-3 col-form-label align-self-center') }}
 
                     <div class="col-lg-9 col-xl-6">
                         {{ html()->text('username')
-                            ->class('form-control')
+                            ->class('form-control form-control-lg')
                             ->placeholder(__('Usuario'))
                             ->attribute('maxlength', 70) }}
                     </div>
@@ -106,7 +106,7 @@
                     </div>
 
                     <div class="form-group row">
-                        {{ html()->label(__('Dirección de correo'))->class('col-xl-3 col-lg-3 col-form-label') }}
+                        {{ html()->label(__('Dirección de correo'))->class('col-xl-3 col-lg-3 col-form-label align-self-center') }}
 
                         <div class="col-lg-9 col-xl-6">
                             <div class="input-group">
@@ -117,7 +117,7 @@
                                 </div>
 
                                 {{ html()->email('email')
-                                    ->class('form-control')
+                                    ->class('form-control form-control-lg')
                                     ->placeholder(__('Dirección de Correo'))
                                     ->attribute('maxlength', 191) }}
                             </div>

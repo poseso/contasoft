@@ -134,6 +134,12 @@ $(function () {
             $(this).data('placeholder');
         }
     });
+
+    $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+
+    $('.kt-selectpicker').selectpicker({
+        noneResultsText: 'No se encontraron resultados para: {0}'
+    });
 });
 
 let initDesktopTooltips = function() {

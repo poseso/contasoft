@@ -34,32 +34,31 @@
                 </div>
 
                 <div class="form-group row">
-                    {{ html()->label(__('Contraseña Actual'))->class('col-xl-3 col-lg-3 col-form-label')->for('old_password') }}
+                    {{ html()->label(__('Contraseña Actual'))->class('col-xl-3 col-lg-3 col-form-label align-self-center')->for('old_password') }}
 
                     <div class="col-lg-9 col-xl-6">
                         {{ html()->password('old_password')
-                            ->class('form-control')
-                            ->placeholder(__('Contraseña Actual'))
-                            ->autofocus() }}
+                            ->class('form-control form-control-lg')
+                            ->placeholder(__('Contraseña Actual')) }}
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    {{ html()->label(__('Nueva Contraseña'))->class('col-xl-3 col-lg-3 col-form-label')->for('password') }}
+                    {{ html()->label(__('Nueva Contraseña'))->class('col-xl-3 col-lg-3 col-form-label align-self-center')->for('password') }}
 
                     <div class="col-lg-9 col-xl-6">
                         {{ html()->password('password')
-                            ->class('form-control')
+                            ->class('form-control form-control-lg')
                             ->placeholder(__('Nueva Contraseña')) }}
                     </div>
                 </div>
 
                 <div class="form-group form-group-last row">
-                    {{ html()->label(__('Confirmación de la Contraseña'))->class('col-xl-3 col-lg-3 col-form-label')->for('password_confirmation') }}
+                    {{ html()->label(__('Confirmación de la Contraseña'))->class('col-xl-3 col-lg-3 col-form-label align-self-center')->for('password_confirmation') }}
 
                     <div class="col-lg-9 col-xl-6">
                         {{ html()->password('password_confirmation')
-                            ->class('form-control')
+                            ->class('form-control form-control-lg')
                             ->placeholder(__('Confirmación de la contraseña')) }}
                     </div>
                 </div>

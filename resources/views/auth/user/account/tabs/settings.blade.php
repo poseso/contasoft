@@ -21,7 +21,7 @@
                                 {{ html()->label(__('Formato de Fecha'))->for('date_format') }}
 
                                 @php $dateformat = $logged_in_user->settings['date_format'] ?? ''; @endphp
-                                <select class="form-control select2" data-live-search="true" name="settings[date_format]">
+                                <select class="form-control form-control-lg kt-selectpicker" data-live-search="true" name="settings[date_format]">
                                     <option value="d/m/Y" @if($dateformat === 'd/m/Y') selected @endif>15/05/2018</option>
                                     <option value="d.m.Y" @if($dateformat === 'd.m.Y') selected @endif>15.05.2018</option>
                                     <option value="d-m-Y" @if($dateformat === 'd-m-Y') selected @endif>15-05-2018</option>
@@ -44,7 +44,7 @@
                                 {{ html()->label(__('Formato de Hora'))->for('time_format') }}
 
                                 @php $timeformat = $logged_in_user->settings['time_format'] ?? ''; @endphp
-                                <select class="form-control select2" data-live-search="true" name="settings[time_format]">
+                                <select class="form-control form-control-lg kt-selectpicker" data-live-search="true" name="settings[time_format]">
                                     <option value="g:i A" @if($timeformat === 'g:i A') selected @endif>1:30 PM</option>
                                     <option value="g:i a" @if($timeformat === 'g:i a') selected @endif>1:30 pm</option>
                                     <option value="g:i" @if($timeformat === 'g:i') selected @endif>1:30</option>
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 {{ html()->label(__('Zona Horaria'))->for('timezone') }}
                                 @php $timezone = $logged_in_user->settings['timezone'] ?? ''; @endphp
-                                <select name="settings[timezone]" class="form-control select2" data-live-search="true">
+                                <select name="settings[timezone]" class="form-control form-control-lg kt-selectpicker" data-live-search="true">
                                     @foreach (timezones() as $value => $label)
                                         <option value="{{ $value }}" @if($timezone === $value) selected @endif>{{ $label }}</option>
                                     @endforeach
@@ -82,7 +82,7 @@
                             <div class="form-group">
                                 {{ html()->label(__('Idioma por Defecto'))->for('language') }}
                                 @php $language = $logged_in_user->settings['language'] ?? ''; @endphp
-                                <select name="settings[language]" class="form-control select2">
+                                <select name="settings[language]" class="form-control form-control-lg kt-selectpicker">
                                     <option value="es" @if($language === 'es') selected @endif>{{ __('Español') }}</option>
                                     <option value="en" @if($language === 'en') selected @endif>{{ __('Inglés') }}</option>
                                 </select>
@@ -95,7 +95,7 @@
                             {{ html()->label(__('Representante'))->for('representante') }}
 
                             {{ html()->text('settings[representante]')
-                            ->class('form-control')
+                            ->class('form-control form-control-lg')
                             ->attribute('maxlength', 191)
                             ->attribute('disabled', 'disabled')
                             ->value($logged_in_user->settings['representante'] ?? '') }}
@@ -105,7 +105,7 @@
                             {{ html()->label(__('Cargo'))->for('position') }}
 
                             {{ html()->text('settings[position]')
-                            ->class('form-control')
+                            ->class('form-control form-control-lg')
                             ->placeholder(__('Ej.: Director'))
                             ->attribute('maxlength', 191)
                             ->value($logged_in_user->settings['position'] ?? '') }}
