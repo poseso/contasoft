@@ -33,7 +33,7 @@
                     $userRoles[] = $r->id;
                 }
             @endphp
-            <table id="tabla-perfiles" class="table table-striped table-bordered table-hover">
+            <table id="tabla-perfiles" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>{{ __('Perfil') }}</th>

@@ -31,7 +31,7 @@
         </div>
 
         <div class="kt-portlet__body">
-            <table id="tabla-usuarios" class="table table-striped table-bordered table-hover">
+            <table id="tabla-usuarios" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>{{ __('Nombre') }}</th>
