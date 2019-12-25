@@ -1,12 +1,12 @@
 <?php
 
 Breadcrumbs::for('log-viewer::dashboard', function ($trail) {
-    $trail->push(__('menus.backend.log-viewer.main'), url('admin/log-viewer'));
+    $trail->push(__('Gestor de Logs'), url('admin/log-viewer'));
 });
 
 Breadcrumbs::for('log-viewer::logs.list', function ($trail) {
     $trail->parent('log-viewer::dashboard');
-    $trail->push(__('menus.backend.log-viewer.logs'), url('admin/log-viewer/logs'));
+    $trail->push(__('Logs'), url('admin/log-viewer/logs'));
 });
 
 Breadcrumbs::for('log-viewer::logs.show', function ($trail, $date) {
