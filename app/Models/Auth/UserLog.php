@@ -22,5 +22,4 @@ class UserLog extends Model implements \Altek\Accountant\Contracts\Ledger
     {
         return $this->belongsTo(User::class, 'recordable_id');
     }
-
 }

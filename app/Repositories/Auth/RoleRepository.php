@@ -2,13 +2,13 @@
 
 namespace App\Repositories\Auth;
 
+use Throwable;
 use App\Models\Auth\Role;
 use App\Events\Role\RoleCreated;
 use App\Events\Role\RoleUpdated;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
-use Throwable;
 
 /**
  * Class RoleRepository.

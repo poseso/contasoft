@@ -6,7 +6,6 @@ use App\Models\Auth\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
-use LangleyFoxall\LaravelNISTPasswordRules\Rules\BreachedPasswords;
 
 /**
  * Class RegisterRequest.
@@ -33,18 +32,18 @@ class RegisterRequest extends FormRequest
         return [
             'first_name' => [
                 'required',
-                'string'
+                'string',
             ],
             'last_name' => [
                 'required',
-                'string'
+                'string',
             ],
             'username' => [
                 'required',
                 'string',
                 'min:5',
                 'max:25',
-                Rule::unique('users', 'username')
+                Rule::unique('users', 'username'),
             ],
             'email' => ['required', 'string', 'email', Rule::unique('users')],
             'password' => PasswordRules::register($this->email),
@@ -70,7 +69,7 @@ class RegisterRequest extends FormRequest
             'email.unique' => __('Ya existe un usuario con la dirección de correo').' '.$this->get('email'),
             'username.max' => __('El usuario no debe exceder los :max caracteres.'),
             'username.min' => __('El usuario debe tener un mínimo de :min caracteres.'),
-            'validation.captcha' => __('Debes demostrar que eres humano!')
+            'validation.captcha' => __('Debes demostrar que eres humano!'),
         ];
     }
 }

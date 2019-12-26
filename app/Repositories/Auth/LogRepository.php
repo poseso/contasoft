@@ -2,9 +2,7 @@
 
 namespace App\Repositories\Auth;
 
-use App\Models\Auth\User;
 use App\Models\Auth\UserLog;
-use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
 
 /**
@@ -21,5 +19,4 @@ class LogRepository extends BaseRepository
     {
         $this->model = $model;
     }
-
 }

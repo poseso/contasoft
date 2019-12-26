@@ -29,11 +29,12 @@ class StoreRoleRequest extends FormRequest
     {
         return [
             'name' => ['required', Rule::unique('roles')],
-            'description' => ['required']
+            'description' => ['required'],
         ];
     }
 
-    public function messages() {
+    public function messages()
+    {
         return [
             'name.required' => __('El campo Nombre del Perfil es obligatorio'),
             'name.unique' => __('El Nombre de Perfil').' '.'('.$this->get('name').')'.' '.__('se encuentra en uso.'),

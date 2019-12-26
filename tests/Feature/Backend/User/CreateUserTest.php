@@ -52,7 +52,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [ 1 => config('access.users.super_admin_role')],
+            'roles' => [1 => config('access.users.super_admin_role')],
         ]);
 
         $response->assertSessionHasErrors('email');
@@ -75,7 +75,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [ 1 => config('access.users.super_admin_role')],
+            'roles' => [1 => config('access.users.super_admin_role')],
         ]);
 
         $response->assertSessionHasErrors('username');
@@ -103,7 +103,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '1',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [ 1 => config('access.users.super_admin_role')],
+            'roles' => [1 => config('access.users.super_admin_role')],
         ]);
 
         $this->assertDatabaseHas(
@@ -139,7 +139,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [ 1 => config('access.users.super_admin_role')],
+            'roles' => [1 => config('access.users.super_admin_role')],
         ]);
 
         $response->assertSessionHas(['flash_success' => __('El usuario fue creado correctamente.')]);

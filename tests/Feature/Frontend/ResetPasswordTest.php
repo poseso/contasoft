@@ -73,11 +73,11 @@ class ResetPasswordTest extends TestCase
         $token = $this->app->make('auth.password.broker')->createToken($user);
 
         $response = $this->post('password/reset', [
-                'token' => $token,
-                'email' => 'john@example.com',
-                'password' => 'secret',
-                'password_confirmation' => 'secret',
-            ]);
+            'token' => $token,
+            'email' => 'john@example.com',
+            'password' => 'secret',
+            'password_confirmation' => 'secret',
+        ]);
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
@@ -106,7 +106,6 @@ class ResetPasswordTest extends TestCase
             'password' => ']EqZL4}zBT',
             'password_confirmation' => ']EqZL4}zBT',
         ]);
-
 
         $response->assertSessionHas('flash_success');
         $this->assertTrue(Hash::check(']EqZL4}zBT', $admin->fresh()->password));

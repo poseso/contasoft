@@ -21,9 +21,9 @@ class ChangeUserPasswordTest extends TestCase
         $user = factory(User::class)->create();
 
         $response = $this->patch("/user/{$user->id}/password/change", [
-                'password' => '1234567',
-                'password_confirmation' => '1234567',
-            ]);
+            'password' => '1234567',
+            'password_confirmation' => '1234567',
+        ]);
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
@@ -97,7 +97,6 @@ class ChangeUserPasswordTest extends TestCase
 
         $this->loginAsAdmin();
         $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
-
 
         $this->patch("/user/{$user->id}/password/change", [
             'password' => 'OC4Nzu270N!QBVi%U%qX_02',

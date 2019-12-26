@@ -55,7 +55,7 @@ class CreateRoleTest extends TestCase
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
-        $this->assertSame($errors->get('name')[0], __('El Nombre de Perfil'.' ('.config('access.users.super_admin_role').')'. ' se encuentra en uso.'));
+        $this->assertSame($errors->get('name')[0], __('El Nombre de Perfil'.' ('.config('access.users.super_admin_role').')'.' se encuentra en uso.'));
     }
 
     /** @test */
@@ -65,7 +65,7 @@ class CreateRoleTest extends TestCase
 
         $response = $this->post('/role', [
             'name' => 'new role',
-            'description' => 'this is a test role'
+            'description' => 'this is a test role',
         ]);
 
         $response->assertSessionHas(['flash_danger' => __('Debe seleccionar al menos un permiso para cada Perfil.')]);
