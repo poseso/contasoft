@@ -92,7 +92,7 @@ class UserController extends Controller
     public function index(ManageUserRequest $request)
     {
         return view('user.index')
-            ->withUsers($this->userRepository->getActivePaginated(25, 'id', 'asc'));
+            ->withUsers($this->userRepository->getActiveUsers());
     }
 
     /**

@@ -83,6 +83,28 @@ class UserRepository extends BaseRepository
     }
 
     /**
+     * @return mixed
+     */
+    public function getUsersCount() : int
+    {
+        return User::count();
+    }
+
+    /**
+     * @param string $orderBy
+     * @param string $sort
+     *
+     * @return mixed
+     */
+    public function getActiveUsers($orderBy = 'created_at', $sort = 'desc')
+    {
+        return User::with('roles', 'permissions', 'providers')
+            ->active()
+            ->orderBy($orderBy, $sort)
+            ->get();
+    }
+
+    /**
      * @param int    $paged
      * @param string $orderBy
      * @param string $sort
