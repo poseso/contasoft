@@ -75,7 +75,7 @@
                 autoWidth: false,
                 ajax: {
                     url: '{{ route('admin.user.get') }}',
-                    type: 'get',
+                    type: 'post',
                     data: {trashed: true},
                     error: function (xhr, err) {
                         if (err === 'parsererror')

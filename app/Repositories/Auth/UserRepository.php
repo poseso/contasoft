@@ -51,7 +51,7 @@ class UserRepository extends BaseRepository
      */
     public function getForDataTable($status = 1, $trashed = false)
     {
-        $dataTableQuery = User::with('providers', 'permissions')
+        $dataTableQuery = User::with('providers', 'roles', 'permissions')
             ->select([
                 'users.id',
                 'users.first_name',
