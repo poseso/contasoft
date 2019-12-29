@@ -153,10 +153,9 @@
                     search: '',
                     lengthMenu: '{{ __('Mostrar') }} &nbsp; _MENU_ &nbsp; {{ __('Registros') }}',
                     zeroRecords: '{{ __('No se encontraron resultados') }}',
-                    info: '{{ __('Mostrando página') }} _PAGE_ {{ __('de') }} _PAGES_',
                     infoEmpty: '{{ __('No hay registros disponibles') }}',
                     infoFiltered: '({{ __('filtrado de') }} _MAX_ {{ __('registros en total') }})',
-                    sInfo: '{{ __('Mostrando del') }} _START_ {{ __('al') }} _END_ {{ __('de') }} _TOTAL_ {{ __('registros por página') }}',
+                    sInfo: '{{ __('Mostrando del') }} _START_ {{ __('al') }} _END_ {{ __('de') }} _TOTAL_ {{ __('registros') }}',
                     paginate: {
                         previous: '{{ __('Anterior') }}',
                         next: '{{ __('Siguiente') }}'

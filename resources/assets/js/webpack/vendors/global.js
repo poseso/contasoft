@@ -38,6 +38,7 @@ window.PerfectScrollbar = require("perfect-scrollbar/dist/perfect-scrollbar");
 //** Begin: Global optional plugins
 
 // Datatables
+require("datatables.net");
 require("datatables.net-bs4");
 require("datatables.net-autofill");
 require("datatables.net-autofill-bs4");
