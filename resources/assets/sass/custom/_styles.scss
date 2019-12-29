@@ -3959,4 +3959,10 @@ table.dataTable tbody tr.selected a, table.dataTable tbody th.selected a, table.
 
 table tr:first-child th, table tr:first-child td {
     border-top: 0;
+    border-bottom: 1px solid #ebedf2;
+}
+
+table tr:last-child th, table tr:last-child td {
+    border-top: 1px solid #ebedf2;
+    border-bottom: 1px solid #ebedf2;
 }

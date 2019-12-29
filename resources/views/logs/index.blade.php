@@ -132,6 +132,8 @@
                     "targets": 0,
                     "orderable": false
                 } ],
+                select: true,
+                responsive: true,
                 initComplete: function () {
                     this.api().columns([1,2,3,4,5,6,7,8]).every(function () {
                         let column = this;
@@ -153,33 +155,7 @@
                 },
                 lengthMenu: [[25, 50, -1], [25, 50, '{{ __('Todos') }}']],
                 language: {
-                    select: {
-                        rows: {
-                            _: "%d filas seleccionadas",
-                            0: "Haga clic en una fila para seleccionarla",
-                            1: "1 fila seleccionada"
-                        }
-                    },
-                    buttons: {
-                        copyTitle: 'Añadido al portapapeles',
-                        copyKeys: 'Presione <i> ctrl </i> o <i>\u2318 </i> + <i> C </i> para copiar los datos de la tabla al portapapeles. <br> <br> Para cancelar, haga clic en este mensaje o presione Esc.',
-                        copySuccess: {
-                            _: '%d filas copiadas',
-                            1: '1 fila copiada'
-                        }
-                    },
-                    sSearchPlaceholder: '{{ __('Buscar...') }}',
-                    search: '',
-                    lengthMenu: '{{ __('Mostrar') }} &nbsp; _MENU_ &nbsp; {{ __('Registros') }}',
-                    zeroRecords: '{{ __('No se encontraron resultados') }}',
-                    infoEmpty: '{{ __('No hay registros disponibles') }}',
-                    infoFiltered: '({{ __('filtrado de') }} _MAX_ {{ __('registros en total') }})',
-                    sInfo: '{{ __('Mostrando del') }} _START_ {{ __('al') }} _END_ {{ __('de') }} _TOTAL_ {{ __('registros por página') }}',
-                    paginate: {
-                        previous: '{{ __('Anterior') }}',
-                        next: '{{ __('Siguiente') }}'
-                    },
-                    processing: '{{ __('Procesando...') }}',
+                    url: '/custom/datatables/{{ $logged_in_user->settings['language'] }}.json'
                 }
             });
 
