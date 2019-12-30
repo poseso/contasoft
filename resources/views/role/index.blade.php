@@ -132,10 +132,7 @@
                     orderable: false,
                     searchable: false
                 } ],
-                aaSorting: [[ 0, 'asc' ]],
-                language: {
-                    url: '/custom/datatables/{{ $logged_in_user->settings['language'] }}.json'
-                }
+                aaSorting: [[ 0, 'asc' ]]
             });
 
             let buttons = new $.fn.dataTable.Buttons(table, {

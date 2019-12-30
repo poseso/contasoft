@@ -156,3 +156,31 @@ let initDesktopTooltips = function() {
 
 initDesktopTooltips();
 KTUtil.addResizeHandler(initDesktopTooltips);
+
+let languages = {
+    en: {
+        path: '/custom/datatables/en'
+    },
+    es: {
+        path: '/custom/datatables/es'
+    }
+};
+
+function getLanguage() {
+    let lang = $('html').attr('lang');
+    let url = languages[lang].path + '.json';
+
+    $.ajax({
+        url: url,
+    }).done(function (obj) {
+        let result = $.extend({}, obj, languages[lang]);
+        (function ($, DataTable) {
+            // Datatable global configuration
+            $.extend(true, DataTable.defaults, {
+                language: result
+            });
+        })(jQuery, jQuery.fn.dataTable);
+    });
+}
+
+getLanguage();

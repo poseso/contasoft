@@ -153,10 +153,7 @@
                     });
 
                 },
-                lengthMenu: [[25, 50, -1], [25, 50, '{{ __('Todos') }}']],
-                language: {
-                    url: '/custom/datatables/{{ $logged_in_user->settings['language'] }}.json'
-                }
+                lengthMenu: [[25, 50, -1], [25, 50, '{{ __('Todos') }}']]
             });
 
             let buttons = new $.fn.dataTable.Buttons(table, {
