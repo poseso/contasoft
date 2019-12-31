@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Role;
 
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Throwable;
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
@@ -61,8 +62,14 @@ class RoleController extends Controller
             }
         }
 
+        $userRoles = [];
+        foreach(Auth::user()->roles as $r){
+            $userRoles[] = $r->id;
+        }
+
         return view('role.index')
             ->withRoles($roles)
+            ->withUserRoles($userRoles)
             ->withPerm($perm);
     }
 

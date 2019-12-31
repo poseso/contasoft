@@ -27,12 +27,6 @@
         </div>
 
         <div class="kt-portlet__body">
-            @php
-                $userRoles = [];
-                foreach($logged_in_user->roles as $r){
-                    $userRoles[] = $r->id;
-                }
-            @endphp
             <table id="tabla-perfiles" class="table table-bordered table-hover">
                 <thead>
                 <tr>

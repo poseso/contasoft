@@ -147,12 +147,6 @@
                             <h3 class="kt-portlet__head-title">{{ __('Perfiles') }}</h3>
                             <div class="table-responsive">
                                 <table class="table-permissions">
-                                    @php
-                                        $userRoles = [];
-                                        foreach($logged_in_user->roles as $r){
-                                            $userRoles[] = $r->id;
-                                        }
-                                    @endphp
                                     <tbody>
                                     <tr>
                                         <td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Throwable;
 use DataTables;
 use App\Models\Auth\User;
@@ -107,8 +108,15 @@ class UserController extends Controller
         $permissions = Permission::with('module')->orderBy('permissions.id', 'ASC')->get();
         $permissions = $permissions->groupBy('module.name');
 
+
+        $userRoles = [];
+        foreach(Auth::user()->roles as $r){
+            $userRoles[] = $r->id;
+        }
+
         return view('user.create')
             ->withRoles($roleRepository->with('permissions')->get(['id', 'name']))
+            ->withUserRoles($userRoles)
             ->withPermissions($permissions);
     }
 
