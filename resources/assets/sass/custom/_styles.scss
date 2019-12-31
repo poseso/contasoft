@@ -3966,3 +3966,11 @@ table tr:last-child th, table tr:last-child td {
     border-top: 1px solid #ebedf2;
     border-bottom: 1px solid #ebedf2;
 }
+
+table.table-permissions tr:first-child th, table tr:first-child td {
+    border: 0 !important;
+}
+
+table.table-permissions tr:last-child th, table tr:last-child td {
+    border: 0 !important;
+}

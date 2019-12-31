@@ -208,7 +208,7 @@
                                             <div class="row">
                                                 @foreach ($permissions as $key => $module)
                                                     <div class="col-xl-4 col-lg-4 col-sm-1">
-                                                        <table class="table-permissions table-borderless">
+                                                        <table class="table-permissions">
                                                             <thead>
                                                             <tr>
                                                                 <th>
