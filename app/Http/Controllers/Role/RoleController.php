@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Role;
 
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use Throwable;
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
 use App\Events\Role\RoleDeleted;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\Auth\RoleRepository;
 use App\Http\Requests\Role\StoreRoleRequest;
 use App\Http\Requests\Role\ManageRoleRequest;
@@ -63,7 +63,8 @@ class RoleController extends Controller
         }
 
         $userRoles = [];
-        foreach(Auth::user()->roles as $r){
+
+        foreach (Auth::user()->roles as $r) {
             $userRoles[] = $r->id;
         }
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use Throwable;
 use DataTables;
 use App\Models\Auth\User;
@@ -12,6 +11,7 @@ use App\Models\Auth\Permission;
 use App\Events\User\UserDeleted;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\View\Factory;
 use App\Repositories\Auth\RoleRepository;
 use App\Repositories\Auth\UserRepository;
@@ -108,9 +108,9 @@ class UserController extends Controller
         $permissions = Permission::with('module')->orderBy('permissions.id', 'ASC')->get();
         $permissions = $permissions->groupBy('module.name');
 
-
         $userRoles = [];
-        foreach(Auth::user()->roles as $r){
+
+        foreach (Auth::user()->roles as $r) {
             $userRoles[] = $r->id;
         }
 
