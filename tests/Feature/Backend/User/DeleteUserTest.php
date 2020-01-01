@@ -82,6 +82,7 @@ class DeleteUserTest extends TestCase
         $response = $this->delete("/user/{$user->id}");
 
         $response->assertSessionHas(['flash_success' => __("El usuario $user->name fue eliminado correctamente.")]);
+
         $this->assertDatabaseMissing('users', ['id' => $user->id, 'deleted_at' => null]);
     }
 }

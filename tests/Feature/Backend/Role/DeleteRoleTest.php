@@ -22,7 +22,7 @@ class DeleteRoleTest extends TestCase
 
         $this->delete("/role/{$role->id}/destroy");
 
-        $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);
+        $this->assertDeleted($role);
     }
 
     /** @test */
@@ -45,6 +45,8 @@ class DeleteRoleTest extends TestCase
         $this->loginAsAdmin();
 
         $this->delete("/role/{$role->id}/destroy");
+
+        $this->assertDeleted($role);
 
         Event::assertDispatched(RoleDeleted::class);
     }
