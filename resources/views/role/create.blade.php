@@ -48,13 +48,13 @@
                         ->attribute('maxlength', 191) }}
                 </div>
 
-                <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                <div class="kt-separator kt-separator--border-solid kt-separator--portlet-fit kt-separator--space-lg"></div>
 
                 <div class="row">
                     <div class="col-12">
                         <h4>{{ __('Permisos Asociados') }}</h4>
 
-                        <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                        <div class="kt-separator kt-separator--border-solid kt-separator--portlet-fit kt-separator--space-lg"></div>
                     </div>
                 </div>
 
@@ -62,7 +62,7 @@
                     <div class="row">
                         @foreach ($permissions as $key => $module)
                             <div class="col-xl-2 col-lg-2 col-sm-1">
-                                <table class="table-permissions table-borderless">
+                                <table class="table table-borderless p-0">
                                     <thead>
                                     <tr>
                                         <th>

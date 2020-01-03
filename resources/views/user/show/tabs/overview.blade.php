@@ -1,6 +1,6 @@
 <div class="col">
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-borderless">
             <tr>
                 <th>{{ __('Avatar') }}</th>
                 <td><img src="{{ $user->picture }}" class="kt-widget__media" alt="Avatar"/></td>
