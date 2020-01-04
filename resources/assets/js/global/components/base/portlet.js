@@ -20,7 +20,7 @@ var KTPortlet = function(elementId, options) {
         tools: {
             toggle: {
                 collapse: 'Colapsar',
-                expand: 'Expander'
+                expand: 'Expandir'
             },
             reload: 'Refrescar',
             remove: 'Remover',
